@@ -1,0 +1,108 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Přehled známek</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+
+
+<link href="{$basePath}/css/styl1.css" rel="stylesheet" type="text/css" />
+<link href="{$basePath}/css/twigrid.datagrid.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" media="screen" href="{$basePath}/css/style.css" />
+<link rel="stylesheet" href="{$basePath}/css/menu.css" type="text/css" media="screen" />
+<script src="{$basePath}/js/modernizr.custom.63321.js"></script>
+<script src="{$basePath}/js/twigrid.datagrid.js"></script> 
+<link rel="icon" type="image/ico" href="{$basePath}/favicon.ico" />
+
+
+</head>
+<body>
+
+<div id="hlavicka">
+ <div id="logo">
+ <img src="{$basePath}/images/design/logo2.png" title="Elektronická žákovská knížka" /></div>
+ <div id="login">
+     {if !$user->isLoggedIn()}
+     {form signInForm}
+      <h1>Přihlášení</h1> 
+      <table>
+      <tr>
+        <td>
+        {if $form->hasErrors()}<img src='{$basePath}/images/owl_incorrect.png' width="140px" height="140px" alt='Tudy cesta nevede'/>{/if}
+         {if !$form->hasErrors()}<img src='{$basePath}/images/owl_notebook.png' width="140px" height="140px" alt='Jen dva údaje tě dělí od přihlášení'/>{/if}   
+        
+        </td>  
+       
+          
+         <td><input n:name="username" class='login-input'></input>
+       <input n:name="password" class='login-input'></input>
+       <input n:name="remember"><label>Zůstat přihlášen</label></input>
+        <input n:name="send" class='login-submit'></input>   
+      
+      </td>
+      </tr>
+       </table>
+   {/form}
+    {/if} 
+  {if $user->isLoggedIn()}
+     {form signOutForm}
+      <h1>Vítejte</h1> 
+      <table>
+      <tr>
+        <td>
+         {if $user->isInRole('4')}   
+        <img src='{$basePath}/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
+         {/if}
+        
+        </td>  
+       
+            
+         <td> 
+      <input n:name="logout" class='login-submit'></input>
+      </td>
+      </tr>
+       </table>
+   {/form}
+   {/if} 
+ </div>
+
+
+ 
+ </div>
+
+  
+  
+   <ul id="menu">
+   <li><a href="{$presenter->link('Users:list')}">Hlavní strana</a>
+    </li>
+   </ul>
+ <div id="telo">
+	{include content}
+</div>
+        
+</body>
+<div id="footer">
+<footer>
+
+<p> </p>
+  <p><h4>Vytvořil Adam Nezmar</h4></p>
+</footer>
+</div>
+
+
+
+ 
+        
+	{block scripts}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+        <script src="{$basePath}/js/rounded-corners.js"></script>
+	{/block}
+
+</html>

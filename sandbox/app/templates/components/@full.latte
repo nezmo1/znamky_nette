@@ -1,0 +1,49 @@
+
+{define filter-cell-birthday}
+	<th class="birthday nowrap">
+		<div>
+			{? }{input filters-criteria-$column-min, class => 'form-control date min', placeholder => 'min'}
+			{? }{input filters-criteria-$column-max, class => 'form-control date max', placeholder => 'max'}
+			&ndash;
+		</div>
+	</th>
+{/define}
+
+
+{define filter-cell-kilograms}
+	<th class="numeric">
+		{? }{input filters-criteria-$column, class => 'form-control'}
+	</th>
+{/define}
+
+
+{define body-cell-birthday}
+	<td class="numeric center">{$value|date:'d. m. Y'}</td>
+{/define}
+
+
+{define body-cell-birthday-inline}
+	<td>{input inline-values-$column, class => 'form-control date center'}</td>
+{/define}
+
+
+{define body-cell-country_code}
+	<td>{$record->ref('country', 'country_code')->title}</td>
+{/define}
+
+
+{define body-cell-kilograms}
+	<td class="numeric right">{$value}</td>
+{/define}
+
+
+{define body-cell-kilograms-inline}
+	<td class="numeric">{input inline-values-$column, class => 'form-control'}</td>
+{/define}
+
+
+{define row-action-delete}
+	<a href="{$link}" class="btn btn-danger btn-sm tw-ajax" data-tw-confirm="{$action->confirmation}">
+		{$action->label}
+	</a>
+{/define}

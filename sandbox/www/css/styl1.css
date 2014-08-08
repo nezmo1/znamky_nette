@@ -1,0 +1,103 @@
+@font-face {
+	font-family: cool_font;
+	src: url('../font/ring.ttf');
+}
+
+body {
+background-image: url(../images/design/pozadi11.jpg);
+background-size: cover;
+background-repeat:no-repeat;
+ background-attachment: fixed; 
+ text-align:center; 
+ 	margin: 0px;
+	padding: 0px;
+  
+}
+
+#hlavicka 
+  {
+    
+  	width: 1000px;
+    height: 130px;
+	 margin: 0 auto;
+   padding: 5px;
+   margin-top: 55px;
+  }
+
+
+
+#logo
+  {
+   float:left;
+   
+  
+  
+  
+ }
+ 
+ #login
+  {
+  float:right;
+  margin-top:-55px;
+  
+}
+
+ #menu
+  {
+
+}
+
+#telo
+  {
+   font-family: arial;
+  background: #396383;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+       filter: alpha(opacity=90);
+       opacity:.95;
+       text-align:left; 
+       padding: 10px;
+       border:1px groove white;
+       font-size:17px;
+       color: #FFF5EE;
+       border-radius:20px;
+       text-align: justify;
+        min-height: 800px;
+        width:1000px;
+        margin: 0 auto;
+        z-index: 0;
+         
+       
+}
+h1
+
+{
+ font-family: cool_font;
+ color:#EEC900;
+ padding: 10px;
+}
+
+footer {
+
+
+font-family: cool_font;
+ color:#EEC900;
+}
+
+a:link {color: #EEC900} /* nenavštívený */
+
+a:visited {color: #EEC900} /* navštívený*/
+
+a:hover {color: #EEC900}
+
+
+h3
+
+{
+ color:#EEC900;
+ 
+}
+  #jmenoheslo
+  {
+ width: 300px; height: 120px; top: -15px; left: 0px;
+}
+
