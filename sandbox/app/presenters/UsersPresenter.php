@@ -6,21 +6,34 @@ use Nette,
 	App\Model;
        
 
-
-/**
- * Homepage presenter.
- */
 class UsersPresenter extends BasePresenter
 {
     
     
-
-	public function renderDefault()
-	{
-		$this->template->anyVariable = 'any value';
-	}
-        
-  
-       
-
+ private $database;
+ 
+    public function __construct(Nette\Database\Context $database)
+    {
+        $this->database = $database;
+    }
+   
+    protected function createComponentArticleGrid()
+{
+    return new Model\ArticleGrid($this->database->table('users'));
 }
+
+
+
+
+
+	public function renderList()
+{
+    
+
+}	
+        
+ 
+        
+}
+
+

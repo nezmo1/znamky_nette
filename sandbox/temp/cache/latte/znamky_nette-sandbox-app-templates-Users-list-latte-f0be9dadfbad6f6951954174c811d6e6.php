@@ -2,17 +2,24 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Users/list.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4584004207', 'html')
+list($_b, $_g, $_l) = $template->initialize('6642399150', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb696f806207_content')) { function _lb696f806207_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;$_b->templates['4584004207']->renderChildTemplate('../components/@full.latte', array('form' => 'build') + $template->getParameters()) ?>
+if (!function_exists($_b->blocks['content'][] = '_lbb4626c8614_content')) { function _lbb4626c8614_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
 
 
+<?php $_l->tmp = $_control->getComponent("articleGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ;
+}}
 
+//
+// block title
+//
+if (!function_exists($_b->blocks['title'][] = '_lbfa1b7e26e5_title')) { function _lbfa1b7e26e5_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><h1>Můj úžasný blog</h1>
 <?php
 }}
 

@@ -1,1 +1,1 @@
-<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.20044900 1407330010";s:10:"serialized";b:1;}?>a:1:{s:7:"primary";a:1:{s:5:"users";s:8:"username";}}
+<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.97720700 1407515488";s:10:"serialized";b:1;}?>a:3:{s:7:"primary";a:3:{s:5:"users";s:8:"username";s:5:"posts";N;s:5:"trida";s:13:"zkratka_tridy";}s:9:"belongsTo";a:1:{s:5:"users";a:1:{s:5:"trida";s:5:"trida";}}s:7:"hasMany";a:1:{s:5:"trida";a:1:{s:10:"tridausers";a:2:{i:0;s:5:"trida";i:1;s:5:"users";}}}}

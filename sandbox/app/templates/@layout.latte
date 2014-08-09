@@ -13,10 +13,12 @@
 
 <link href="{$basePath}/css/styl1.css" rel="stylesheet" type="text/css" />
 <link href="{$basePath}/css/twigrid.datagrid.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" media="screen" href="{$basePath}/css/grid.css" />
 <link rel="stylesheet" media="screen" href="{$basePath}/css/style.css" />
 <link rel="stylesheet" href="{$basePath}/css/menu.css" type="text/css" media="screen" />
-<script src="{$basePath}/js/modernizr.custom.63321.js"></script>
-<script src="{$basePath}/js/twigrid.datagrid.js"></script> 
+<script src="{$basePath}/js/jquery-ui.js"></script>
+<script src="{$basePath}/js/netteForms.js"></script>
+<script src="{$basePath}/js/grid.js"></script> 
 <link rel="icon" type="image/ico" href="{$basePath}/favicon.ico" />
 
 
@@ -78,7 +80,7 @@
   
   
    <ul id="menu">
-   <li><a href="{$presenter->link('Users:list')}">Hlavní strana</a>
+   <li><a href="{link Users:list}">Hlavní strana</a>
     </li>
    </ul>
  <div id="telo">

@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/FullGrid.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/grid.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/HomepagePresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/NiftyGrid/Grid.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/@layout.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/BaseGrid.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/UsersPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Homepage/default.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/NiftyGrid/DataSource/NDataSource.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Users/list.latte</file>
         </group>
     </open-files>

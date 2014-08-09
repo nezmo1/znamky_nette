@@ -1,0 +1,29 @@
+{
+	"name": "nextras/datagrid",
+	"type": "library",
+	"description": "Datagrid component for Nette Framework.",
+	"keywords": ["nextras", "nette", "datagrid"],
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "Jan Skrasek",
+			"email": "hrach.cz@gmail.com",
+			"homepage": "http://jan.skrasek.com"
+		}
+	],
+	"require": {
+		"php": "~5.3",
+		"nette/application":      "~2.2",
+		"nette/component-model":  "~2.2",
+		"nette/utils":            "~2.2",
+		"nextras/latte-macros":   "~1.1.0"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		}
+	},
+	"autoload": {
+		"psr-4": { "Nextras\\Datagrid\\": "src/" }
+	}
+}

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "nextras/datagrid": "2.1.2"
+    }
+}
