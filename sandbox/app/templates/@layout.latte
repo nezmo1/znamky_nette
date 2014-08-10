@@ -53,12 +53,22 @@
     {/if} 
   {if $user->isLoggedIn()}
      {form signOutForm}
-      <h1>Vítejte</h1> 
       <table>
       <tr>
         <td>
          {if $user->isInRole('4')}   
         <img src='{$basePath}/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
+         {/if}
+         
+         {if $user->isInRole('1')}   
+        <img src='{$basePath}/images/girl2.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
+         {/if}
+         
+         {if $user->isInRole('2')}   
+        <img src='{$basePath}/images/owl_rose.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
+         {/if}
+         {if $user->isInRole('3')}   
+        <img src='{$basePath}/images/owl_ebook.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
          {/if}
         
         </td>  
@@ -80,8 +90,8 @@
   
   
    <ul id="menu">
-   <li><a href="{link Users:list}">Hlavní strana</a>
-    </li>
+  
+   {control menu $user}
    </ul>
  <div id="telo">
 	{include content}

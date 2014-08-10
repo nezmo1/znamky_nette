@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/@layout.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2963548425', 'html')
+list($_b, $_g, $_l) = $template->initialize('8971995494', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb1454f7c7f3_scripts')) { function _lb1454f7c7f3_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lbaf4299d42d_scripts')) { function _lbaf4299d42d_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/jquery.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
@@ -94,12 +94,21 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
       </tr>
        </table>
 <?php Nette\Bridges\FormsLatte\FormMacros::renderFormEnd($_form) ;} if ($user->isLoggedIn()) { Nette\Bridges\FormsLatte\FormMacros::renderFormBegin($form = $_form = $_control["signOutForm"], array()) ?>
-      <h1>Vítejte</h1> 
       <table>
       <tr>
         <td>
 <?php if ($user->isInRole('4')) { ?>
         <img src='<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_QUOTES) ?>/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'>
+<?php } ?>
+         
+<?php if ($user->isInRole('1')) { ?>
+        <img src='<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_QUOTES) ?>/images/girl2.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'>
+<?php } ?>
+         
+<?php if ($user->isInRole('2')) { ?>
+        <img src='<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_QUOTES) ?>/images/owl_rose.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'>
+<?php } if ($user->isInRole('3')) { ?>
+        <img src='<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_QUOTES) ?>/images/owl_ebook.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'>
 <?php } ?>
         
         </td>  
@@ -122,8 +131,8 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
   
   
    <ul id="menu">
-   <li><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Users:list"), ENT_COMPAT) ?>">Hlavní strana</a>
-    </li>
+  
+<?php $_l->tmp = $_control->getComponent("menu"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render($user) ?>
    </ul>
  <div id="telo">
 <?php Latte\Macros\BlockMacros::callBlock($_b, 'content', $template->getParameters()) ?>

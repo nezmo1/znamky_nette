@@ -3,7 +3,9 @@
 namespace App\Presenters;
 
 use Nette,
-	App\Model;
+	App\Model,
+        App\Components,
+        Nette\Application\UI\Control;
         
 
 /**
@@ -12,6 +14,11 @@ use Nette,
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
  
+
+   
+    
+    
+    
    protected function createComponentSignInForm()
 	{
                
@@ -71,9 +78,18 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		$this->flashMessage('Odhlášení proběhlo úspěšně');
 		$this->redirect('Homepage:');
 	}
+        
+  protected function createComponentMenu()
+    {
+        $control = new \Menu();
 
+        return $control;
+    }
+   
         
 }
+
+
 
 
 
