@@ -1,0 +1,14 @@
+Vítejte 
+Jste přihlášen jako
+
+{foreach $info as $post}
+<div class="post">
+    <div class="date">{$post->username}</div>
+
+
+
+  
+</div>
+{/foreach}
+
+{* or use {include '../components/form.latte', form => signInForm} *}

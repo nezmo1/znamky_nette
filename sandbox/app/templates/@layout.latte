@@ -53,9 +53,12 @@
     {/if} 
   {if $user->isLoggedIn()}
      {form signOutForm}
+         
       <table>
+          
       <tr>
-        <td>
+          
+        <td rowspan="2">
          {if $user->isInRole('4')}   
         <img src='{$basePath}/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
          {/if}
@@ -73,11 +76,16 @@
         
         </td>  
        
-            
-         <td> 
-      <input n:name="logout" class='login-submit'></input>
-      </td>
+         {control informace $user}
+           
+        
       </tr>
+        <tr> <td valign="bottom">
+        <input type="button" value='Přehled' class='login-prehled'/><input type="button" value='Nastavení' class='login-prehled'/>        
+        <input n:name="logout" class='login-submit'></input>
+        </td></tr>  
+        
+           
        </table>
    {/form}
    {/if} 

@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/menu/menu.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/menu/menu.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/informace.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/logged_information.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/@layout.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/menu.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/BasePresenter.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Users/list.latte</file>
         </group>

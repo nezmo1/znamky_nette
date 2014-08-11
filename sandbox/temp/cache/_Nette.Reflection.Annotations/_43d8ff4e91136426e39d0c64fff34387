@@ -1,0 +1,6 @@
+<?php //netteCache[01]000261a:3:{s:4:"time";s:21:"0.49697300 1407742792";s:9:"callbacks";a:1:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:69:"D:\xampp\htdocs\znamky_nette\sandbox\app\presenters\BasePresenter.php";i:2;i:1407742789;}}s:10:"serialized";b:1;}?>a:1:{s:28:"App\Presenters\BasePresenter";a:3:{s:5:"class";s:59:"/**
+ * Base presenter for all application presenters.
+ */";s:3:"use";a:5:{s:5:"Nette";s:5:"Nette";s:5:"Model";s:9:"App\Model";s:10:"Components";s:14:"App\Components";s:7:"Control";s:28:"Nette\Application\UI\Control";s:7:"Context";s:22:"Nette\Database\Context";}s:10:"$infromace";s:46:"/**
+* @var App\Model\Informace
+* @inject
+*/";}}

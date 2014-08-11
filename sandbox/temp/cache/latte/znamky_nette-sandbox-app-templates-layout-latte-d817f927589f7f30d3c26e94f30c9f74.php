@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/@layout.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('8971995494', 'html')
+list($_b, $_g, $_l) = $template->initialize('1545792399', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lbaf4299d42d_scripts')) { function _lbaf4299d42d_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb34fba773ae_scripts')) { function _lb34fba773ae_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/jquery.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
@@ -94,9 +94,12 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
       </tr>
        </table>
 <?php Nette\Bridges\FormsLatte\FormMacros::renderFormEnd($_form) ;} if ($user->isLoggedIn()) { Nette\Bridges\FormsLatte\FormMacros::renderFormBegin($form = $_form = $_control["signOutForm"], array()) ?>
+         
       <table>
+          
       <tr>
-        <td>
+          
+        <td rowspan="2">
 <?php if ($user->isInRole('4')) { ?>
         <img src='<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_QUOTES) ?>/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'>
 <?php } ?>
@@ -113,13 +116,18 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
         
         </td>  
        
-            
-         <td> 
-      <input class='login-submit'<?php $_input = $_form["logout"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+<?php $_l->tmp = $_control->getComponent("informace"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render($user) ?>
+           
+        
+      </tr>
+        <tr> <td valign="bottom">
+        <input type="button" value='Přehled' class='login-prehled'><input type="button" value='Nastavení' class='login-prehled'>        
+        <input class='login-submit'<?php $_input = $_form["logout"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'class' => NULL,
 ))->attributes() ?>></input>
-      </td>
-      </tr>
+        </td></tr>  
+        
+           
        </table>
 <?php Nette\Bridges\FormsLatte\FormMacros::renderFormEnd($_form) ;} ?>
  </div>
