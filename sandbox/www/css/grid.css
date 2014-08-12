@@ -7,11 +7,15 @@
     border-collapse:collapse;
     clear:both;
     color:black;
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #396383;
+    overflow: hidden; -webkit-border-radius: 10px; -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .grid input[type=submit]{
     border:0;
-    background-color: #000000;
+    background-color: #0040FF;
     color:#FFF;
     cursor:pointer;
     text-align:center;
@@ -52,24 +56,27 @@
  }
 
 .grid th.grid-head-column{
-    background-color: #e8e8e8;
+   
     height: 30px;
     font-size: 16px;
     padding: 0px 10px;
     text-align:left;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; 
 }
 
 .grid th.grid-head-column a{
     text-decoration:none;
-    color:#000;
+    color:white;
 }
 
 .grid tr.grid-row-odd{
     background-color:#FFF;
+    color: #00496B; font-size: 14px;font-weight: normal;
 }
 
 .grid tr.grid-row-even{
-    background-color:#f8f8f8;
+    
+     background: #E1EEF4; color: #00496B;
 }
 
 .grid tr td.grid-row-cell{
@@ -117,7 +124,7 @@
 }
 
 .grid .grid-bottom{
-    background:#e8e8e8;
+    background: #006699;
     height:30px;
     padding:0px 10px;
 }
@@ -191,6 +198,7 @@
     height:18px;
     line-height: 20px;
     padding:4px 8px;
+    
 }
 
 .grid .grid-paginator a {
@@ -213,13 +221,13 @@
 }
 
 .grid .grid-filter-form{
-    background-color:#ccc;
+    background-color:#65A6FD;;
     padding:0px 10px;
     height:34px;
 }
 
 .grid .grid-filter-form-active{
-    background-color: #0078ff;
+    background-color: #F3F8FF;
 }
 
 .grid .grid-filter-form input[type="text"]{
@@ -241,7 +249,7 @@
 
 .grid .grid-filter-form input[type="submit"]{
     height:24px;
-    width:70px;
+    width:100px;
     margin-right:1px;
 }
 
@@ -261,6 +269,7 @@
     border:0px solid #F0F;
     padding:0;
     margin:0;
+    
 }
 
 .grid .grid-button{
@@ -312,7 +321,7 @@
 }
 
 .grid .grid-edited-cell{
-    background-color: #e5e5e5;
+    background-color: #4894FF;
 }
 
 .grid .grid-subgrid-open{

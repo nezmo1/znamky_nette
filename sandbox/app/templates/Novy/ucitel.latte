@@ -1,0 +1,20 @@
+{block content}
+
+<div class='datagrid' style='width:60%; margin-left:20%'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nový učitel</th></tr></thead>
+    {control novyUcitel}
+    <tr><td colspan='2' style='color:green; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel s tímto uživatelským jménem již existuje!'} color:red {/if}'>{$flash->message}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    
+</table>   
+   </div> 
+    
+   <p style='text-align:center'> <img src='{$basePath}/images/alice.png' width="15%" height="15%" alt='Tudy cesta nevede'/></p>
+{* or use {include '../components/form.latte', form => signInForm} *}

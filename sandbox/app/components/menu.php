@@ -86,12 +86,15 @@ class Menu extends Nette\Application\UI\PresenterComponent
             <div class="col_1">
             
                 <h3>Učitelé</h3>
-                <ul>
-                    <li><a href="#">Úvazky učitelů</a></li>
-                    <li><a href="#">Nový učitel</a></li>
-                    <li><a href="#">Seznam učitelů</a></li>
+                <ul>';
+      
+               echo     '<li><a href="#">Úvazky učitelů</a></li>';
+               $url = $this->presenter->link('Novy:ucitel');
+               echo     '<li><a href="'.$url.'">Nový učitel</a></li>';
+               $url = $this->presenter->link('Users:list');   
+               echo  '<li><a href="'.$url.'">Seznam učitelů</a></li>';
                     
-                </ul>   
+      echo          '</ul>   
                  
             </div>
     
@@ -120,11 +123,12 @@ class Menu extends Nette\Application\UI\PresenterComponent
     
             <div class="col_1">
             
-                <h3>Žáci</h3>
+                <h3>Žáci a třídy</h3>
                 <ul>
                     <li><a href="#">Nový žák</a></li>
                     <li><a href="#">Seznam žáků</a></li>
-                    
+                    <li><a href="#">Nová třída</a></li>
+                    <li><a href="#">Seznam tříd</a></li>
                 </ul>   
                  
             </div>

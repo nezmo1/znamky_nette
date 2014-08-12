@@ -1,29 +1,18 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Users/users.latte
+// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Pristup/pristup.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('6347249197', 'html')
+list($_b, $_g, $_l) = $template->initialize('7143175750', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb8ef67b5746_content')) { function _lb8ef67b5746_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
- ?>
-
-
-
-<?php
-}}
-
-//
-// block col-nickname
-//
-if (!function_exists($_b->blocks['col-nickname'][] = '_lb78f01e55a5_col_nickname')) { function _lb78f01e55a5_col_nickname($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?><td>
-    <a href="<?php echo Latte\Runtime\Filters::escapeHtml($_presenter->link("Users:", array('id' => $row->id)), ENT_COMPAT) ?>
-"><?php echo Latte\Runtime\Filters::escapeHtml($cell, ENT_NOQUOTES) ?></a>
-</td>
+if (!function_exists($_b->blocks['content'][] = '_lbc0d7037c08_content')) { function _lbc0d7037c08_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><div class="pristup" style="text-align:center">
+<h1><font color="red">K přístupu na požadovanou stránku nemáte dostatečné oprávnění</font></h1>
+<img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/stop.png" alt="stop" width="500px" height="500px">
+</div>
 <?php
 }}
 
