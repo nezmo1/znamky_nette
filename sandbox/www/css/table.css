@@ -15,4 +15,9 @@
 .datagrid table tbody .neprectene td { background: #fdff5e; color: #00496B; }
 .alt    { background: #E1EEF4; color: #00496B; }
 .udaje {width:100%;}
+.error {
+    color: #ff0000;
+    
+    
+}
 

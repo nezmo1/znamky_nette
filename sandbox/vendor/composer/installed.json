@@ -1302,123 +1302,18 @@
         ]
     },
     {
-        "name": "nextras/latte-macros",
-        "version": "v1.1.1",
-        "version_normalized": "1.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nextras/latte-macros.git",
-            "reference": "f8d4c32a3ebfd8c59623abb44b29500ac9d067ec"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nextras/latte-macros/zipball/f8d4c32a3ebfd8c59623abb44b29500ac9d067ec",
-            "reference": "f8d4c32a3ebfd8c59623abb44b29500ac9d067ec",
-            "shasum": ""
-        },
-        "require": {
-            "latte/latte": "~2.2",
-            "php": "~5.3"
-        },
-        "time": "2014-07-01 19:58:38",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Nextras\\Latte\\Macros\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jan Skrasek",
-                "email": "hrach.cz@gmail.com",
-                "homepage": "http://jan.skrasek.com"
-            }
-        ],
-        "description": "Latte macros for Nette Framework.",
-        "keywords": [
-            "block-macros",
-            "latte",
-            "macros",
-            "nette",
-            "nextras"
-        ]
-    },
-    {
-        "name": "nextras/datagrid",
-        "version": "v2.1.2",
-        "version_normalized": "2.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nextras/datagrid.git",
-            "reference": "c86b8c97e6cc1f58cfc3b4fd3d2d77f77d237d56"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nextras/datagrid/zipball/c86b8c97e6cc1f58cfc3b4fd3d2d77f77d237d56",
-            "reference": "c86b8c97e6cc1f58cfc3b4fd3d2d77f77d237d56",
-            "shasum": ""
-        },
-        "require": {
-            "nette/application": "~2.2",
-            "nette/component-model": "~2.2",
-            "nette/utils": "~2.2",
-            "nextras/latte-macros": "~1.1.0",
-            "php": "~5.3"
-        },
-        "time": "2014-07-01 20:57:37",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Nextras\\Datagrid\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jan Skrasek",
-                "email": "hrach.cz@gmail.com",
-                "homepage": "http://jan.skrasek.com"
-            }
-        ],
-        "description": "Datagrid component for Nette Framework.",
-        "keywords": [
-            "datagrid",
-            "nette",
-            "nextras"
-        ]
-    },
-    {
         "name": "uestla/twigrid",
-        "version": "4.0.6",
-        "version_normalized": "4.0.6.0",
+        "version": "4.0.5",
+        "version_normalized": "4.0.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/uestla/twigrid.git",
-            "reference": "ca8fc108915a8f1455ffd94293cf0868361e65c2"
+            "reference": "84d7c7a682ea50536f6ecff03e74fbb8bc37b5a6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/uestla/twigrid/zipball/ca8fc108915a8f1455ffd94293cf0868361e65c2",
-            "reference": "ca8fc108915a8f1455ffd94293cf0868361e65c2",
+            "url": "https://api.github.com/repos/uestla/twigrid/zipball/84d7c7a682ea50536f6ecff03e74fbb8bc37b5a6",
+            "reference": "84d7c7a682ea50536f6ecff03e74fbb8bc37b5a6",
             "shasum": ""
         },
         "require": {
@@ -1429,7 +1324,7 @@
             "nette/utils": "2.2.*",
             "php": ">= 5.3.0"
         },
-        "time": "2014-08-08 00:35:56",
+        "time": "2014-08-03 14:34:32",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

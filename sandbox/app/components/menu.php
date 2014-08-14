@@ -101,9 +101,10 @@ class Menu extends Nette\Application\UI\PresenterComponent
             <div class="col_1">
             
                 <h3>Předměty</h3>
-                <ul>
-                    <li><a href="#">Nový předmět</a></li>
-                    <li><a href="#">Seznam předmětů</a></li>
+                <ul>';
+           $url = $this->presenter->link('Novy:predmet');       
+       echo             '<li><a href="'.$url.'">Nový předmět</a></li>';
+       echo             '<li><a href="#">Seznam předmětů</a></li>
                     
                 </ul>   
                  
@@ -112,9 +113,11 @@ class Menu extends Nette\Application\UI\PresenterComponent
             <div class="col_1">
             
                 <h3>Skupiny</h3>
-                <ul>
-                    <li><a href="#">Nová skupina</a></li>
-                    <li><a href="#">Seznam skupin</a></li>
+                <ul>';
+        $url = $this->presenter->link('Novy:skupina');
+              echo      '<li><a href="'.$url.'">Nová skupina</a></li>';
+          
+              echo     '<li><a href="#">Seznam skupin</a></li>
                     <li><a href="#">Žáci ve skupině</a></li>
                     
                 </ul>   
@@ -124,11 +127,13 @@ class Menu extends Nette\Application\UI\PresenterComponent
             <div class="col_1">
             
                 <h3>Žáci a třídy</h3>
-                <ul>
-                    <li><a href="#">Nový žák</a></li>
-                    <li><a href="#">Seznam žáků</a></li>
-                    <li><a href="#">Nová třída</a></li>
-                    <li><a href="#">Seznam tříd</a></li>
+                <ul>';
+              $url = $this->presenter->link('Novy:zak');
+            echo        '<li><a href="'.$url.'">Nový žák</a></li>';
+         echo           '<li><a href="#">Seznam žáků</a></li>';
+       $url = $this->presenter->link('Novy:trida'); 
+              echo      '<li><a href="'.$url.'">Nová třída</a></li>';
+               echo     '<li><a href="#">Seznam tříd</a></li>
                 </ul>   
                  
             </div>

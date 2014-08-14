@@ -2,8 +2,8 @@
 
 <div class='datagrid' style='width:60%; margin-left:20%'>
 <table>
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nový učitel</th></tr></thead>
-    {control novyUcitel}
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nový žák</th></tr></thead>
+    {control novyZak}
     <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
         {foreach $flashes as $flash}
     <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně přidán do databáze.'} color:green {/if}'>{$flash->message}</div>

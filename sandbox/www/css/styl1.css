@@ -100,5 +100,10 @@ h3
   {
  width: 300px; height: 120px; top: -15px; left: 0px;
 }
+label.required:after {
+    content: " *";
+    color: #ff0000;
+    font-weight: bold;
+}
 
   

@@ -327,9 +327,9 @@ $.nette.ext('twigrid', {
 			row.off('click.tw-rowcheck')
 				.on('click.tw-rowcheck', function (event) {
 					if (!self.isClickable(event.target)) {
-						if (self.onlyShiftKeyPressed(event)) {
-							grid.twgDisableSelection();
+						grid.twgDisableSelection();
 
+						if (self.onlyShiftKeyPressed(event)) {
 							if (self.lastChecked !== null) {
 								var checked = checkboxes.eq(self.lastChecked).prop('checked');
 								for (var i = 0; i < Math.abs(k - self.lastChecked); i++) {
@@ -341,13 +341,12 @@ $.nette.ext('twigrid', {
 								checkbox.twgToggleChecked();
 							}
 
-							grid.twgEnableSelection();
-
 						} else if (self.noMetaKeysPressed(event)) {
 							checkbox.twgToggleChecked();
 						}
 
 						self.lastChecked = k;
+						grid.twgEnableSelection();
 					}
 				});
 		});
