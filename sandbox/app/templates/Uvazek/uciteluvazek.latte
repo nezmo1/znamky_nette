@@ -1,0 +1,32 @@
+{block content}
+<h3 n:block="jmeno">{$ucitel->titul} {$ucitel->jmeno} {$ucitel->prijmeni}</h3>
+<div class='datagrid'>
+<table>
+    <thead><tr ><th style='font-size:14px; text-align: center; width:200px;'>Předmět</th><th style='font-size:14px; text-align: center' colspan='{$tridypocet->pocet}'>Třídy</th></tr></thead>
+    {form defUvazek}
+    {foreach $predmety as $predmet}
+     <tr {if $iterator->odd}class='alt'{/if}>
+     <td><b>{$predmet->nazev}</b></td>
+     {foreach $tridy->fetchAll() as $trida}
+     <td style='min-width:40px; text-align: center; {if (in_array("n_1",$uvazekma)) } background-color:green;{/if}'>{$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}">
+     <input n:name="h_{$pom_check}" value="{$ucitel}_{$trida->zkratka_tridy}_{$predmet->zkratka_predmetu}">
+     </td>
+     <?php $pom_check++ ?>
+     {/foreach} 
+     </tr>       
+     {/foreach}   
+     
+    <tr ><td colspan='{$tridypocet->pocet}' style='text-align:center;' ><input n:name="send" class="uvazek-send" ></td></tr>
+    
+    {/form}  
+    <tr><td colspan='{$tridypocet->pocet}' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Skupina byla úspěšně přidána do databáze.'} color:green {/if}'>{$flash->message}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    
+</table>   
+   </div> 

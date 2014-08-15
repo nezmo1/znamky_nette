@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/grid.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Novy/zak.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/menu.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Uvazek/seznamucitelu.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Uvazek/uciteluvazek.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/UvazekPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/@layout.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/NovyPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Novy/skupina.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Users/list.latte</file>
         </group>
     </open-files>
 </project-private>
