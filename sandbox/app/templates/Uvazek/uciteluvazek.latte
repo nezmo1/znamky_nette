@@ -1,5 +1,21 @@
 {block content}
 <h3 n:block="jmeno">{$ucitel->titul} {$ucitel->jmeno} {$ucitel->prijmeni}</h3>
+{if $pocet_skupin->pocet!=0}
+<h4>Skupiny</h4>
+<p>Tento učitel má definovány vyučované skupiny žáků. Bude moci přidávat známky všem žákům ve skupině.</p>
+<div class='datagrid'>
+    <table><thead><tr><th>Název skupiny</th><th style='text-align: center;'>Předmět</th><th style='text-align: center;'>Třída</th></tr></thead>
+    <tbody>
+    {foreach $skupiny as $skupina}    
+    <tr {if $iterator->odd}class='alt'{/if}><td><b>{$skupina->nazev_skupiny}</b></td><td style='text-align: center;'>{$skupina->predmet}</td><td style='text-align: center;'>{$skupina->trida}</td></tr>
+    
+    {/foreach}       
+    </tbody>
+    </table>
+</div>
+<br><br>
+{/if}
+<h4>Vyučované předměty</h4>
 <div class='datagrid'>
 <table>
     <thead><tr ><th style='font-size:14px; text-align: center; width:200px;'>Předmět</th><th style='font-size:14px; text-align: center' colspan='{$tridypocet->pocet}'>Třídy</th></tr></thead>
@@ -9,11 +25,11 @@
      <td><b>{$predmet->nazev}</b></td>
      {foreach $tridy->fetchAll() as $trida}
     
-     <td style='min-width:40px; text-align: center;{if (in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))}background-color:#00BFFF;{/if} {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))}background-color:lime;{/if}'>
-         <acronym title="Předmět vyučuje: ">
-         {$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}" {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))} checked="checked" {/if}>
+     <td style='min-width:40px; text-align: center;{if (in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))}background-color:#00BFFF;{/if} {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))}background-color:lime;{/if}{if in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)}background-color:yellow;{/if}'>
+         <abbr title='<?php echo "Předmět vyučuje:"; echo "\n" ?>{foreach $uvazekuci->fetchAll() as $uvazeku}{if $trida->zkratka_tridy==$uvazeku->trida and $predmet->zkratka_predmetu==$uvazeku->predmet}{$uvazeku->jmeno} {$uvazeku->prijmeni}<?php echo "\n"; ?>{/if}{/foreach}'>
+         {$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}" {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))} checked="checked" {/if}{if in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)}disabled="disabled" checked='checked'{/if}>
      <input n:name="h_{$pom_check}" value="{$ucitel}_{$trida->zkratka_tridy}_{$predmet->zkratka_predmetu}">
-     </acronym>
+     </abbr>
      </td>
      
      <?php $pom_check++ ?>
@@ -26,7 +42,7 @@
     {/form}  
     <tr><td colspan='{$tridypocet->pocet}' style='color:red; text-align:center; background:yellow; font-weight: bold'>
         {foreach $flashes as $flash}
-    <div class="flash {$flash->type}" style='{if $flash->message=='Skupina byla úspěšně přidána do databáze.'} color:green {/if}'>{$flash->message}</div>
+    <div class="flash {$flash->type}" style='{if $flash->message=='Předměty byly definovány.'} color:green {/if}'>{$flash->message}</div>
 {/foreach}
         
         </td>

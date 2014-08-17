@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Novy/skupina.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('5785482008', 'html')
+list($_b, $_g, $_l) = $template->initialize('5258443354', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbe0daaf0066_content')) { function _lbe0daaf0066_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb30b599881d_content')) { function _lb30b599881d_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><div class='datagrid' style='width:60%; margin-left:20%'>
 <table>
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nová skupina</th></tr></thead>

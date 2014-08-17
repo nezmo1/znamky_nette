@@ -6,7 +6,6 @@
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Uvazek/seznamucitelu.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Uvazek/uciteluvazek.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/UvazekPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/@layout.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/NovyPresenter.php</file>
         </group>
     </open-files>

@@ -16,15 +16,9 @@ class UvazekPresenter extends BasePresenter
         
     }
     
-    public function predmetUci(){
-     $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.username = s.ucitel');
-     $pole_uci=array();
-     
-     foreach($predmet_uci as $predmet_uc){
-       $pole_uci[]=''.$predmet_uc->jmeno.' '.$predmet_uc->prijmeni.''; 
-     }
-      return $pole_uci;  
-    }
+        
+        
+    
     
     public function pocetBoxu()
     {
@@ -94,7 +88,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
               $this->database->query('INSERT INTO ucitele_uvazek SET ucitele_uvazek= ?', $hodnoty[$jmenohidden], ', ucitel= ?', $casti[0],', predmet= ?',$casti[2],', trida= ?',$casti[1],'');   
                                             }   
          }
-          
+          $flashMessage = $this->flashMessage('Předměty byly definovány.');  
            
        }  
             
@@ -146,11 +140,25 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         }
        
        $this->template->uvazekmajiny=$pole2;
-       $this->template->uvazekuci=  $this->predmetUci();
-       
-       
-       
-    }
+       $this->template->uvazekuci=  $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.username = s.ucitel');
+     
+      // skupiny
+        $this->template->skupiny= $this->database->query('SELECT * FROM skupina WHERE ucitel= ?', $ucitelId);
+      // má skupinu 
+       $this->template->pocet_skupin= $this->database->query('SELECT count(id_skupiny) AS `pocet` FROM skupina WHERE ucitel= ?', $ucitelId)->fetch();
+      // disable checkbox
+      $pole_skup=array(); 
+        $kon_skupin= $this->database->query('SELECT * FROM skupina WHERE ucitel= ?', $ucitelId);
+         foreach($kon_skupin as $kon_skupina){
+            $pom_trida=$kon_skupina->trida;
+            $pom_predmet=$kon_skupina->predmet;
+            $pom_plus=$pom_trida.'_'.$pom_predmet;
+            $pole_skup[]=$pom_plus;
+            
+        }
+        $this->template->discheck=$pole_skup;
+        
+        }
     
         
 }

@@ -2,14 +2,31 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Uvazek/uciteluvazek.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('7113417753', 'html')
+list($_b, $_g, $_l) = $template->initialize('4250754084', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbe00bf05bb1_content')) { function _lbe00bf05bb1_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;call_user_func(reset($_b->blocks['jmeno']), $_b, get_defined_vars())  ?>
+if (!function_exists($_b->blocks['content'][] = '_lbea0d573fbf_content')) { function _lbea0d573fbf_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+;call_user_func(reset($_b->blocks['jmeno']), $_b, get_defined_vars()) ; if ($pocet_skupin->pocet!=0) { ?>
+<h4>Skupiny</h4>
+<p>Tento učitel má definovány vyučované skupiny žáků. Bude moci přidávat známky všem žákům ve skupině.</p>
+<div class='datagrid'>
+    <table><thead><tr><th>Název skupiny</th><th style='text-align: center;'>Předmět</th><th style='text-align: center;'>Třída</th></tr></thead>
+    <tbody>
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Latte\Runtime\CachingIterator($skupiny) as $skupina) { ?>
+    <tr <?php if ($iterator->odd) { ?>class='alt'<?php } ?>><td><b><?php echo Latte\Runtime\Filters::escapeHtml($skupina->nazev_skupiny, ENT_NOQUOTES) ?>
+</b></td><td style='text-align: center;'><?php echo Latte\Runtime\Filters::escapeHtml($skupina->predmet, ENT_NOQUOTES) ?>
+</td><td style='text-align: center;'><?php echo Latte\Runtime\Filters::escapeHtml($skupina->trida, ENT_NOQUOTES) ?></td></tr>
+    
+<?php $iterations++; } array_pop($_l->its); $iterator = end($_l->its) ?>
+    </tbody>
+    </table>
+</div>
+<br><br>
+<?php } ?>
+<h4>Vyučované předměty</h4>
 <div class='datagrid'>
 <table>
     <thead><tr ><th style='font-size:14px; text-align: center; width:200px;'>Předmět</th><th style='font-size:14px; text-align: center' colspan='<?php echo Latte\Runtime\Filters::escapeHtml($tridypocet->pocet, ENT_QUOTES) ?>'>Třídy</th></tr></thead>
@@ -20,12 +37,16 @@ if (!function_exists($_b->blocks['content'][] = '_lbe00bf05bb1_content')) { func
     
      <td style='min-width:40px; text-align: center;<?php if ((in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))) { ?>
 background-color:#00BFFF;<?php } ?> <?php if ((in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))) { ?>
-background-color:lime;<?php } ?>'>
-         <acronym title="Předmět vyučuje: ">
+background-color:lime;<?php } if (in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)) { ?>
+background-color:yellow;<?php } ?>'>
+         <abbr title='<?php echo "Předmět vyučuje:"; echo "\n" ;$iterations = 0; foreach ($uvazekuci->fetchAll() as $uvazeku) { if ($trida->zkratka_tridy==$uvazeku->trida and $predmet->zkratka_predmetu==$uvazeku->predmet) { echo Latte\Runtime\Filters::escapeHtml($uvazeku->jmeno, ENT_QUOTES) ?>
+ <?php echo Latte\Runtime\Filters::escapeHtml($uvazeku->prijmeni, ENT_QUOTES) ;echo "\n"; } $iterations++; } ?>'>
          <?php echo Latte\Runtime\Filters::escapeHtml($trida->jmeno_tridy, ENT_NOQUOTES) ?>
 <br><input <?php if ((in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))) { ?>
- checked="checked" <?php } $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+ checked="checked" <?php } if (in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)) { ?>
+disabled="disabled" checked='checked'<?php } $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'checked' => NULL,
+  'disabled' => NULL,
 ))->attributes() ?>>
      <input value="<?php echo Latte\Runtime\Filters::escapeHtml($ucitel, ENT_COMPAT) ?>
 _<?php echo Latte\Runtime\Filters::escapeHtml($trida->zkratka_tridy, ENT_COMPAT) ?>
@@ -33,7 +54,7 @@ _<?php echo Latte\Runtime\Filters::escapeHtml($predmet->zkratka_predmetu, ENT_CO
 "<?php $_input = $_form["h_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'value' => NULL,
 ))->attributes() ?>>
-     </acronym>
+     </abbr>
      </td>
      
      <?php $pom_check++ ;$iterations++; } ?>
@@ -49,8 +70,8 @@ _<?php echo Latte\Runtime\Filters::escapeHtml($predmet->zkratka_predmetu, ENT_CO
     <tr><td colspan='<?php echo Latte\Runtime\Filters::escapeHtml($tridypocet->pocet, ENT_QUOTES) ?>' style='color:red; text-align:center; background:yellow; font-weight: bold'>
 <?php $iterations = 0; foreach ($flashes as $flash) { ?>
     <div class="flash <?php echo Latte\Runtime\Filters::escapeHtml($flash->type, ENT_COMPAT) ?>
-" style='<?php if ($flash->message=='Skupina byla úspěšně přidána do databáze.') { ?>
- color:green <?php } ?>'><?php echo Latte\Runtime\Filters::escapeHtml($flash->message, ENT_NOQUOTES) ?></div>
+" style='<?php if ($flash->message=='Předměty byly definovány.') { ?> color:green <?php } ?>
+'><?php echo Latte\Runtime\Filters::escapeHtml($flash->message, ENT_NOQUOTES) ?></div>
 <?php $iterations++; } ?>
         
         </td>
@@ -65,7 +86,7 @@ _<?php echo Latte\Runtime\Filters::escapeHtml($predmet->zkratka_predmetu, ENT_CO
 //
 // block jmeno
 //
-if (!function_exists($_b->blocks['jmeno'][] = '_lb5a5de0697b_jmeno')) { function _lb5a5de0697b_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['jmeno'][] = '_lb772dd074ac_jmeno')) { function _lb772dd074ac_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h3><?php echo Latte\Runtime\Filters::escapeHtml($ucitel->titul, ENT_NOQUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->jmeno, ENT_NOQUOTES) ?> <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->prijmeni, ENT_NOQUOTES) ?></h3>
 <?php
