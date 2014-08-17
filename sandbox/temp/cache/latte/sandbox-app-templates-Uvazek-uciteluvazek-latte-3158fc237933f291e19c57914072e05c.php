@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Uvazek/uciteluvazek.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3655135605', 'html')
+list($_b, $_g, $_l) = $template->initialize('7113417753', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb06bb23a93a_content')) { function _lb06bb23a93a_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbe00bf05bb1_content')) { function _lbe00bf05bb1_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['jmeno']), $_b, get_defined_vars())  ?>
 <div class='datagrid'>
 <table>
@@ -17,16 +17,25 @@ if (!function_exists($_b->blocks['content'][] = '_lb06bb23a93a_content')) { func
      <tr <?php if ($iterator->odd) { ?>class='alt'<?php } ?>>
      <td><b><?php echo Latte\Runtime\Filters::escapeHtml($predmet->nazev, ENT_NOQUOTES) ?></b></td>
 <?php $iterations = 0; foreach ($tridy->fetchAll() as $trida) { ?>
-     <td style='min-width:40px; text-align: center; <?php if ((in_array("n_1",$uvazekma))) { ?>
- background-color:green;<?php } ?>'><?php echo Latte\Runtime\Filters::escapeHtml($trida->jmeno_tridy, ENT_NOQUOTES) ?>
-<br><input<?php $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->attributes() ?>>
+    
+     <td style='min-width:40px; text-align: center;<?php if ((in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))) { ?>
+background-color:#00BFFF;<?php } ?> <?php if ((in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))) { ?>
+background-color:lime;<?php } ?>'>
+         <acronym title="Předmět vyučuje: ">
+         <?php echo Latte\Runtime\Filters::escapeHtml($trida->jmeno_tridy, ENT_NOQUOTES) ?>
+<br><input <?php if ((in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))) { ?>
+ checked="checked" <?php } $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+  'checked' => NULL,
+))->attributes() ?>>
      <input value="<?php echo Latte\Runtime\Filters::escapeHtml($ucitel, ENT_COMPAT) ?>
 _<?php echo Latte\Runtime\Filters::escapeHtml($trida->zkratka_tridy, ENT_COMPAT) ?>
 _<?php echo Latte\Runtime\Filters::escapeHtml($predmet->zkratka_predmetu, ENT_COMPAT) ?>
 "<?php $_input = $_form["h_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'value' => NULL,
 ))->attributes() ?>>
+     </acronym>
      </td>
+     
      <?php $pom_check++ ;$iterations++; } ?>
      </tr>       
 <?php $iterations++; } array_pop($_l->its); $iterator = end($_l->its) ?>
@@ -56,7 +65,7 @@ _<?php echo Latte\Runtime\Filters::escapeHtml($predmet->zkratka_predmetu, ENT_CO
 //
 // block jmeno
 //
-if (!function_exists($_b->blocks['jmeno'][] = '_lb0725e66dc9_jmeno')) { function _lb0725e66dc9_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['jmeno'][] = '_lb5a5de0697b_jmeno')) { function _lb5a5de0697b_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h3><?php echo Latte\Runtime\Filters::escapeHtml($ucitel->titul, ENT_NOQUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->jmeno, ENT_NOQUOTES) ?> <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->prijmeni, ENT_NOQUOTES) ?></h3>
 <?php

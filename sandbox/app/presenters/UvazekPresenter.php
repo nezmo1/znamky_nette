@@ -16,14 +16,24 @@ class UvazekPresenter extends BasePresenter
         
     }
     
+    public function predmetUci(){
+     $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.username = s.ucitel');
+     $pole_uci=array();
+     
+     foreach($predmet_uci as $predmet_uc){
+       $pole_uci[]=''.$predmet_uc->jmeno.' '.$predmet_uc->prijmeni.''; 
+     }
+      return $pole_uci;  
+    }
+    
     public function pocetBoxu()
     {
-        $lama=$this->database->query('SELECT *, count(zkratka_tridy) as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
+        $pocet_t=$this->database->query('SELECT *, count(zkratka_tridy) as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
       
-        $swag=$lama->pocet;
-        $lama=$this->database->query('SELECT *, count(zkratka_predmetu) as `pocet`  FROM predmet')->fetch();
+        $pom_p=$pocet_t->pocet;
+        $pocet_pr=$this->database->query('SELECT *, count(zkratka_predmetu) as `pocet`  FROM predmet')->fetch();
        
-        return $swag*$lama->pocet; 
+        return $pom_p*$pocet_pr->pocet; 
     }
     
     
@@ -112,13 +122,35 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         $this->template->tridypocet = $this->database->query('SELECT *, count(zkratka_tridy)+1 as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
         $this->template->tridy = $this->database->query('SELECT *  FROM trida WHERE zkratka_tridy !="ucitel"');
         $this->template->pom_check=1;
-        $pom_ex= $this->database->query('SELECT * FROM ucitele_uvazek');
+        
+        // Kontrola existence úvazku
         $pole=array();
+        $pom_ex= $this->database->query('SELECT * FROM ucitele_uvazek');
+          
         foreach($pom_ex as $ex){
+        $pole[]=$ex->ucitele_uvazek; 
+        }
+       $this->template->uvazekma=$pole;
+       
+       
+        // Kontrola existence úvazku pro cizí učitele
+        $pole2=array();
+        $pom_ex2= $this->database->query('SELECT * FROM ucitele_uvazek');
+         
+        foreach($pom_ex2 as $ex2){
+            $pom_trida=$ex2->trida;
+            $pom_predmet=$ex2->predmet;
+            $pom_plus=$pom_trida.'_'.$pom_predmet;
+            $pole2[]=$pom_plus;
             
         }
-       $this->template->uvazekma = ;
-        
+       
+       $this->template->uvazekmajiny=$pole2;
+       $this->template->uvazekuci=  $this->predmetUci();
+       
+       
+       
     }
     
+        
 }

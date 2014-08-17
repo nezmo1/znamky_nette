@@ -8,9 +8,14 @@
      <tr {if $iterator->odd}class='alt'{/if}>
      <td><b>{$predmet->nazev}</b></td>
      {foreach $tridy->fetchAll() as $trida}
-     <td style='min-width:40px; text-align: center; {if (in_array("n_1",$uvazekma)) } background-color:green;{/if}'>{$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}">
+    
+     <td style='min-width:40px; text-align: center;{if (in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))}background-color:#00BFFF;{/if} {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))}background-color:lime;{/if}'>
+         <acronym title="Předmět vyučuje: ">
+         {$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}" {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))} checked="checked" {/if}>
      <input n:name="h_{$pom_check}" value="{$ucitel}_{$trida->zkratka_tridy}_{$predmet->zkratka_predmetu}">
+     </acronym>
      </td>
+     
      <?php $pom_check++ ?>
      {/foreach} 
      </tr>       
