@@ -15,6 +15,217 @@ class NastaveniPresenter extends BasePresenter
     
   public $database;
   
+  
+  protected function createComponentPerZmenaHesla()
+	{
+		$form = new Nette\Application\UI\Form;
+		$form->addPassword('password', 'Heslo:')
+                        ->setAttribute('placeholder', 'Heslo (min. 6 znaků)')
+                     ->setRequired('Zvolte si heslo')
+                     ->addRule($form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaků', 6);
+                 
+                $form->addPassword('passwordVerify', 'Heslo pro kontrolu:')
+                        ->setAttribute('placeholder', 'Zadejte prosím heslo ještě jednou pro kontrolu')
+                     ->setRequired('Zadejte prosím heslo ještě jednou pro kontrolu')
+                     ->addRule($form::EQUAL, 'Hesla se neshodují', $form['password']);
+                
+                
+                 $form->addSubmit('send', 'Změnit heslo');
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->zmenaHesla;
+                
+                
+                $renderer = $form->getRenderer();
+$renderer->wrappers['controls']['container'] = NULL;
+
+$renderer->wrappers['pair']['container'] = "tr style='text-align:right'";
+$renderer->wrappers['pair']['.odd'] = 'alt';
+$renderer->wrappers['label']['container'] = 'td style="text-align:left"';
+
+$renderer->wrappers['control']['.text'] = 'udaje';
+$renderer->wrappers['control']['.password'] = 'udaje';
+$renderer->wrappers['control']['.submit'] = 'uvazek-send';
+
+
+		return $form;
+	}
+        
+
+        
+        
+       
+        function zmenaHesla($form, $values){
+                                           
+                    if($this->database->query('UPDATE users SET password= ?',md5($values->password),'WHERE username=?', $this->user->id)){
+                     $flashMessage = $this->flashMessage('Heslo bylo úspěšně změněno.');    
+                    }
+                    else {
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, heslo nebylo změněno!');    
+                    }
+                      
+                  return $flashMessage;       
+                
+        }
+  
+  
+ 
+    protected function createComponentPerEmail()
+	{
+        $existence_mail=  $this->database->table('users')->where('username', $this->user->id)->fetch();
+        $existence_zak_mail=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','mail_znamky_ano')->fetch();
+         $zak_mail=FALSE;
+        if($existence_zak_mail!=FALSE){
+         $zak_mail = TRUE;  
+        }
+        
+        
+		$form = new Nette\Application\UI\Form;
+		 $form->addText('mail', 'E-mail:')
+                        ->setAttribute('placeholder', 'E-mail ve správném tvaru')
+                        ->setRequired('Zadejte E-mail')
+			->addRule($form::EMAIL, 'E-mail je ve špatném tvaru')
+                         ->setDefaultValue($existence_mail->mail);
+                 
+                 if(($existence_mail->mail!="")and($this->user->isInRole('1'))){
+                     $form->addCheckbox('znamky_zak','Posílat nové známky e-mailem')
+                             ->setDefaultValue($zak_mail);
+                 }
+                 
+                 
+                
+                
+                 $form->addSubmit('send', 'Uložit změny');
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->zmenaEmailu;
+                
+                
+                $renderer = $form->getRenderer();
+$renderer->wrappers['controls']['container'] = NULL;
+
+$renderer->wrappers['pair']['container'] = "tr style='text-align:right'";
+$renderer->wrappers['pair']['.odd'] = 'alt';
+$renderer->wrappers['label']['container'] = 'td td style="text-align:left"';
+
+$renderer->wrappers['control']['.text'] = 'udaje';
+$renderer->wrappers['control']['.password'] = 'udaje';
+$renderer->wrappers['control']['.submit'] = 'uvazek-send';
+
+
+		return $form;
+	}     
+        
+     
+        function zmenaEmailu($form, $values){
+                      $existence_mail=  $this->database->table('users')->where('username', $this->user->id)->fetch();
+                            
+                    if($this->database->query('UPDATE users SET mail= ?',$values->mail,'WHERE username=?', $this->user->id)){
+                     $flashMessage = $this->flashMessage('Změny proběhly úspěšně.');    
+                    }
+                    else {
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru.');    
+                    }
+                   
+                    
+                     if(($existence_mail->mail!="")and ($this->user->isInRole('1'))){
+                        
+                    if($values->znamky_zak==TRUE){
+                   $existence_posilani=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','mail_znamkky_ano')->fetch();
+                   if($existence_posilani==FALSE){
+                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="mail_znamky_ano", username=?', $this->user->id);   
+                      }
+                    else{
+                     $this->database->query('UPDATE nastaveni_personal SET parametr="mail_znamky_ano" WHERE username=?', $this->user->id);   
+                       
+                    }  
+                         }
+                         
+                     if($values->znamky_zak==FALSE){
+                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="mail_znamky_ano" and username=?', $this->user->id);   
+                       
+                     }     
+                    }
+                  return $flashMessage; 
+                  
+                  
+                
+        }
+        
+        
+        protected function createComponentPerSirkaZnamky()
+	{
+        $existence_sirka=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
+         $sirka=FALSE;
+        if($existence_sirka!=FALSE){
+         $sirka = TRUE;  
+        }
+        
+        
+		$form = new Nette\Application\UI\Form;
+		
+                 
+               
+                     $form->addCheckbox('znamky_sirka','Používat široký popis známek (vhodné pro slovní hodnocení)')
+                             ->setDefaultValue($sirka);
+                 
+                 
+                 
+                
+                
+                 $form->addSubmit('send', 'Uložit změny');
+                         
+                 
+                         
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->sirkaZnamek;
+                
+                
+                $renderer = $form->getRenderer();
+$renderer->wrappers['controls']['container'] = NULL;
+
+$renderer->wrappers['pair']['container'] = "tr style='text-align:right'";
+$renderer->wrappers['pair']['.odd'] = 'alt';
+$renderer->wrappers['label']['container'] = 'td';
+
+$renderer->wrappers['control']['.text'] = 'udaje';
+$renderer->wrappers['control']['.password'] = 'udaje';
+$renderer->wrappers['control']['.submit'] = 'uvazek-send';
+
+
+		return $form;
+	}     
+        
+     
+        function sirkaZnamek($form, $values){
+           
+            
+                        
+                    if($values->znamky_sirka==TRUE){
+                   $existence_sirka=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
+                   if($existence_sirka==FALSE){
+                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="sirka_znamek_ano", username=?', $this->user->id);   
+                      }
+                    else{
+                     $this->database->query('UPDATE nastaveni_personal SET parametr="sirka_znamek_ano" WHERE username=?', $this->user->id);   
+                       
+                    }  
+                         }
+                         
+                     if($values->znamky_sirka==FALSE){
+                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="sirka_znamek_ano" and username=?', $this->user->id);   
+                       
+                     }     
+                    $flashMessage = $this->flashMessage('Změny proběhly úspěšně');  
+                  return $flashMessage; 
+                  
+                  
+                
+        }
+        
+        
+        
+        
+        
+  
   protected function createComponentGlNastaveni()
 	{
        
@@ -165,6 +376,15 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
+             $this->redirect('Pristup:pristup');
+       }
+ 
+} 
+
+  		public function renderPersonalninastaveni()
+{
+           $user =  $this->getUser();
+    if ((!$user->isLoggedIn())) {
              $this->redirect('Pristup:pristup');
        }
  

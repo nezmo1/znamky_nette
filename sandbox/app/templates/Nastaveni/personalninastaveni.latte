@@ -1,3 +1,65 @@
 {block content}
 
+{if !$user->isInRole('1')}
+<div class='datagrid' style='width:60%; margin-left:20%'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Změna hesla</th></tr></thead>
+    {control perZmenaHesla}
+    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Heslo bylo úspěšně změněno.'} color:green {/if}'>{if $flash->message=='Heslo bylo úspěšně změněno.'}{$flash->message}{/if}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    
+</table>   
+   </div> 
+
+<br>
+{/if}
+<div class='datagrid' style='width:60%; margin-left:20%'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>E-mail</th></tr></thead>
+    {control perEmail}
+    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Změny proběhly úspěšně.'} color:green {/if}'>{if $flash->message=='Změny proběhly úspěšně.'}{$flash->message}{/if}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    
+</table>   
+   </div> 
+<br>
+
+
+{if !$user->isInRole('1')}
+<div class='datagrid' style='width:60%; margin-left:20%'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Šířka pole při přidávání známky</th></tr></thead>
+    {control perSirkaZnamky}
+    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Změny proběhly úspěšně'} color:green {/if}'>{if $flash->message=='Změny proběhly úspěšně'}{$flash->message}{/if}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    
+</table>   
+   </div> 
+
+<br>
+{/if}
+
+    
+   <p style='text-align:center'> <img src='{$basePath}/images/diary.png' width="25%" height="25%" alt='Tudy cesta nevede'/></p>
+{* or use {include '../components/form.latte', form => signInForm} *}
+
+
 {* or use {include '../components/form.latte', form => signInForm} *}

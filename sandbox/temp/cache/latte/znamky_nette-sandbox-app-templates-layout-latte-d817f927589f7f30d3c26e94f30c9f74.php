@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/@layout.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('8473541939', 'html')
+list($_b, $_g, $_l) = $template->initialize('1859095259', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lbaf657d5ec7_scripts')) { function _lbaf657d5ec7_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb4165f5109c_scripts')) { function _lb4165f5109c_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/jquery.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
@@ -128,8 +128,9 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
         
       </tr>
         <tr> <td valign="bottom">
-        <input type="button" value='Přehled' class='login-prehled'><input type="button" value='Nastavení' class='login-prehled'>        
-        <input class='login-submit'<?php $_input = $_form["logout"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+        <a  class="no_deco" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Nastaveni:personalninastaveni"), ENT_COMPAT) ?>
+"><input type="button" value='Přehled' class='uvazek-send'></a><a class="no_deco" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Nastaveni:personalninastaveni"), ENT_COMPAT) ?>"><input type="button" value='Nastavení' class='uvazek-send'>        
+        </a><input class='login-submit'<?php $_input = $_form["logout"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'class' => NULL,
 ))->attributes() ?>></input>
         </td></tr>  

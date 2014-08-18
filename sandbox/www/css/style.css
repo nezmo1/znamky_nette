@@ -120,7 +120,7 @@ input, textarea, select, labels {
   box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.4), 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.login-prehled {
+.login-prehled{
   display: block;
   width: 160px;
   height: 20px;
@@ -142,8 +142,13 @@ input, textarea, select, labels {
   background-image: linear-gradient(to bottom, #d0e1fe, #96b8ed);
   -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 0 7px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 0 7px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.15);
-}
 
+}
+.no_deco{
+ text-decoration: none;   
+    
+}
+ 
 
 .uvazek-send {
   
@@ -168,4 +173,6 @@ input, textarea, select, labels {
   -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 0 7px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 0 7px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.15);
 }
+
+
 
