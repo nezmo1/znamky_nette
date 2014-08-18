@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/@layout.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('6075421010', 'html')
+list($_b, $_g, $_l) = $template->initialize('8473541939', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb2e7a63e1d7_scripts')) { function _lb2e7a63e1d7_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lbaf657d5ec7_scripts')) { function _lbaf657d5ec7_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/jquery.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
@@ -157,7 +157,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 <div id="footer">
 <footer>
 
-<p> </p>
+<p><h4><?php echo Latte\Runtime\Filters::escapeHtml($nazev_skoly->parametr_2, ENT_NOQUOTES) ?> </h4></p>
   <p><h4>Vytvořil Adam Nezmar</h4></p>
 </footer>
 </div>

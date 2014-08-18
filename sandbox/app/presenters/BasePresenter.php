@@ -90,7 +90,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         
   protected function createComponentMenu()
     {
-        $control = new \Menu();
+        $control = new \Menu($this->database);
 
         return $control;
     }
@@ -99,6 +99,16 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         $control = new \Informace($this->database);
 
         return $control;
+    }
+    
+    public function beforeRender(){
+        
+        $nazev_sk=$this->database->query('SELECT * FROM nastaveni_global WHERE parametr_1="nazev_skoly"')->fetch();
+        $this->template->nazev_skoly = "";
+        if($nazev_sk!=FALSE){
+        $this->template->nazev_skoly = $nazev_sk;     
+        }
+        
     }
  
 }

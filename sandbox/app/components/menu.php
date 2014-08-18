@@ -13,18 +13,27 @@ use Nette\Application\UI\PresenterComponent,
 
 class Menu extends Nette\Application\UI\PresenterComponent
 {
-    public function __construct()
+     public $database;
+
+    public function __construct(Nette\Database\Context $database)
     {
+
+        $this->database = $database;
     }
 
     public function render($user)
     {
+        $url_skoly=$this->database->query('SELECT * FROM nastaveni_global WHERE parametr_1="url_skoly"')->fetch();
+        $url_skol="";
+        if($url_skoly!=FALSE){
+        $url_skol=$url_skoly->parametr_2;    
+        }
         $url = $this->presenter->link('Homepage:');
                 
         echo '<li><a href="'.$url.'">Hlavní strana</a>
               </li>';
         // Doplnit o výstup z databáze!!
-        echo '<li><a href="http://seznam.cz">Stránka školy</a>
+        echo '<li><a href="'.$url_skol.'">Stránka školy</a>
               </li>';
         
         
@@ -70,8 +79,8 @@ class Menu extends Nette\Application\UI\PresenterComponent
         
         
     if(($user->isInRole('4')) or ($user->isInRole('3'))){
-         
-        echo '<li class="menu_right"><a href="http://centrum.cz">Nastavení systému</a>
+         $url = $this->presenter->link('Nastaveni:globalninastaveni');
+        echo '<li class="menu_right"><a href="'.$url.'">Nastavení systému</a>
               </li>';    
            echo '<li class="menu_right"><a href="http://centrum.cz">Přehled školy</a>
               </li>';  
