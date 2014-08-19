@@ -84,7 +84,7 @@ $this->setWidth('100%');
   function handleDelete($username) {
       
       
-    $this->database->query('DELETE FROM USERS WHERE username=?', $username);
+    $this->database->query('DELETE FROM users WHERE username=?', $username);
     $this->flashMessage('Učitel byl smazán.');
 }  
     

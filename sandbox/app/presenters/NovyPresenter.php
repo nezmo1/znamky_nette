@@ -100,7 +100,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 } 
                 else {
                     $heslo=md5($values->password);
-                    if($this->database->query('INSERT INTO USERS SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida="ucitel" , titul =?',$values->titul)){
+                    if($this->database->query('INSERT INTO users SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida="ucitel" , titul =?',$values->titul)){
                      $flashMessage = $this->flashMessage('Uživatel byl úspěšně přidán do databáze.');    
                     }
                     else {
@@ -404,7 +404,7 @@ public function novyZak($form, $values)
                 } 
                 else {
                     $heslo=md5($values->password);
-                    if($this->database->query('INSERT INTO USERS SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="1", trida =?',$values->trida)){
+                    if($this->database->query('INSERT INTO users SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="1", trida =?',$values->trida)){
                      $flashMessage = $this->flashMessage('Uživatel byl úspěšně přidán do databáze.');    
                     }
                     else {
