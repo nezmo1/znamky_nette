@@ -2,17 +2,17 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('1982015937', 'html')
+list($_b, $_g, $_l) = $template->initialize('2728955261', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb58a4273c21_content')) { function _lb58a4273c21_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb547cf9355c_content')) { function _lb547cf9355c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
- "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-<?php $_l->tmp = $_control->getComponent("grid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
+ <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+ <p style="text-align:center"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/working.png" width="500px" height="500px"></p>
  
 <?php
 }}
@@ -20,7 +20,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb58a4273c21_content')) { func
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb603a5e46c7_scripts')) { function _lb603a5e46c7_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lbc49445321b_scripts')) { function _lbc49445321b_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
 
@@ -34,7 +34,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lb603a5e46c7_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lb3b0094ae6f_head')) { function _lb3b0094ae6f_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lbe728d5bf4d_head')) { function _lbe728d5bf4d_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

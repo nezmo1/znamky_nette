@@ -126,10 +126,11 @@ class Menu extends Nette\Application\UI\PresenterComponent
         $url = $this->presenter->link('Novy:skupina');
               echo      '<li><a href="'.$url.'">Nová skupina</a></li>';
           
-              echo     '<li><a href="#">Seznam skupin</a></li>
-                    <li><a href="#">Žáci ve skupině</a></li>
+              echo     '<li><a href="#">Seznam skupin</a></li>';
+         $url = $this->presenter->link('Skupiny:seznamskupindef');     
+              echo      '<li><a href="'.$url.'">Žáci ve skupině</a></li>';
                     
-                </ul>   
+              echo '</ul>   
                  
             </div>
     
