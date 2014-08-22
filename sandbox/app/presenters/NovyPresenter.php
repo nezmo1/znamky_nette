@@ -100,7 +100,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 } 
                 else {
                     $heslo=md5($values->password);
-                    if($this->database->query('INSERT INTO users SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida="ucitel" , titul =?',$values->titul)){
+                    if($this->database->query('INSERT INTO users SET username= ?',$values->username,', password= ?',$heslo,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida="42" , titul =?',$values->titul)){
                      $flashMessage = $this->flashMessage('Uživatel byl úspěšně přidán do databáze.');    
                     }
                     else {
@@ -362,7 +362,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 
                 $trida_pom=array();
                 foreach ($tridy as $trida) {  
-                 $trida_pom+= array (''.$trida->zkratka_tridy.''  => ''.$trida->jmeno_tridy.'',); 
+                 $trida_pom+= array (''.$trida->id_tridy.''  => ''.$trida->jmeno_tridy.'',); 
                 } 
       
                 

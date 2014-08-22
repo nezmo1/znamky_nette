@@ -21,11 +21,11 @@ public $database;
     {
          $username=$user->id;
          $jmeno=$this->database->table('users')
-                ->where('username', $username)->fetch();
+                ->where('id_users', $username)->fetch();
          
          echo "<h1>Vítejte, jste přihlášen jako <font color='yellow'>".$jmeno['jmeno']." ".$jmeno['prijmeni']."</font></h1>";
          if(($user->isInRole('1'))){
-          $pos_znamka=$this->database->query('SELECT znamka, predmet FROM znamky WHERE zak=?',$username)->fetch();
+          $pos_znamka=$this->database->query('SELECT LEFT(znamka,5) as `znamka`,  predmet.zkratka_predmetu as `predmet` FROM znamky  INNER JOIN predmet on znamky.predmet=predmet.id_predmetu WHERE zak=?',$username)->fetch();
          $pocet_znamek=$this->database->query('SELECT count(znamka) AS `pocet` FROM znamky WHERE zak=?',$username)->fetch();
          
           echo "<td style='text-align:left'>";
@@ -37,7 +37,7 @@ public $database;
          }
          
          if((!$user->isInRole('1'))){
-          $pos_znamka=$this->database->query('SELECT znamka, predmet FROM znamky WHERE ucitel=?',$username)->fetch();
+          $pos_znamka=$this->database->query('SELECT LEFT(znamka,5) as `znamka`, predmet.zkratka_predmetu as `predmet` FROM znamky INNER JOIN predmet on znamky.predmet=predmet.id_predmetu WHERE ucitel=?',$username)->fetch();
          $pocet_znamek=$this->database->query('SELECT count(znamka) AS `pocet` FROM znamky WHERE ucitel=?',$username)->fetch();
          
           

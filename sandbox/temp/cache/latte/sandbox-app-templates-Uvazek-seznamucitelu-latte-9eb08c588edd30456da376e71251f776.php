@@ -2,16 +2,16 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Uvazek/seznamucitelu.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('1551612988', 'html')
+list($_b, $_g, $_l) = $template->initialize('2892167772', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb766d8c0bc4_content')) { function _lb766d8c0bc4_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb95003ba897_content')) { function _lb95003ba897_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;$iterations = 0; foreach ($ucitele as $ucitel) { ?>
 <div class="post">
-<h2><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Uvazek:uciteluvazek", array($ucitel->username)), ENT_COMPAT) ?>
+<h2><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Uvazek:uciteluvazek", array($ucitel->id_users)), ENT_COMPAT) ?>
 "><?php echo Latte\Runtime\Filters::escapeHtml($ucitel->prijmeni, ENT_NOQUOTES) ?></a></h2>
 
   

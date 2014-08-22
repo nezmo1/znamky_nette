@@ -100,7 +100,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
-        $this->template->ucitele = $this->database->table('users')->where('trida','ucitel')->where('priorita !=','4');
+        $this->template->ucitele = $this->database->table('users')->where('trida','42')->where('priorita !=','4');
     }
     
       public function renderUciteluvazek($ucitelId)
@@ -111,7 +111,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
              $this->redirect('Pristup:pristup');
        }
           
-        $this->template->ucitel = $this->database->table('users')->get($ucitelId);
+        $this->template->ucitel = $this->database->table('users')->where('id_users',$ucitelId)->fetch();
         $this->template->predmety = $this->database->query('SELECT *  FROM predmet');
         $this->template->tridypocet = $this->database->query('SELECT *, count(zkratka_tridy)+1 as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
         $this->template->tridy = $this->database->query('SELECT *  FROM trida WHERE zkratka_tridy !="ucitel"');

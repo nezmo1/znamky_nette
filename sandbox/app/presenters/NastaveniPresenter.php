@@ -56,7 +56,7 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
        
         function zmenaHesla($form, $values){
                                            
-                    if($this->database->query('UPDATE users SET password= ?',md5($values->password),'WHERE username=?', $this->user->id)){
+                    if($this->database->query('UPDATE users SET password= ?',md5($values->password),'WHERE id_users=?', $this->user->id)){
                      $flashMessage = $this->flashMessage('Heslo bylo úspěšně změněno.');    
                     }
                     else {
@@ -71,8 +71,8 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
  
     protected function createComponentPerEmail()
 	{
-        $existence_mail=  $this->database->table('users')->where('username', $this->user->id)->fetch();
-        $existence_zak_mail=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','mail_znamky_ano')->fetch();
+        $existence_mail=  $this->database->table('users')->where('id_users', $this->user->id)->fetch();
+        $existence_zak_mail=  $this->database->table('nastaveni_personal')->where('id_user', $this->user->id)->where('parametr','mail_znamky_ano')->fetch();
          $zak_mail=FALSE;
         if($existence_zak_mail!=FALSE){
          $zak_mail = TRUE;  
@@ -116,9 +116,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
         
      
         function zmenaEmailu($form, $values){
-                      $existence_mail=  $this->database->table('users')->where('username', $this->user->id)->fetch();
+                      $existence_mail=  $this->database->table('users')->where('id_users', $this->user->id)->fetch();
                             
-                    if($this->database->query('UPDATE users SET mail= ?',$values->mail,'WHERE username=?', $this->user->id)){
+                    if($this->database->query('UPDATE users SET mail= ?',$values->mail,'WHERE id_users=?', $this->user->id)){
                      $flashMessage = $this->flashMessage('Změny proběhly úspěšně.');    
                     }
                     else {
@@ -129,18 +129,18 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
                      if(($existence_mail->mail!="")and ($this->user->isInRole('1'))){
                         
                     if($values->znamky_zak==TRUE){
-                   $existence_posilani=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','mail_znamkky_ano')->fetch();
+                   $existence_posilani=  $this->database->table('nastaveni_personal')->where('id_user', $this->user->id)->where('parametr','mail_znamkky_ano')->fetch();
                    if($existence_posilani==FALSE){
-                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="mail_znamky_ano", username=?', $this->user->id);   
+                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="mail_znamky_ano", id_user=?', $this->user->id);   
                       }
                     else{
-                     $this->database->query('UPDATE nastaveni_personal SET parametr="mail_znamky_ano" WHERE username=?', $this->user->id);   
+                     $this->database->query('UPDATE nastaveni_personal SET parametr="mail_znamky_ano" WHERE id_user=?', $this->user->id);   
                        
                     }  
                          }
                          
                      if($values->znamky_zak==FALSE){
-                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="mail_znamky_ano" and username=?', $this->user->id);   
+                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="mail_znamky_ano" and id_user=?', $this->user->id);   
                        
                      }     
                     }
@@ -153,7 +153,7 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
         
         protected function createComponentPerSirkaZnamky()
 	{
-        $existence_sirka=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
+        $existence_sirka=  $this->database->table('nastaveni_personal')->where('id_user', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
          $sirka=FALSE;
         if($existence_sirka!=FALSE){
          $sirka = TRUE;  
@@ -200,18 +200,18 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
             
                         
                     if($values->znamky_sirka==TRUE){
-                   $existence_sirka=  $this->database->table('nastaveni_personal')->where('username', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
+                   $existence_sirka=  $this->database->table('nastaveni_personal')->where('id_user', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
                    if($existence_sirka==FALSE){
-                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="sirka_znamek_ano", username=?', $this->user->id);   
+                    $this->database->query('INSERT INTO nastaveni_personal SET parametr="sirka_znamek_ano", id_user=?', $this->user->id);   
                       }
                     else{
-                     $this->database->query('UPDATE nastaveni_personal SET parametr="sirka_znamek_ano" WHERE username=?', $this->user->id);   
+                     $this->database->query('UPDATE nastaveni_personal SET parametr="sirka_znamek_ano" WHERE id_user=?', $this->user->id);   
                        
                     }  
                          }
                          
                      if($values->znamky_sirka==FALSE){
-                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="sirka_znamek_ano" and username=?', $this->user->id);   
+                       $this->database->query('DELETE FROM nastaveni_personal WHERE parametr="sirka_znamek_ano" and id_user=?', $this->user->id);   
                        
                      }     
                     $flashMessage = $this->flashMessage('Změny proběhly úspěšně');  
@@ -274,7 +274,7 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
 			->setRequired('Zadejte URL adresu školy');       
                 
 		
-                $ucitele=  $this->database->table('users')->where('trida','ucitel')->where('priorita !=','4');
+                $ucitele=  $this->database->table('users')->where('trida','42')->where('priorita !=','4');
                 
                 $ucitel_pom=array();
                 foreach ($ucitele as $ucitel) {  
@@ -325,7 +325,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        $existence_ict=  $this->database->table('nastaveni_global')->where('parametr_1','ict_spravce')->fetch();
       
        // reditel, zastupce, ict
-      $this->database->query('UPDATE users SET priorita="2" WHERE trida="ucitel" AND priorita !=4');   
+      $this->database->query('UPDATE users SET priorita="2" WHERE trida="42" AND priorita !=4');   
        
        if($existence_reditele==FALSE){
            $this->database->query('INSERT INTO nastaveni_global SET parametr_1="reditel_skoly", parametr_2= ?',$values->reditel);   
