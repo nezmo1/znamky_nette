@@ -140,7 +140,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         }
        
        $this->template->uvazekmajiny=$pole2;
-       $this->template->uvazekuci=  $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.username = s.ucitel');
+       $this->template->uvazekuci=  $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.id_users = s.ucitel');
      
       // skupiny
         $this->template->skupiny= $this->database->query('SELECT * FROM skupina WHERE ucitel= ?', $ucitelId);

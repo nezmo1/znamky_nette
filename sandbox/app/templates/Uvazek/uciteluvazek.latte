@@ -25,10 +25,10 @@
      <td><b>{$predmet->nazev}</b></td>
      {foreach $tridy->fetchAll() as $trida}
     
-     <td style='min-width:40px; text-align: center;{if (in_array($trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekmajiny))}background-color:#00BFFF;{/if} {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))}background-color:lime;{/if}{if in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)}background-color:yellow;{/if}'>
-         <abbr title='<?php echo "Předmět vyučuje:"; echo "\n" ?>{foreach $uvazekuci->fetchAll() as $uvazeku}{if $trida->zkratka_tridy==$uvazeku->trida and $predmet->zkratka_predmetu==$uvazeku->predmet}{$uvazeku->jmeno} {$uvazeku->prijmeni}<?php echo "\n"; ?>{/if}{/foreach}'>
-         {$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}" {if (in_array($ucitel."_".$trida->zkratka_tridy."_".$predmet->zkratka_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel))} checked="checked" {/if}{if in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)}disabled="disabled" checked='checked'{/if}>
-     <input n:name="h_{$pom_check}" value="{$ucitel}_{$trida->zkratka_tridy}_{$predmet->zkratka_predmetu}">
+     <td style='min-width:40px; text-align: center;{if (in_array($trida->id_tridy."_".$predmet->id_predmetu,$uvazekmajiny))}background-color:#00BFFF;{/if} {if (in_array($ucitel->id_users."_".$trida->id_tridy."_".$predmet->id_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel->id_users))}background-color:lime;{/if}{if in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)}background-color:yellow;{/if}'>
+         <abbr title='<?php echo "Předmět vyučuje:"; echo "\n" ?>{foreach $uvazekuci->fetchAll() as $uvazeku}{if $trida->id_tridy==$uvazeku->trida and $predmet->id_predmetu==$uvazeku->predmet}{$uvazeku->jmeno} {$uvazeku->prijmeni}<?php echo "\n"; ?>{/if}{/foreach}'>
+         {$trida->jmeno_tridy}<br><input n:name="n_{$pom_check}" {if (in_array($ucitel->id_users."_".$trida->id_tridy."_".$predmet->id_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel->id_users))} checked="checked" {/if}{if in_array($trida->id_tridy.'_'.$predmet->id_predmetu,$discheck)}disabled="disabled" checked='checked'{/if}>
+     <input n:name="h_{$pom_check}" value="{$ucitel->id_users}_{$trida->id_tridy}_{$predmet->id_predmetu}">
      </abbr>
      </td>
      
