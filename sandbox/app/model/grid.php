@@ -29,7 +29,7 @@ class SeznamUcitelu extends Grid{
         
         //Vytvoříme si zdroj dat pro Grid
         //Při výběru dat vždy vybereme id
-        $source = new \NiftyGrid\DataSource\NDataSource($this->ucitele->select('username, jmeno, prijmeni, trida, mail'));
+        $source = new \NiftyGrid\DataSource\NDataSource($this->ucitele->select('id_users,username, jmeno, prijmeni, trida, mail'));
         $this->setDefaultOrder("trida DESC");
 //Předáme zdroj
         $this->setDataSource($source);
@@ -51,7 +51,7 @@ class SeznamUcitelu extends Grid{
        $this->addColumn('trida', 'Třída', '80px')
             ->setRenderer(function($row){return 'Učitel';});
 
-        $numOfResults=$this->database->query('SELECT COUNT(username) AS `pocet` FROM users WHERE trida="ucitel"')->fetch();  
+        $numOfResults=$this->database->query('SELECT COUNT(username) AS `pocet` FROM users WHERE trida="42" and priorita !=4')->fetch();  
         $numOfResults = $numOfResults->pocet;
         $this->addColumn('mail', 'E-mail', '300px')
                
@@ -60,19 +60,28 @@ class SeznamUcitelu extends Grid{
              ->setTextFilter('mail')
              ->setAutocomplete($numOfResults);       
  
-        $this->addButton(Grid::ROW_FORM, "Rychlá editace")
-             ->setClass("fast-edit")
-        ->setAjax(FALSE);
-        $this->setRowFormCallback(function($values){
-            $this->databse->query('UPDATE USERS SET prijmeni="hodnota" where username="hodnota"');});
+       /* $this->addButton(Grid::ROW_FORM, "Rychlá editace")
+             ->setClass("fast-edit"); */
+//        ->setAjax(FALSE);
+     $this->addButton("edit", "Editovat")
+    ->setClass("edit")
+    ->setLink(function($row) use ($presenter){return $presenter->link("edit:ucitel", $row['id_users']);})
+    ->setAjax(FALSE);
+    
+    $this->addButton("heslo", "Změnit heslo")
+    ->setClass("heslo")
+    ->setLink(function($row) use ($presenter){return $presenter->link("edit:heslo", $row['id_users']);})
+    ->setAjax(FALSE);
     
 $self = $this;
 
 
+
+
      $this->addButton("delete", "Smazat")
           ->setClass("delete")
-          ->setLink(function($row) use ($self){return $self->link("delete!", $row['username']);})
-          ->setConfirmationDialog("Určitě chcete smazat všechny vybrané članky?");
+          ->setLink(function($row) use ($self){return $self->link("delete!", $row['id_users']);})
+          ->setConfirmationDialog(function($row){return "Určitě chcete smazat uživatele ".$row['jmeno']." ".$row['prijmeni']."? Smazáním uživatele se smažou všechny jeho záznamy v databázi!";});
           
     
     
@@ -84,7 +93,7 @@ $this->setWidth('100%');
   function handleDelete($username) {
       
       
-    $this->database->query('DELETE FROM users WHERE username=?', $username);
+    $this->database->query('DELETE FROM users WHERE id_users=?', $username);
     $this->flashMessage('Učitel byl smazán.');
 }  
     

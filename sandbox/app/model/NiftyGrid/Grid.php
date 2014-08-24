@@ -743,14 +743,14 @@ abstract class Grid extends \Nette\Application\UI\Control
 		$form[$this->name]->addContainer("filter");
 		$form[$this->name]['filter']->addSubmit("send","Filtrovat")
 			->setValidationScope(FALSE);
-
+                
 		$form[$this->name]->addContainer("action");
 		$form[$this->name]['action']->addSelect("action_name","Označené:");
 		$form[$this->name]['action']->addSubmit("send","Potvrdit")
 			->setValidationScope(FALSE)
 			->getControlPrototype()
 			->addData("select", $form[$this->name]["action"]["action_name"]->getControl()->name);
-
+               
 		$form[$this->name]->addContainer('perPage');
 		$form[$this->name]['perPage']->addSelect("perPage","Záznamů na stranu:", $this->perPageValues)
 			->getControlPrototype()
@@ -877,16 +877,18 @@ abstract class Grid extends \Nette\Application\UI\Control
 		$paginators = array();
 		foreach($values as $gridName => $grid){
 			$isSubGrid = ($gridName == $this->name) ? FALSE : TRUE;
-			foreach($grid['filter'] as $name => $value){
-				if($value != ''){
-					if($name == "send"){
-						continue;
-					}
-					if($isSubGrid){
-						$gridName = $this->findSubGridPath($gridName);
-						$filters[$this->name."-".$gridName."-filter"][$name] = $value;
-					}else{
-						$filters[$this->name."-filter"][$name] = $value;
+			if (is_array($grid)) {
+				foreach($grid['filter'] as $name => $value){
+					if($value != ''){
+						if($name == "send"){
+							continue;
+						}
+						if($isSubGrid){
+							$gridName = $this->findSubGridPath($gridName);
+							$filters[$this->name."-".$gridName."-filter"][$name] = $value;
+						}else{
+							$filters[$this->name."-filter"][$name] = $value;
+						}
 					}
 				}
 			}

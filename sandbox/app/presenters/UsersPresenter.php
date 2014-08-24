@@ -8,7 +8,8 @@ use Nette,
 
 class UsersPresenter extends BasePresenter
 {
-    
+  /** @persistent */
+    public $backlink = '';   
     
  public $database;
  
@@ -19,7 +20,7 @@ class UsersPresenter extends BasePresenter
    
     protected function createComponentSeznamUcitelu()
 {
-    return new Model\SeznamUcitelu($this->database->table('users')->where('trida','ucitel'), $this->database);
+    return new Model\SeznamUcitelu($this->database->table('users')->where('trida','42')->where('priorita!=','4'), $this->database);
 }
 
  
@@ -32,6 +33,7 @@ class UsersPresenter extends BasePresenter
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
+       $this->backlink = $this->storeRequest();
  
 }	
         
