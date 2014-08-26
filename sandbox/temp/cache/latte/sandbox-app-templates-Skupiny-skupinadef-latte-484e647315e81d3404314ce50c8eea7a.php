@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Skupiny/skupinadef.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3717191786', 'html')
+list($_b, $_g, $_l) = $template->initialize('8214007737', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb31de0dcce3_content')) { function _lb31de0dcce3_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb805ce9685e_content')) { function _lb805ce9685e_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h3><?php echo Latte\Runtime\Filters::escapeHtml($skupina->nazev_skupiny, ENT_NOQUOTES) ?></h3>
 
 <div class='datagrid' style='width:40%; float:left'>
@@ -18,7 +18,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb31de0dcce3_content')) { func
      <tr <?php if ($iterator->odd) { ?>class='alt'<?php } ?>><td><b><?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_t->prijmeni, ENT_NOQUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_t->jmeno, ENT_NOQUOTES) ?> </b></td>
      <td><input<?php $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->attributes() ?>
->  <input value="<?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_t->username, ENT_COMPAT) ?>
+>  <input value="<?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_t->id_users, ENT_COMPAT) ?>
 "<?php $_input = $_form["h_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'value' => NULL,
 ))->attributes() ?>></td>
@@ -53,7 +53,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb31de0dcce3_content')) { func
      <tr <?php if ($iterator->odd) { ?>class='alt'<?php } ?>><td><b><?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_sk->prijmeni, ENT_NOQUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_sk->jmeno, ENT_NOQUOTES) ?> </b></td>
      <td><input<?php $_input = $_form["n1_{$pom_check2}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->attributes() ?>
->  <input value="<?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_sk->username, ENT_COMPAT) ?>
+>  <input value="<?php echo Latte\Runtime\Filters::escapeHtml($zaci_v_sk->id_users, ENT_COMPAT) ?>
 "<?php $_input = $_form["h1_{$pom_check2}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'value' => NULL,
 ))->attributes() ?>></td>

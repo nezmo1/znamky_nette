@@ -25,8 +25,8 @@ class SkupinyPresenter extends BasePresenter
     {
        $pom_pocet= $this->database->query('SELECT trida FROM skupina WHERE id_skupiny= ?',$skupinaId)->fetch();
       
-        $pocet=$this->database->query('SELECT count(trida) as `pocet`  FROM users WHERE trida !="ucitel" and trida= ?', $pom_pocet->trida)->fetch();
-      $pocet_uz_v_sk=$this->database->query('SELECT count(username) as `pocet`  FROM clenove_skupiny WHERE id_skupiny= ?', $skupinaId)->fetch();
+        $pocet=$this->database->query('SELECT count(trida) as `pocet`  FROM users WHERE trida !="42" and trida= ?', $pom_pocet->trida)->fetch();
+      $pocet_uz_v_sk=$this->database->query('SELECT count(zak) as `pocet`  FROM clenove_skupiny WHERE id_skupiny= ?', $skupinaId)->fetch();
       
         
        
@@ -36,7 +36,7 @@ class SkupinyPresenter extends BasePresenter
     
     public function pocetBoxuSkupina2($skupinaId)
     {
-       $pocet_uz_v_sk=$this->database->query('SELECT count(username) as `pocet`  FROM clenove_skupiny WHERE id_skupiny= ?', $skupinaId)->fetch();
+       $pocet_uz_v_sk=$this->database->query('SELECT count(zak) as `pocet`  FROM clenove_skupiny WHERE id_skupiny= ?', $skupinaId)->fetch();
       
         
        
@@ -90,7 +90,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
              if ($hodnoty[$jmenoboxu]==TRUE){
              
              
-              $this->database->query('INSERT INTO clenove_skupiny SET username= ?', $hodnoty[$jmenohidden], ', id_skupiny= ?', $get['skupinaId'],'');   
+              $this->database->query('INSERT INTO clenove_skupiny SET zak= ?', $hodnoty[$jmenohidden], ', id_skupiny= ?', $get['skupinaId'],'');   
                                             }   
          }
           $flashMessage = $this->flashMessage('Operace proběhla úspěšně');  
@@ -146,7 +146,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
              if ($hodnoty[$jmenoboxu]==TRUE){
              
              
-            $this->database->query('DELETE FROM clenove_skupiny WHERE username= ?', $hodnoty[$jmenohidden], ' and id_skupiny= ?', $get['skupinaId'],'');   
+            $this->database->query('DELETE FROM clenove_skupiny WHERE zak= ?', $hodnoty[$jmenohidden], ' and id_skupiny= ?', $get['skupinaId'],'');   
                                             }   
          }
          
@@ -177,14 +177,14 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         $id_tridy_v_sk=  $this->database->query('SELECT trida FROM skupina WHERE id_skupiny = ?', $skupinaId)->fetch();
         
        $this->template->skupina = $this->database->table('skupina')->get($skupinaId);
-       $this->template->zaci_v_ts = $this->database->query('SELECT username, jmeno, prijmeni 
+       $this->template->zaci_v_ts = $this->database->query('SELECT id_users, username, jmeno, prijmeni 
 FROM   users 
-WHERE  username NOT IN (SELECT username FROM clenove_skupiny WHERE id_skupiny= ?',$skupinaId,') and trida= ?',$id_tridy_v_sk->trida);
+WHERE  id_users NOT IN (SELECT zak FROM clenove_skupiny WHERE id_skupiny= ?',$skupinaId,') and trida= ?',$id_tridy_v_sk->trida);
        
  
-       $this->template->zaci_v_sks = $this->database->query('SELECT username, jmeno, prijmeni 
+       $this->template->zaci_v_sks = $this->database->query('SELECT id_users, username, jmeno, prijmeni 
 FROM   users 
-WHERE  username IN (SELECT username FROM clenove_skupiny WHERE id_skupiny= ?',$skupinaId,') and trida= ?',$id_tridy_v_sk->trida);
+WHERE  id_users IN (SELECT zak FROM clenove_skupiny WHERE id_skupiny= ?',$skupinaId,') and trida= ?',$id_tridy_v_sk->trida);
         $this->template->pom_check = 1;
         $this->template->pom_check2 = 1;
         }

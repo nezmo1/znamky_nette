@@ -254,11 +254,11 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                         ->addRule($form::MAX_LENGTH, 'Název skupiny musí mít maximálně %d znaků', 25);
                 
 		
-                $ucitele=  $this->database->table('users')->where('trida','ucitel')->where('priorita !=','4');
+                $ucitele=  $this->database->table('users')->where('trida','42')->where('priorita !=','4');
                 
                 $ucitel_pom=array();
                 foreach ($ucitele as $ucitel) {  
-                 $ucitel_pom+= array (''.$ucitel->username.''  => ''.$ucitel->jmeno.' '.$ucitel->prijmeni.'',); 
+                 $ucitel_pom+= array (''.$ucitel->id_users.''  => ''.$ucitel->jmeno.' '.$ucitel->prijmeni.'',); 
                 } 
       
                 
@@ -269,7 +269,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 
                 $trida_pom=array();
                 foreach ($tridy as $trida) {  
-                 $trida_pom+= array (''.$trida->zkratka_tridy.''  => ''.$trida->jmeno_tridy.'',); 
+                 $trida_pom+= array (''.$trida->id_tridy.''  => ''.$trida->jmeno_tridy.'',); 
                 } 
       
                 
@@ -280,7 +280,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 
                 $predmet_pom=array();
                 foreach ($predmety as $predmet) {  
-                 $predmet_pom+= array (''.$predmet->zkratka_predmetu.''  => ''.$predmet->nazev.'',); 
+                 $predmet_pom+= array (''.$predmet->id_predmetu.''  => ''.$predmet->nazev.'',); 
                 } 
       
                 

@@ -7,7 +7,7 @@
     {form seznamZakuSkupina}
     {foreach $zaci_v_ts as $zaci_v_t}
      <tr {if $iterator->odd}class='alt'{/if}><td><b>{$zaci_v_t->prijmeni} {$zaci_v_t->jmeno} </b></td>
-     <td><input n:name="n_{$pom_check}">  <input n:name="h_{$pom_check}" value="{$zaci_v_t->username}"></td>
+     <td><input n:name="n_{$pom_check}">  <input n:name="h_{$pom_check}" value="{$zaci_v_t->id_users}"></td>
      
      
      </tr>   
@@ -35,7 +35,7 @@
     {form seznamZakuVeSkupine}
     {foreach $zaci_v_sks as $zaci_v_sk}
      <tr {if $iterator->odd}class='alt'{/if}><td><b>{$zaci_v_sk->prijmeni} {$zaci_v_sk->jmeno} </b></td>
-     <td><input n:name="n1_{$pom_check2}">  <input n:name="h1_{$pom_check2}" value="{$zaci_v_sk->username}"></td>
+     <td><input n:name="n1_{$pom_check2}">  <input n:name="h1_{$pom_check2}" value="{$zaci_v_sk->id_users}"></td>
      
      
      </tr>   
