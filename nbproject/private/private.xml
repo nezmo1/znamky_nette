@@ -6,12 +6,11 @@
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/EditPresenter.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/grid.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/SkupinyPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Uvazek/uciteluvazek.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Skupiny/skupinadef.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/ListPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/gridzaci.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/List/zaci.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/menu.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/NovyPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Novy/trida.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Edit/heslo.latte</file>
         </group>
     </open-files>
 </project-private>

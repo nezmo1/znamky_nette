@@ -10,17 +10,15 @@ use NiftyGrid\Grid;
 
 
 
-class SeznamUcitelu extends Grid{
-  /** @persistent */
-    public $backlink = '';     
+class SeznamZaku extends Grid{
 
-    protected $ucitele;
+    protected $zaci;
     public $database;
-    
-    public function __construct($ucitele, \Nette\Database\Context $database)
+    public $trida_pom;
+    public function __construct($zaci, \Nette\Database\Context $database)
     {
         parent::__construct();
-        $this->ucitele = $ucitele;
+        $this->zaci = $zaci;
       $this->database = $database;
          
     
@@ -28,11 +26,17 @@ class SeznamUcitelu extends Grid{
 
     protected function configure($presenter)
     {
-        
+          $tridy=  $this->database->table('trida')->where('zkratka_tridy !=','ucitel')->order('zkratka_tridy');
+                
+                $this->trida_pom=array();
+                foreach ($tridy as $trida) {  
+                 $this->trida_pom+= array (''.$trida->id_tridy.''  => ''.$trida->jmeno_tridy.'',); 
+                } 
+      
         //Vytvoříme si zdroj dat pro Grid
         //Při výběru dat vždy vybereme id
-        $source = new \NiftyGrid\DataSource\NDataSource($this->ucitele->select('id_users,username, jmeno, prijmeni, trida, mail'));
-        $this->setDefaultOrder("trida DESC");
+        $source = new \NiftyGrid\DataSource\NDataSource($this->zaci->select('id_users,username, jmeno, prijmeni, trida, mail'));
+     
 //Předáme zdroj
         $this->setDataSource($source);
         
@@ -51,7 +55,14 @@ class SeznamUcitelu extends Grid{
             ->setSortable(FALSE)
             ->setTextFilter('prijmeni');
        $this->addColumn('trida', 'Třída', '80px')
-            ->setRenderer(function($row){return 'Učitel';});
+               ->setSelectFilter($this->trida_pom)
+               ->setRenderer(function($row){
+                   
+                 
+                   $jmeno_tridy=$row['trida'];
+                   
+                   return $this->trida_pom[$jmeno_tridy] ;});
+            
 
         $numOfResults=$this->database->query('SELECT COUNT(username) AS `pocet` FROM users WHERE trida="42" and priorita !=4')->fetch();  
         $numOfResults = $numOfResults->pocet;
@@ -60,6 +71,7 @@ class SeznamUcitelu extends Grid{
              ->setSortable(FALSE) 
              ->setTextEditable('mail')
              ->setTextFilter('mail')
+                
              ->setAutocomplete($numOfResults);       
  
        /* $this->addButton(Grid::ROW_FORM, "Rychlá editace")
@@ -87,9 +99,9 @@ $self = $this;
           
     
     
-    $this->paginate = FALSE;
-$this->setWidth('100%');
     
+$this->setWidth('100%');
+ 
     }
     
   function handleDelete($username) {

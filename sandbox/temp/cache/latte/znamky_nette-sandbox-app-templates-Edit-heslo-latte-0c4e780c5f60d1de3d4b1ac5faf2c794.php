@@ -2,14 +2,17 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Edit/heslo.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3646048639', 'html')
+list($_b, $_g, $_l) = $template->initialize('8867237548', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb176a7e0a78_content')) { function _lb176a7e0a78_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?><div class='datagrid' style='width:60%; margin-left:20%'>
+if (!function_exists($_b->blocks['content'][] = '_lbf9dfcea35e_content')) { function _lbf9dfcea35e_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><div style="float:left"><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Users:list"), ENT_COMPAT) ?>
+"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/go_back.png" width="7%" alt="Zpět na seznam" title="Zpět na seznam"></a></div>
+
+<div class='datagrid' style='width:60%; margin-left:20%'>
 <table>
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Změna hesla</th></tr></thead>
 <?php $_l->tmp = $_control->getComponent("zmenaHeslaA"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
@@ -51,7 +54,5 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 //
 // main template
 //
-?>
-
-<?php if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
+if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
 call_user_func(reset($_b->blocks['content']), $_b, get_defined_vars()) ; 

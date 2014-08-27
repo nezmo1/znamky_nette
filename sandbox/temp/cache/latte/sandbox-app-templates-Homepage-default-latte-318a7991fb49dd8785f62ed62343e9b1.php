@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2728955261', 'html')
+list($_b, $_g, $_l) = $template->initialize('3450886505', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb547cf9355c_content')) { function _lb547cf9355c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbd15414f3c5_content')) { function _lbd15414f3c5_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
  <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 </p>
@@ -20,7 +20,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb547cf9355c_content')) { func
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lbc49445321b_scripts')) { function _lbc49445321b_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb98f576cf65_scripts')) { function _lb98f576cf65_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
 
@@ -34,7 +34,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lbc49445321b_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lbe728d5bf4d_head')) { function _lbe728d5bf4d_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb474ccb1c38_head')) { function _lb474ccb1c38_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

@@ -1,12 +1,12 @@
 {block content}
-
-<div class='datagrid' style='width:60%; margin-left:20%'>
+<div style="float:left"><a href="{link Users:list}"><img src="{$basePath}/images/go_back.png" width="7%" alt="Zpět na seznam" title="Zpět na seznam"></a></div>
+<div class='datagrid' style='width:60%; margin-left:20%;'>
 <table>
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Editace učitele</th></tr></thead>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center; '>Editace učitele</th></tr></thead>
     {control novyUcitel}
     <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
         {foreach $flashes as $flash}
-    <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně přidán do databáze.'} color:green {/if}'>{$flash->message}</div>
+    <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně editován.'} color:green {/if}'>{$flash->message}</div>
 {/foreach}
         
         </td>

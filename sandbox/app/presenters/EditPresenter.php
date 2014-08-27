@@ -69,7 +69,7 @@ class EditPresenter extends BasePresenter
                 );
                 $form->addSelect('titul', 'Titul:', $tituly);
                 $form['titul']->setDefaultValue($editace->titul);     
-		$form->addSubmit('send', 'Vytvořit učitele');
+		$form->addSubmit('send', 'Editovat učitele');
 
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->editUcitel;
@@ -109,18 +109,19 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 else {
                   
                     if($this->database->query('UPDATE users SET username= ?',$values->username,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida="42" , titul =?',$values->titul,' WHERE id_users= ?',$data)){
-                     $flashMessage = $this->flashMessage('Uživatel byl úspěšně přidán do databáze.');    
+                     $flashMessage = $this->flashMessage('Uživatel byl úspěšně editován.');    
                     }
                     else {
-                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, uživatel nebyl přidán!');    
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, uživatel nebyl editován!');    
                     }
                       
                   return $flashMessage;  
                   
                 }
-               
+             
 	}
         
+      
         
         protected function createComponentZmenaHeslaA()
 	{
