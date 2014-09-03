@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/EditPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/grid.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/SkupinyPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/ListPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/gridzaci.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/List/zaci.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/www/css/styl1.css</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/@layout.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Znamka/novaznamka.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/menu.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/NovyPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/NastaveniPresenter.php</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,28 @@
+
+{block content}
+ <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+<div class='datagrid' style='width:100%;'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nová známka</th></tr></thead>
+    {form novaZnamka}
+       <tbody> 
+           <tr><td style="width:250px;"><label>Třída:</label></td><td><select n:name="trida" class='udaje' onchange="location.href='novaznamka?tridac=' + this.options[this.selectedIndex].value "></select></td></tr>    
+           {if $trida_p!='n'}
+             <tr><td><label>Předmět nebo skupina:</label></td><td><select n:name="predmet" class='udaje' ></select></td></tr>    
+              <tr><td><label>Popis:</label></td><td><input n:name="popis" class='udaje' ></td></tr>  
+               <tr><td><label>Váha známky:</label></td><td><select n:name="vaha" class='udaje' ></select></td></tr> 
+              <tr><td><label>Datum:</label></td><td><input n:name="datum" id="datepicker" class='udaje' ></td></tr> 
+               
+                <tr><td><label>Datum:</label></td><td><input n:name="send"  class='login-submit' ></td></tr>
+           {/if}
+       </tbody>  
+    {/form}
+</table>   
+   </div> 
+
+{/block}

@@ -17,31 +17,7 @@ class HomepagePresenter extends BasePresenter
     
    
 
-    public function createComponentGrid($name)
-    {
-        $grid = new Grido\Grid($this, $name);
-        $grid->model = $this->database->table('users')->where('trida !=','ucitel')->order('trida');
-
-        $grid->addColumnText('username', 'Uživatelské jméno')
-            ->setFilterText()
-                ->setSuggestion();
-
-        $grid->addColumnText('jmeno', 'Jméno')
-            
-            ->setFilterText()
-                ->setSuggestion();
-        $grid->addColumnText('prijmeni', 'Příjmení')
-            
-            ->setFilterText()
-                ->setSuggestion();
-        $grid->addColumnText('trida', 'Třída')
-            
-            ->setFilterSelect();
-                
-
-       
-        $grid->setExport();
-    }
+    
 
 }
 

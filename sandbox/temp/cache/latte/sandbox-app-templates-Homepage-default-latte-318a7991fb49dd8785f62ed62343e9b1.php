@@ -2,17 +2,86 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3450886505', 'html')
+list($_b, $_g, $_l) = $template->initialize('8504053409', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbd15414f3c5_content')) { function _lbd15414f3c5_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb428ce8821d_content')) { function _lb428ce8821d_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
- <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Postup práce na elektronické žákovské knížce'
+            },
+            
+            xAxis: {
+                categories: ['Vzhled', 'Uživatelské rozhraní', 'Administrátorské rozhraní', 'Funkce', 'Pracovní nasazení'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Postup (%)',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' %'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+           
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Postup',
+                data: [80, 50, 65, 60, 110]
+            }]
+        });
+    });
+    
+
+		</script>
+	</head>
+	<body>
+            <script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/grafy/js/highcharts.js"></script>
+<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/grafy/js/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+
+
+
+
+
+
  <p style="text-align:center"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/working.png" width="500px" height="500px"></p>
+ 
+ 
+ 
+ 
  
 <?php
 }}
@@ -20,10 +89,9 @@ if (!function_exists($_b->blocks['content'][] = '_lbd15414f3c5_content')) { func
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb98f576cf65_scripts')) { function _lb98f576cf65_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb1f00185a25_scripts')) { function _lb1f00185a25_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
-
 
 <script>
 
@@ -34,7 +102,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lb98f576cf65_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lb474ccb1c38_head')) { function _lb474ccb1c38_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb9267da1c36_head')) { function _lb9267da1c36_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

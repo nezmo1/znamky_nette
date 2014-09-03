@@ -2,16 +2,84 @@
 
 {block content}
 <h1>Hlavní strana</h1>
- <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Postup práce na elektronické žákovské knížce'
+            },
+            
+            xAxis: {
+                categories: ['Vzhled', 'Uživatelské rozhraní', 'Administrátorské rozhraní', 'Funkce', 'Pracovní nasazení'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Postup (%)',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' %'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+           
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Postup',
+                data: [80, 50, 65, 60, 110]
+            }]
+        });
+    });
+    
+
+		</script>
+	</head>
+	<body>
+            <script src="{$basePath}/grafy/js/highcharts.js"></script>
+<script src="{$basePath}/grafy/js/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+
+
+
+
+
+
  <p style="text-align:center"><img src="{$basePath}/images/working.png" width="500px" height="500px"></p>
+ 
+ 
+ 
+ 
  
 {/block}
 
 {block scripts}
 {include parent}
 <script src="http://jush.sourceforge.net/jush.js"></script>
-
 
 <script>
 
