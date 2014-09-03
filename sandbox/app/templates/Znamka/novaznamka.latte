@@ -8,17 +8,17 @@
 
 <div class='datagrid' style='width:100%;'>
 <table>
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nová známka</th></tr></thead>
+    <thead><tr ><th colspan='2' style='font-size:20px; text-align: center'>Hromadné přidání známky</th></tr></thead>
     {form novaZnamka}
        <tbody> 
-           <tr><td style="width:250px;"><label>Třída:</label></td><td><select n:name="trida" class='udaje' onchange="location.href='novaznamka?tridac=' + this.options[this.selectedIndex].value "></select></td></tr>    
+           <tr class='alt' style='height:40px;'><td style="width:250px;"><label>Třída:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="trida" class='udaje' onchange="location.href='novaznamka?tridac=' + this.options[this.selectedIndex].value "></select></td></tr>    
            {if $trida_p!='n'}
-             <tr><td><label>Předmět nebo skupina:</label></td><td><select n:name="predmet" class='udaje' ></select></td></tr>    
-              <tr><td><label>Popis:</label></td><td><input n:name="popis" class='udaje' ></td></tr>  
-               <tr><td><label>Váha známky:</label></td><td><select n:name="vaha" class='udaje' ></select></td></tr> 
-              <tr><td><label>Datum:</label></td><td><input n:name="datum" id="datepicker" class='udaje' ></td></tr> 
+             <tr><td><label>Předmět nebo skupina:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="predmet" class='udaje' ></select></td></tr>    
+              <tr class='alt'><td><label>Popis:</label></td><td><input style='height:40px;font-size:14px;' n:name="popis" class='udaje' ></td></tr>  
+               <tr><td><label>Váha známky:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="vaha" class='udaje' ></select></td></tr> 
+              <tr class='alt'><td><label>Datum:</label></td><td><input style='height:40px;font-size:14px;' n:name="datum" id="datepicker" class='udaje' ></td></tr> 
                
-                <tr><td><label>Datum:</label></td><td><input n:name="send"  class='login-submit' ></td></tr>
+                <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
            {/if}
        </tbody>  
     {/form}

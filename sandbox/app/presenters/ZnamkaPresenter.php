@@ -80,9 +80,9 @@ WHERE ucitel= ?', $ucitel,' and trida= ?',$trida ,' ORDER by nazev');
                
                  
 		$form = new Nette\Application\UI\Form;
-                $form::extensionMethod('addDatePicker', function (FormContainer $container, $name, $label = NULL) {
-    return $container[$name] = new JanTvrdik\Components\DatePicker($label);
-}); 
+                $action_pom='Znamka:novaznamka?tridac='.$tridac;
+             $form->setAction($this->presenter->link($action_pom));
+
                 
 		$ucitel=$this->getUser();
                 $form->addSelect('trida', 'Třída nebo skupina', $this->VyberTrid($ucitel->id));
@@ -116,7 +116,7 @@ WHERE ucitel= ?', $ucitel,' and trida= ?',$trida ,' ORDER by nazev');
                 $form['vaha']->setDefaultValue('2'); 
                  $form->addSubmit('send', 'Vygenerovat formulář');
 		// call method signInFormSucceeded() on success
-		// $form->onSuccess[] = $this->novyTrida;
+		 $form->onSuccess[] = $this->vygenTridu;
                 
                 
                 $renderer = $form->getRenderer();
@@ -133,6 +133,11 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 		return $form;
 	}
+        
+        
+    public function vygenTridu(){
+        
+    }    
  
 	public function renderNovaznamka()
 {
