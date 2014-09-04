@@ -482,6 +482,80 @@ public function novyZak($form, $values)
 	}        
         
 
+       protected function createComponentEditZnamka()
+	{
+           $get=$this->request->getParameters();
+        $existence=  $this->database->query('SELECT *,DATE_FORMAT(datum,"%Y-%m-%d") AS `data` FROM znamky WHERE id_znamky= ?',$get['id_znamky'])->fetch();   
+		$form = new Nette\Application\UI\Form;
+		$form->addText('znamka', 'Známka')
+                        ->setAttribute('placeholder', 'Známka')
+                        ->setValue($existence['znamka'])
+			->setRequired('Zadejte známku');
+                      
+                $form->addText('popis', 'Popis')
+                        ->setAttribute('placeholder', 'Popis')
+                        ->setValue($existence['popis'])
+			->setRequired('Zadejte popis');
+                $form->addText('datum', 'Datum')
+                        ->setAttribute('readonly', 'readonly')
+                        ->setValue($existence['data'])
+                        ->setAttribute('id','datepicker')
+			->setRequired('Zadejte datum');
+                  $vaha= array(
+                  '1'  => 'Nízká', 
+                  '2'  => 'Normální', 
+                  '3' => 'Vysoká',
+                  
+      
+                );
+                   
+                $form->addSelect('vaha', 'Váha:', $vaha);
+                $form['vaha']->setDefaultValue($existence['vaha']);  
+                $ucitel =  $this->getUser();
+                $predmety=  $this->database->query('SELECT DISTINCT predmet, p.nazev AS `nazev` FROM znamky INNER JOIN predmet as `p` on predmet=p.id_predmetu where ucitel= ?',$ucitel->id,' ORDER BY nazev');
+         
+                
+                $predmet_pom=array();
+                foreach ($predmety as $predmet) {  
+                 $predmet_pom+= array (''.$predmet->predmet.''  => ''.$predmet->nazev.'',); 
+                } 
+      
+                $form->addHidden('id_znamky')
+                      ->setValue($get['id_znamky']);  
+                $form->addSelect('predmet', 'Předmět:', $predmet_pom);
+                 $form['predmet']->setDefaultValue($existence['predmet']);
+                $form->addSubmit('send', 'Editovat známku');
+
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->editZnamkaS;
+                
+                
+                $renderer = $form->getRenderer();
+$renderer->wrappers['controls']['container'] = NULL;
+
+$renderer->wrappers['pair']['container'] = "tr";
+$renderer->wrappers['pair']['.odd'] = 'alt';
+$renderer->wrappers['label']['container'] = 'td';
+
+$renderer->wrappers['control']['.text'] = 'udaje';
+$renderer->wrappers['control']['.password'] = 'udaje';
+$renderer->wrappers['control']['.submit'] = 'login-prehled';
+
+
+		return $form;
+	}
+   
+        
+  public function editZnamkaS($form, $values)
+	{
+      $ucitel=$this->getUser();
+      $this->database->query('UPDATE znamky SET znamka= ?',$values['znamka'],', popis= ?',$values['popis'],', datum= ?',$values['datum'],', vaha= ?',$values['vaha'],', ucitel= ?',$ucitel->id,', predmet= ?',$values['predmet'],' WHERE id_znamky=?',$values['id_znamky']);  
+               		
+	}        
+        
+        
+        
+        
 
 		public function renderUcitel($id_users)
 {
@@ -496,6 +570,16 @@ public function novyZak($form, $values)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
+             $this->redirect('Pristup:pristup');
+       }
+ 
+}
+
+
+	public function renderZnamka($id_znamky)
+{
+            $user =  $this->getUser();
+    if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {
              $this->redirect('Pristup:pristup');
        }
  

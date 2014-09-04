@@ -21,7 +21,7 @@ class SeznamPresenter extends BasePresenter
     protected function createComponentSeznamZnamekUcitelGrid()
 { 
     $user =  $this->getUser();
-    return new Model\SeznamZnamekUcitel($this->database->table('znamky')->where('ucitel',$user->id), $this->database);
+    return new Model\SeznamZnamekUcitel($this->database->table('znamky')->where('ucitel',$user->id), $this->database, $user);
 }
 
 

@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('8504053409', 'html')
+list($_b, $_g, $_l) = $template->initialize('8897356652', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb428ce8821d_content')) { function _lb428ce8821d_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbc819d43c14_content')) { function _lbc819d43c14_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -54,7 +54,7 @@ $(function () {
             },
             series: [{
                 name: 'Postup',
-                data: [80, 50, 65, 60, 110]
+                data: [80, 50, 75, 60, 110]
             }]
         });
     });
@@ -89,7 +89,7 @@ $(function () {
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb1f00185a25_scripts')) { function _lb1f00185a25_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb64b2bae680_scripts')) { function _lb64b2bae680_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
 
@@ -102,7 +102,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lb1f00185a25_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lb9267da1c36_head')) { function _lb9267da1c36_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb1fe583a6c1_head')) { function _lb1fe583a6c1_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

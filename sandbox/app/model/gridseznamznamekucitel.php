@@ -14,39 +14,96 @@ class SeznamZnamekUcitel extends Grid{
 
     protected $znamky;
     public $database;
-    public $trida_pom;
-    public function __construct($znamky, \Nette\Database\Context $database)
+    public $predmet_pom;
+    public $zak_pom;
+    public $ucitel;
+    public $datum;
+    public function __construct($znamky, \Nette\Database\Context $database, $ucitel)
     {
         parent::__construct();
         $this->znamky = $znamky;
       $this->database = $database;
-         
+      $this->ucitel = $ucitel;   
     
     }
 
     protected function configure($presenter)
     {
-          $tridy=  $this->database->table('trida')->where('zkratka_tridy !=','ucitel')->order('zkratka_tridy');
+          $vaha=array('1' => 'Nízká','2' => 'Normální','3' => 'Vysoká');
+          $predmety=  $this->database->query('SELECT DISTINCT predmet, p.nazev AS `nazev` FROM znamky INNER JOIN predmet as `p` on predmet=p.id_predmetu where ucitel= ?',$this->ucitel->id,' ORDER BY nazev');
+          $zaci=  $this->database->query('SELECT DISTINCT zak,u.jmeno AS `jmeno`, u.prijmeni AS `prijmeni` FROM znamky INNER JOIN users AS `u` ON zak=u.id_users WHERE ucitel= ?',$this->ucitel->id,' ORDER BY prijmeni');      
+          $data= $this->database->query('SELECT DISTINCT datum, DATE_FORMAT(datum,"%d-%m-%Y") as `data` FROM znamky WHERE ucitel= ?',$this->ucitel->id,' ORDER BY datum');  
+              $this->predmet_pom=array();
+                foreach ($predmety as $predmet) {  
+                 $this->predmet_pom+= array (''.$predmet->predmet.''  => ''.$predmet->nazev.'',); 
+                } 
                 
-                $this->trida_pom=array();
-                foreach ($tridy as $trida) {  
-                 $this->trida_pom+= array (''.$trida->id_tridy.''  => ''.$trida->jmeno_tridy.'',); 
+                $this->zak_pom=array();
+                foreach ($zaci as $zak) {  
+                 $this->zak_pom+= array (''.$zak->zak.''  => ''.$zak->jmeno.' '.$zak->prijmeni.'',); 
+                } 
+                
+                 $this->datum=array();
+                foreach ($data as $datum) {  
+                 $this->datum+= array (''.$datum->datum.''  => ''.$datum->data.'',); 
                 } 
       
         //Vytvoříme si zdroj dat pro Grid
         //Při výběru dat vždy vybereme id
-        $source = new \NiftyGrid\DataSource\NDataSource($this->znamky->select('id_znamky,LEFT(znamka,8) AS `znamka`, LEFT(popis,8) AS `popis`, DATE_FORMAT(datum,"`%d`-`%m`- %Y") AS `datum`, vaha, ucitel, zak, predmet'));
+        $source = new \NiftyGrid\DataSource\NDataSource($this->znamky->select('id_znamky, znamka, popis, datum, vaha, ucitel, zak, predmet'));
      
 //Předáme zdroj
         $this->setDataSource($source);
         
-       $this->addColumn('zak', 'Žák', '100px');
-       $this->addColumn('znamka', 'Známka', '100px');
-       $this->addColumn('popis', 'Popis', '100px');
+       $this->addColumn('zak', 'Žák', '150px')
+               ->setSelectFilter($this->zak_pom)
+                ->setRenderer(function($row){
+                   
+                 
+                   $jmeno_zaka=$row['zak'];
+                     return \Nette\Utils\Html::el('font')->setText($this->zak_pom[$jmeno_zaka])->addAttributes(array('style' => 'font-weight:bold;'));
+                   });    
+               
+               
+       $this->addColumn('znamka', 'Známka', '200px')
+            ->setTextFilter()
+               
+               ->setSortable(FALSE);
+       $this->addColumn('popis', 'Popis', '200px')
+               ->setTextFilter()
+               ->setSortable(FALSE); 
              
-         $this->addColumn('vaha', 'Váha', '100px');     
-         $this->addColumn('predmet', 'Předmět', '100px');     
-           $this->addColumn('datum', 'Datum', '100px');     
+         $this->addColumn('vaha', 'Váha', '70px')
+               ->setSelectFilter($vaha)  
+              ->setRenderer(function($row){
+             switch ($row['vaha']) {
+                 case 1: $vaha="Nízká";
+                         $barva="font-style:italic";
+                     break;
+                 case 2: $vaha="Normální";
+                         $barva="";
+                     break;
+                 case 3: $vaha="Vysoká";
+                         $barva="font-weight:bold";
+                     break;
+                 default:
+                     break;
+             }
+             return \Nette\Utils\Html::el('font')->setText($vaha)->addAttributes(array('style' => $barva));
+             // return $vaha;    
+        });
+         $this->addColumn('predmet', 'Předmět', '200px')
+           ->setRenderer(function($row){
+                   
+                 
+                   $jmeno_predmetu=$row['predmet'];
+                   
+                   return $this->predmet_pom[$jmeno_predmetu] ;})
+                   ->setSelectFilter($this->predmet_pom);
+                 
+           $this->addColumn('datum', 'Datum', '100px')
+                 ->setSelectFilter($this->datum)  
+                 ->setRenderer(function($row){return date('j. n. Y', strtotime($row['datum']));});  
        
       
           
@@ -56,7 +113,7 @@ class SeznamZnamekUcitel extends Grid{
 //        ->setAjax(FALSE);
      $this->addButton("edit", "Editovat")
     ->setClass("edit")
-    ->setLink(function($row) use ($presenter){return $presenter->link("edit:ucitel", $row['id_znamky']);})
+    ->setLink(function($row) use ($presenter){return $presenter->link("edit:znamka", $row['id_znamky']);})
     ->setAjax(FALSE);
     
     
@@ -69,19 +126,19 @@ $self = $this;
      $this->addButton("delete", "Smazat")
           ->setClass("delete")
           ->setLink(function($row) use ($self){return $self->link("delete!", $row['id_znamky']);})
-          ->setConfirmationDialog(function($row){return "Určitě chcete smazat uživatele ".$row['zak']." ".$row['zak']."? Smazáním uživatele se smažou všechny jeho záznamy v databázi!";});
+          ->setConfirmationDialog(function($row){return "Určitě chcete smazat tuto známku?";});
           
     
     
-    
+ $this->setDefaultOrder("id_znamky DESC");   
 $this->setWidth('100%');
  
     }
     
-  function handleDelete($username) {
+  function handleDelete($idznamky) {
       
       
-    $this->database->query('DELETE FROM users WHERE id_users=?', $username);
+    $this->database->query('DELETE FROM znamky WHERE id_znamky=?', $idznamky);
     $this->flashMessage('Učitel byl smazán.');
 }  
     
