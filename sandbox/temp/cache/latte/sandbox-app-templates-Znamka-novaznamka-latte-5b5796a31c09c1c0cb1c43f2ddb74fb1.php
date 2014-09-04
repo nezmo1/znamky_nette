@@ -2,18 +2,19 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Znamka/novaznamka.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('1068749661', 'html')
+list($_b, $_g, $_l) = $template->initialize('0405876959', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb21e4ea4e88_content')) { function _lb21e4ea4e88_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbbe5d949eb9_content')) { function _lbbe5d949eb9_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?> <script>
   $(function() {
     $( "#datepicker" ).datepicker();
   });
   </script>
+<?php if ($uspech=="ano") { ?><h3>Známky byly úspěšně vloženy do databáze</h3><?php } ?>
 
 <div class='datagrid' style='width:100%;'>
 <table>
@@ -30,7 +31,8 @@ if (!function_exists($_b->blocks['content'][] = '_lb21e4ea4e88_content')) { func
   'style' => NULL,
   'class' => NULL,
 ))->attributes() ?>><?php echo $_input->getControl()->getHtml() ?></select></td></tr>    
-              <tr class='alt'><td><label>Popis:</label></td><td><input style='height:40px;font-size:14px;' class='udaje'<?php $_input = $_form["popis"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+              
+             <tr class='required alt'><td><label class='required' for="frm-novaZnamka-popis">Popis:</label></td><td><input style='height:40px;font-size:14px;' class='udaje'<?php $_input = $_form["popis"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'style' => NULL,
   'class' => NULL,
 ))->attributes() ?>></td></tr>  
@@ -49,11 +51,14 @@ if (!function_exists($_b->blocks['content'][] = '_lb21e4ea4e88_content')) { func
   'style' => NULL,
 ))->attributes() ?>></td></tr>
 <?php } ?>
+           
+          
        </tbody>  
 <?php Nette\Bridges\FormsLatte\FormMacros::renderFormEnd($_form) ?>
 </table>   
    </div> 
 
+   
 <?php
 }}
 

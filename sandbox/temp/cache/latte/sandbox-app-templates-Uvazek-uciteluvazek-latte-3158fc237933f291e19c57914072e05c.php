@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Uvazek/uciteluvazek.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4825070957', 'html')
+list($_b, $_g, $_l) = $template->initialize('7898387476', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb58330e6639_content')) { function _lb58330e6639_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbf2ae7848fa_content')) { function _lbf2ae7848fa_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['jmeno']), $_b, get_defined_vars()) ; if ($pocet_skupin->pocet!=0) { ?>
 <h4>Skupiny</h4>
 <p>Tento učitel má definovány vyučované skupiny žáků. Bude moci přidávat známky všem žákům ve skupině.</p>
@@ -37,16 +37,16 @@ if (!function_exists($_b->blocks['content'][] = '_lb58330e6639_content')) { func
     
      <td style='min-width:40px; text-align: center;<?php if ((in_array($trida->id_tridy."_".$predmet->id_predmetu,$uvazekmajiny))) { ?>
 background-color:#00BFFF;<?php } ?> <?php if ((in_array($ucitel->id_users."_".$trida->id_tridy."_".$predmet->id_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel->id_users))) { ?>
-background-color:lime;<?php } if (in_array($trida->zkratka_tridy.'_'.$predmet->zkratka_predmetu,$discheck)) { ?>
+background-color:lime;<?php } if (in_array($trida->id_tridy.'_'.$predmet->id_predmetu,$discheck)) { ?>
 background-color:yellow;<?php } ?>'>
          <abbr title='<?php echo "Předmět vyučuje:"; echo "\n" ;$iterations = 0; foreach ($uvazekuci->fetchAll() as $uvazeku) { if ($trida->id_tridy==$uvazeku->trida and $predmet->id_predmetu==$uvazeku->predmet) { echo Latte\Runtime\Filters::escapeHtml($uvazeku->jmeno, ENT_QUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($uvazeku->prijmeni, ENT_QUOTES) ;echo "\n"; } $iterations++; } ?>'>
          <?php echo Latte\Runtime\Filters::escapeHtml($trida->jmeno_tridy, ENT_NOQUOTES) ?>
 <br><input <?php if ((in_array($ucitel->id_users."_".$trida->id_tridy."_".$predmet->id_predmetu,$uvazekma) and ($_GET['ucitelId']==$ucitel->id_users))) { ?>
  checked="checked" <?php } if (in_array($trida->id_tridy.'_'.$predmet->id_predmetu,$discheck)) { ?>
-disabled="disabled" checked='checked'<?php } $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
+onclick="return false" checked='checked'<?php } $_input = $_form["n_{$pom_check}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'checked' => NULL,
-  'disabled' => NULL,
+  'onclick' => NULL,
 ))->attributes() ?>>
      <input value="<?php echo Latte\Runtime\Filters::escapeHtml($ucitel->id_users, ENT_COMPAT) ?>
 _<?php echo Latte\Runtime\Filters::escapeHtml($trida->id_tridy, ENT_COMPAT) ?>_<?php echo Latte\Runtime\Filters::escapeHtml($predmet->id_predmetu, ENT_COMPAT) ?>
@@ -85,7 +85,7 @@ _<?php echo Latte\Runtime\Filters::escapeHtml($trida->id_tridy, ENT_COMPAT) ?>_<
 //
 // block jmeno
 //
-if (!function_exists($_b->blocks['jmeno'][] = '_lb36600be825_jmeno')) { function _lb36600be825_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['jmeno'][] = '_lb2a06626c9e_jmeno')) { function _lb2a06626c9e_jmeno($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h3><?php echo Latte\Runtime\Filters::escapeHtml($ucitel->titul, ENT_NOQUOTES) ?>
  <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->jmeno, ENT_NOQUOTES) ?> <?php echo Latte\Runtime\Filters::escapeHtml($ucitel->prijmeni, ENT_NOQUOTES) ?></h3>
 <?php

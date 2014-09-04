@@ -58,9 +58,12 @@ class Menu extends Nette\Application\UI\PresenterComponent
                     <ul class="simple">';
            $url = $this->presenter->link('Znamka:novaznamka?tridac=n');
            echo             '<li><a href="'.$url.'">Nová známka</a></li>';
-           echo             '<li><a href="#">Hromadné přidání známek</a></li>
-                        <li><a href="#">Seznam známek</a></li>
-                        <li><a href="#">Nová čtvrtletní klasifikace</a></li>
+           echo             '<li><a href="'.$url.'">Hromadné přidání známek</a></li>';
+           
+            $url = $this->presenter->link('Seznam:ucitel');
+           echo             '<li><a href="'.$url.'">Seznam známek</a></li>';
+           
+           echo             '<li><a href="#">Nová čtvrtletní klasifikace</a></li>
                         <li><a href="#">Hromadné přidání čtvrtletní klasifikace</a></li>
                         <li><a href="#">Seznam Čtvrtletní klasifikace</a></li>
                    
