@@ -24,7 +24,11 @@ class SeznamPresenter extends BasePresenter
     return new Model\SeznamZnamekUcitel($this->database->table('znamky')->where('ucitel',$user->id), $this->database, $user);
 }
 
-
+  protected function createComponentSeznamZnamekZakGrid()
+{ 
+    $user =  $this->getUser();
+    return new Model\SeznamZnamekZak($this->database->table('znamky')->where('zak',$user->id), $this->database, $user);
+}
 
 
 	public function renderUcitel()
@@ -35,7 +39,15 @@ class SeznamPresenter extends BasePresenter
        }
      
 }	
-        
+ 
+	public function renderZak()
+{
+            $user =  $this->getUser();
+    if ((!$user->isInRole('1')) and (!$user->isInRole('4'))) {
+             $this->redirect('Pristup:pristup');
+       }
+     
+}
  
         
 }

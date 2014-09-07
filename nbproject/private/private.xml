@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/informace.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/model/gridseznamznamekucitel.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Znamka/vygenFormNovaZnamka.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/List/zaci.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/SeznamPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Znamka/novaznamka.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/templates/Seznam/ucitel.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/components/menu.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/sandbox/app/presenters/UsersPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/menu.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekzak.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Seznam/zak.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/SeznamPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Seznam/ucitel.latte</file>
         </group>
     </open-files>
 </project-private>

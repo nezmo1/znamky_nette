@@ -1,14 +1,14 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Pristup/pristup.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Pristup/pristup.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('6109849334', 'html')
+list($_b, $_g, $_l) = $template->initialize('8444216271', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb42942876f5_content')) { function _lb42942876f5_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbde8bfb93c8_content')) { function _lbde8bfb93c8_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><div class="pristup" style="text-align:center">
 <h1><font color="red">K přístupu na požadovanou stránku nemáte dostatečné oprávnění</font></h1>
 <img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/stop.png" alt="stop" width="500px" height="500px">

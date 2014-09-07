@@ -1,22 +1,26 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Uvazek/seznamucitelu.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Seznam/ucitel.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2913980544', 'html')
+list($_b, $_g, $_l) = $template->initialize('4277002895', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb4f6d4816fb_content')) { function _lb4f6d4816fb_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;$iterations = 0; foreach ($ucitele as $ucitel) { ?>
-<div class="post">
-<h2><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Uvazek:uciteluvazek", array($ucitel->id_users)), ENT_COMPAT) ?>
-"><?php echo Latte\Runtime\Filters::escapeHtml($ucitel->prijmeni, ENT_NOQUOTES) ?></a></h2>
+if (!function_exists($_b->blocks['content'][] = '_lb1b58bcd6fa_content')) { function _lb1b58bcd6fa_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
 
-  
-</div>
-<?php $iterations++; } 
+
+<?php $_l->tmp = $_control->getComponent("seznamZnamekUcitelGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ;
+}}
+
+//
+// block title
+//
+if (!function_exists($_b->blocks['title'][] = '_lb8c2e7e9da8_title')) { function _lb8c2e7e9da8_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><h1>Seznam známek</h1>
+<?php
 }}
 
 //

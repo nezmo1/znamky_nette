@@ -1,14 +1,14 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Homepage/default.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('8897356652', 'html')
+list($_b, $_g, $_l) = $template->initialize('8487369933', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbc819d43c14_content')) { function _lbc819d43c14_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb6df507821d_content')) { function _lb6df507821d_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -89,7 +89,7 @@ $(function () {
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb64b2bae680_scripts')) { function _lb64b2bae680_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb57e9926cb0_scripts')) { function _lb57e9926cb0_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
 
@@ -102,7 +102,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lb64b2bae680_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lb1fe583a6c1_head')) { function _lb1fe583a6c1_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb36c3cc7a1d_head')) { function _lb36c3cc7a1d_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

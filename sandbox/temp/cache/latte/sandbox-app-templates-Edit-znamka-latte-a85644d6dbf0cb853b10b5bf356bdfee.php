@@ -1,22 +1,30 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app/templates/Novy/ucitel.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Edit/znamka.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3585368296', 'html')
+list($_b, $_g, $_l) = $template->initialize('7458654128', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb68701a2a29_content')) { function _lb68701a2a29_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?><div class='datagrid' style='width:60%; margin-left:20%'>
+if (!function_exists($_b->blocks['content'][] = '_lb703b9a67f5_content')) { function _lb703b9a67f5_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+  
+<div style="float:left"><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Seznam:ucitel"), ENT_COMPAT) ?>
+"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/go_back.png" width="7%" alt="Zpět na seznam" title="Zpět na seznam"></a></div>
+<div class='datagrid' style='width:60%; margin-left:20%;'>
 <table>
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Nový učitel</th></tr></thead>
-<?php $_l->tmp = $_control->getComponent("novyUcitel"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center; '>Editace známky</th></tr></thead>
+<?php $_l->tmp = $_control->getComponent("editZnamka"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
     <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
 <?php $iterations = 0; foreach ($flashes as $flash) { ?>
     <div class="flash <?php echo Latte\Runtime\Filters::escapeHtml($flash->type, ENT_COMPAT) ?>
-" style='<?php if ($flash->message=='Uživatel byl úspěšně přidán do databáze.') { ?>
+" style='<?php if ($flash->message=='Uživatel byl úspěšně editován.') { ?>
  color:green <?php } ?>'><?php echo Latte\Runtime\Filters::escapeHtml($flash->message, ENT_NOQUOTES) ?></div>
 <?php $iterations++; } ?>
         

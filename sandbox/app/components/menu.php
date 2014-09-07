@@ -39,9 +39,10 @@ class Menu extends Nette\Application\UI\PresenterComponent
         
         
         if(($user->isInRole('1'))){
-        echo '<li><a href="http://seznam.cz">Seznam známek</a>
-              </li>';
-        echo '<li><a href="http://seznam.cz">Seznam čtvrtletní klasifikace</a>
+          $url = $this->presenter->link('Seznam:zak');    
+        echo '<li><a href="'.$url.'">Seznam známek</a>';
+        echo '      </li>';
+        echo '<li><a href="#">Seznam čtvrtletní klasifikace</a>
               </li>';   
         }
            

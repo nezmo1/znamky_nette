@@ -1,8 +1,6 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app\model\NiftyGrid/../../templates/paginator.latte
-
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2548583601', 'html')
+list($_b, $_g, $_l) = $template->initialize('8790297026', 'html')
 ;
 // prolog Nette\Bridges\ApplicationLatte\UIMacros
 

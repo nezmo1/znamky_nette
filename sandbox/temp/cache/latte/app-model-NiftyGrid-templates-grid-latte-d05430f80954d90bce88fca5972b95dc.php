@@ -1,14 +1,14 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\sandbox\app\model\NiftyGrid/../../templates/grid.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app\model\NiftyGrid/../../templates/grid.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('8982022472', 'html')
+list($_b, $_g, $_l) = $template->initialize('9712023515', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block _
 //
-if (!function_exists($_b->blocks['_'][] = '_lbfb92b2d5e4__')) { function _lbfb92b2d5e4__($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v; $_control->redrawControl(false, FALSE)
+if (!function_exists($_b->blocks['_'][] = '_lbe89d2063c6__')) { function _lbe89d2063c6__($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v; $_control->redrawControl(false, FALSE)
 ;if (!$control->isSubGrid) { echo Latte\Runtime\Filters::escapeHtml($control['gridForm']->render('begin'), ENT_NOQUOTES) ?>
 
 <?php } ?>

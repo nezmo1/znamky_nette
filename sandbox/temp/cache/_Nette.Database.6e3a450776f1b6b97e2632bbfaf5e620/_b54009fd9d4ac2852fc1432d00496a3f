@@ -1,1 +1,1 @@
-<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.86538300 1409157609";s:10:"serialized";b:1;}?>a:6:{s:8:"id_users";b:1;s:5:"jmeno";b:1;s:8:"prijmeni";b:1;s:8:"username";b:1;s:4:"mail";b:1;s:5:"titul";b:1;}
+<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.72265400 1410092124";s:10:"serialized";b:1;}?>a:3:{s:8:"id_users";b:1;s:5:"jmeno";b:1;s:8:"prijmeni";b:1;}
