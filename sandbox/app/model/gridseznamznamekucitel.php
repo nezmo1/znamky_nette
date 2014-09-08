@@ -53,15 +53,16 @@ class SeznamZnamekUcitel extends Grid{
         $source = new \NiftyGrid\DataSource\NDataSource($this->znamky->select('id_znamky, znamka, popis, datum, vaha, ucitel, zak, predmet'));
      
 //Předáme zdroj
-        $this->setDataSource($source);
         
+        $this->setDataSource($source);
+        $self = $this;  
        $this->addColumn('zak', 'Žák', '150px')
                ->setSelectFilter($this->zak_pom)
-                ->setRenderer(function($row){
+                ->setRenderer(function($row) use($self){
                    
-                 
+               
                    $jmeno_zaka=$row['zak'];
-                     return \Nette\Utils\Html::el('font')->setText($this->zak_pom[$jmeno_zaka])->addAttributes(array('style' => 'font-weight:bold;'));
+                     return \Nette\Utils\Html::el('font')->setText($self->zak_pom[$jmeno_zaka])->addAttributes(array('style' => 'font-weight:bold;'));
                    });    
                
                
@@ -93,12 +94,12 @@ class SeznamZnamekUcitel extends Grid{
              // return $vaha;    
         });
          $this->addColumn('predmet', 'Předmět', '200px')
-           ->setRenderer(function($row){
+           ->setRenderer(function($row) use($self){
                    
                  
                    $jmeno_predmetu=$row['predmet'];
                    
-                   return $this->predmet_pom[$jmeno_predmetu] ;})
+                   return $self->predmet_pom[$jmeno_predmetu] ;})
                    ->setSelectFilter($this->predmet_pom);
                  
            $this->addColumn('datum', 'Datum', '100px')
@@ -117,8 +118,7 @@ class SeznamZnamekUcitel extends Grid{
     ->setAjax(FALSE);
     
     
-    
-$self = $this;
+ 
 
 
 

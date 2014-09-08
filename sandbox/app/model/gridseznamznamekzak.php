@@ -64,13 +64,14 @@ class SeznamZnamekZak extends Grid{
        $this->addColumn('popis', 'Popis', '200px')
                ->setTextFilter()
                ->setSortable(FALSE); 
-          
+           $self = $this;   
        $this->addColumn('predmet', 'Předmět', '200px')
-           ->setRenderer(function($row){
-                   
+               
+           ->setRenderer(function($row) use($self){
+               
                  
                    $jmeno_predmetu=$row['predmet'];
-                   return \Nette\Utils\Html::el('font')->setText($this->predmet_pom[$jmeno_predmetu])->addAttributes(array('style' => 'font-weight:bold;'));
+                   return \Nette\Utils\Html::el('font')->setText($self->predmet_pom[$jmeno_predmetu])->addAttributes(array('style' => 'font-weight:bold;'));
                  })
                    ->setSelectFilter($this->predmet_pom);
        
@@ -98,11 +99,12 @@ class SeznamZnamekZak extends Grid{
         
          $this->addColumn('ucitel', 'Učitel', '150px')
                ->setSelectFilter($this->zak_pom)
-                ->setRenderer(function($row){
+                ->setRenderer(function($row) use($self){
                    
-                 
+            
                    $jmeno_zaka=$row['ucitel'];
-                     return \Nette\Utils\Html::el('font')->setText($this->zak_pom[$jmeno_zaka])->addAttributes(array('style' => 'font-weight:normal;'));
+                     
+                     return \Nette\Utils\Html::el('font')->setText($self->zak_pom[$jmeno_zaka])->addAttributes(array('style' => 'font-weight:normal;'));
                    });    
                
          
