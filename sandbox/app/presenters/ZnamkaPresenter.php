@@ -166,13 +166,13 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		$ucitel=$this->getUser();
                $casti = explode("_", $get['predmet']);
                if($casti[0]=="s"){
-                $vyber_zaku=  $this->database->query('SELECT zak,u.jmeno as `jmeno`,u.prijmeni `prijmeni` FROM clenove_skupiny INNER JOIN users as `u` on zak=u.id_users WHERE id_skupiny= ?',$casti[1])->fetchAll();
+                $vyber_zaku=  $this->database->query('SELECT zak,u.jmeno as `jmeno`,u.prijmeni `prijmeni` FROM clenove_skupiny INNER JOIN users as `u` on zak=u.id_users WHERE id_skupiny= ?',$casti[1],' ORDER BY prijmeni,jmeno')->fetchAll();
                  
                }
                else{
                 $vyber_zaku=  $this->database->query('SELECT u.jmeno as `jmeno`,u.prijmeni as `prijmeni`  FROM `ucitele_uvazek` 
 INNER JOIN users as `u` on ucitele_uvazek.trida=u.trida
-WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'])->fetchAll();
+WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' ORDER BY prijmeni,jmeno')->fetchAll();
                    
                }
   $sirka=  $this->database->query('SELECT * FROM nastaveni_personal WHERE id_user= ?',$ucitel->id,'and parametr="sirka_znamek_ano"')->fetch();              

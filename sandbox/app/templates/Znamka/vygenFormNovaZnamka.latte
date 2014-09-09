@@ -1,7 +1,8 @@
 {block content}
 
 <div class='datagrid' style='width:80%; margin-left:10%'>
-<table>
+<table class="yolo" onKeyPress="javascript:check">
+
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná známka</th></tr></thead>
     {form formHromadnaZnamka}
        <tr style='background:#F8FF8E'><th style='font-size:16px; text-align: center'>Žák</th><th style='font-size:16px; text-align: center'>Známka</th></tr>
@@ -10,7 +11,7 @@
           
             
             {if $sirka==FALSE}
-            <td tabindex='{$pom_cislo}'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></td></tr>  
+            <td tabindex='{$pom_cislo}'>  <input style='height:25px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></td></tr>  
         {/if}
         
        {if $sirka!=FALSE}
@@ -34,5 +35,8 @@
     </tr>
     {/form}
 </table>   
+<script>
+    
+</script>
    </div> 
     
