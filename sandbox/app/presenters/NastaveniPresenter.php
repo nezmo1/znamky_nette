@@ -278,7 +278,7 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
                 
                 $ucitel_pom=array();
                 foreach ($ucitele as $ucitel) {  
-                 $ucitel_pom+= array (''.$ucitel->username.''  => ''.$ucitel->jmeno.' '.$ucitel->prijmeni.'',); 
+                 $ucitel_pom+= array (''.$ucitel->id_users.''  => ''.$ucitel->jmeno.' '.$ucitel->prijmeni.'',); 
                 } 
       
                 $form->setDefaults(array(
@@ -333,7 +333,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        else {
        $this->database->query('UPDATE nastaveni_global SET parametr_2= ?',$values->reditel,' WHERE parametr_1="reditel_skoly"');   
           }
-       $this->database->query('UPDATE users SET priorita="3" WHERE username= ?',$values->reditel);   
+       $this->database->query('UPDATE users SET priorita="3" WHERE id_users= ?',$values->reditel);   
           
           
        if($existence_zastupce==FALSE){
@@ -342,7 +342,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        else {
        $this->database->query('UPDATE nastaveni_global SET parametr_2= ?',$values->zastupce,'WHERE parametr_1="zastupce"');   
           }
-       $this->database->query('UPDATE users SET priorita="3" WHERE username= ?',$values->zastupce);    
+       $this->database->query('UPDATE users SET priorita="3" WHERE id_users= ?',$values->zastupce);    
           
        if($existence_ict==FALSE){
            $this->database->query('INSERT INTO nastaveni_global SET parametr_1="ict_spravce", parametr_2= ?',$values->ict_spravce);   
@@ -350,7 +350,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        else {
        $this->database->query('UPDATE nastaveni_global SET parametr_2= ?',$values->ict_spravce,'WHERE parametr_1="ict_spravce"');   
           }
-       $this->database->query('UPDATE users SET priorita="3" WHERE username= ?',$values->ict_spravce);    
+       $this->database->query('UPDATE users SET priorita="3" WHERE id_users= ?',$values->ict_spravce);    
           
         // Název školy, stránky školy
         $existence_nazvu=  $this->database->table('nastaveni_global')->where('parametr_1','nazev_skoly')->fetch(); 

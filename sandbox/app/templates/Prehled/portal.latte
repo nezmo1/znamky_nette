@@ -1,0 +1,6 @@
+{block content}
+<h1 n:block="title">Přehled školy</h1>
+{if $reditel!=FALSE or $user->isInRole('4')}<a href="{link 'Prehled:UciteleZnamky'}">{/if}
+<img src="{$basePath}/images/notes_ucitele_prehled.png" alt="prehled_znamek">
+{if $reditel!=FALSE or $user->isInRole('4')}</a>{/if}
+

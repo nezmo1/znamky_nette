@@ -87,7 +87,8 @@ class Menu extends Nette\Application\UI\PresenterComponent
          $url = $this->presenter->link('Nastaveni:globalninastaveni');
         echo '<li class="menu_right"><a href="'.$url.'">Nastavení systému</a>
               </li>';    
-           echo '<li class="menu_right"><a href="http://centrum.cz">Přehled školy</a>
+        $url = $this->presenter->link('Prehled:portal');
+           echo '<li class="menu_right"><a href="'.$url.'">Přehled školy</a>
               </li>';  
       echo   '<li><a href="#" class="drop">Nastavení školy</a>
     
