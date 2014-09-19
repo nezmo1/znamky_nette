@@ -307,14 +307,14 @@ public function rendervygenFormNovaZnamka()
        $get=$this->request->getParameters();
         $casti = explode("_", $get['predmet']);
                if($casti[0]=="s"){
-                   $this->template->vyber_zaku=  $this->database->query('SELECT zak,u.jmeno as `jmeno`,u.prijmeni `prijmeni` FROM clenove_skupiny INNER JOIN users as `u` on zak=u.id_users WHERE id_skupiny= ?',$casti[1])->fetchAll();
+                   $this->template->vyber_zaku=  $this->database->query('SELECT zak,u.jmeno as `jmeno`,u.prijmeni `prijmeni` FROM clenove_skupiny INNER JOIN users as `u` on zak=u.id_users WHERE id_skupiny= ?',$casti[1], 'ORDER BY prijmeni,jmeno')->fetchAll();
                  
                }
                
                else{
               $this->template->vyber_zaku=  $this->database->query('SELECT u.id_users as `zak`, u.jmeno as `jmeno`,u.prijmeni as `prijmeni`  FROM `ucitele_uvazek` 
 INNER JOIN users as `u` on ucitele_uvazek.trida=u.trida
-WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' and u.trida= ?',$get['trida'])->fetchAll();
+WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' and u.trida= ?',$get['trida'],' ORDER BY prijmeni,jmeno')->fetchAll();
                    
                }
         

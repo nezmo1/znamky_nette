@@ -37,4 +37,6 @@
 .heslo{
     background: url('images/key.png') no-repeat 4px;
 }
-
+.clear{
+    background: url('images/edit-clear.png') no-repeat 4px;
+}

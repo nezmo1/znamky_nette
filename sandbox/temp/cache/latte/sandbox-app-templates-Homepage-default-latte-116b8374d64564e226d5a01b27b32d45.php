@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3067003874', 'html')
+list($_b, $_g, $_l) = $template->initialize('3586808009', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbf5892163f5_content')) { function _lbf5892163f5_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb3c78e25a5b_content')) { function _lb3c78e25a5b_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -54,7 +54,7 @@ $(function () {
             },
             series: [{
                 name: 'Postup',
-                data: [80, 75, 80, 80, 110]
+                data: [85, 85, 85, 85, 110]
             }]
         });
     });
@@ -89,7 +89,7 @@ $(function () {
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lb07aa9b9cee_scripts')) { function _lb07aa9b9cee_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb4ec8bef7e0_scripts')) { function _lb4ec8bef7e0_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Latte\Macros\BlockMacros::callBlockParent($_b, 'scripts', get_defined_vars()) ?>
 <script src="http://jush.sourceforge.net/jush.js"></script>
 
@@ -102,7 +102,7 @@ if (!function_exists($_b->blocks['scripts'][] = '_lb07aa9b9cee_scripts')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lb0449c58f51_head')) { function _lb0449c58f51_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb890ddb9689_head')) { function _lb890ddb9689_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 

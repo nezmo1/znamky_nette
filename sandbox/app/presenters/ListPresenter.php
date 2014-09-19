@@ -64,7 +64,20 @@ WHERE users.trida !=42
         */
  
 }	
+   
+	public function renderSkupiny()
+{
+            $user =  $this->getUser();
+    if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
+             $this->redirect('Pristup:pristup');
+       }
+       $this->backlink = $this->storeRequest();
+      
         
+ 
+}	
+
+
  
         
 }

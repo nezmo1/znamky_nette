@@ -6,10 +6,12 @@
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/menu.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekzak.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/@layout.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Seznam/zak.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekreditel.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Homepage/default.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Prehled/portal.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Znamka/vygenFormNovaZnamka.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/PrehledPresenter.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Prehled/uciteleZnamky.latte</file>
         </group>

@@ -52,25 +52,33 @@ class Menu extends Nette\Application\UI\PresenterComponent
         if(($user->isInRole('4')) or ($user->isInRole('3')) or ($user->isInRole('2'))){
            echo  '<li><a href="#" class="drop">Známky</a>
     
-		<div class="dropdown_1column align_right">
+		<div class="dropdown_2columns" style="width:400px">
         
-                <div class="col_1">
+                <div class="col_1" style="width:180px">
                 
-                    <ul class="simple">';
+                    <ul>';
+           echo "<h3>Známky</h3>";
            $url = $this->presenter->link('Znamka:novaznamka?tridac=n');
-           echo             '<li><a href="'.$url.'">Nová známka</a></li>';
-           echo             '<li><a href="'.$url.'">Hromadné přidání známek</a></li>';
+           echo             '<li style="width:180px"><a href="'.$url.'">Nová známka</a></li>';
+           echo             '<li style="width:180px"><a href="'.$url.'">Hromadné přidání známek</a></li>';
            
             $url = $this->presenter->link('Seznam:ucitel');
-           echo             '<li><a href="'.$url.'">Seznam známek</a></li>';
+           echo             '<li style="width:180px"><a href="'.$url.'">Seznam známek</a></li>';
            
-           echo             '<li><a href="#">Nová čtvrtletní klasifikace</a></li>
-                        <li><a href="#">Hromadné přidání čtvrtletní klasifikace</a></li>
-                        <li><a href="#">Seznam Čtvrtletní klasifikace</a></li>
+           echo             '
                    
                     </ul>   
                      
                 </div>
+               <div class="col_1" style="width:180px">
+               <ul >
+               <h3>Čtvrtletní klasifikace</h3>
+               <li style="width:180px"><a href="#">Nová čtvrtletní klasifikace</a></li>
+                        <li style="width:180px"><a href="#">Hromadné přidání čtvrtletní klasifikace</a></li>
+                        <li style="width:180px"><a href="#">Seznam čtvrtletní klasifikace</a></li>
+     </ul>
+               </div>
+
                 
 		</div>
         
@@ -131,10 +139,9 @@ class Menu extends Nette\Application\UI\PresenterComponent
                 <ul>';
         $url = $this->presenter->link('Novy:skupina');
               echo      '<li><a href="'.$url.'">Nová skupina</a></li>';
-          
-              echo     '<li><a href="#">Seznam skupin</a></li>';
-         $url = $this->presenter->link('Skupiny:seznamskupindef');     
-              echo      '<li><a href="'.$url.'">Žáci ve skupině</a></li>';
+           $url = $this->presenter->link('Skupiny:seznamskupindef'); 
+              echo     '<li><a href="'.$url.'">Seznam skupin</a></li>';
+         
                     
               echo '</ul>   
                  

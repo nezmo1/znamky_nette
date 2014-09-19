@@ -2,7 +2,8 @@
 
 namespace App\Presenters;
 
-use Nette;
+use Nette,
+	App\Model;
 
 /* SELECT u.username, jmeno, prijmeni, u.trida FROM `users` AS `u` 
 INNER JOIN skupina as `s` on u.trida = s.trida 
@@ -155,7 +156,18 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
            
        }     
         
-       
+          protected function createComponentSeznamSkupinGrid()
+{ 
+              $get=$this->request->getParameters();
+     if(isset($get['backlink'])){
+     $odkaz =  $this->presenter->link('Skupiny:skupinadef?backlink=');  
+     } 
+     else{
+         $odkaz =  $this->presenter->link('Skupiny:skupinadef');
+     }
+    
+    return new Model\SeznamSkupin($this->database->table('skupina'), $this->database, $odkaz);
+}
        
 
     public function renderSeznamskupindef()
@@ -164,7 +176,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
-        $this->template->skupiny = $this->database->table('skupina');
+      
+       
+       
     }
     
       public function renderSkupinadef($skupinaId)

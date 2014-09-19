@@ -18,6 +18,7 @@ class SeznamZnamekUcitel extends Grid{
     public $zak_pom;
     public $ucitel;
     public $datum;
+    public $trida;
     public function __construct($znamky, \Nette\Database\Context $database, $ucitel)
     {
         parent::__construct();
@@ -33,7 +34,13 @@ class SeznamZnamekUcitel extends Grid{
           $predmety=  $this->database->query('SELECT DISTINCT predmet, p.nazev AS `nazev` FROM znamky INNER JOIN predmet as `p` on predmet=p.id_predmetu where ucitel= ?',$this->ucitel->id,' ORDER BY nazev');
           $zaci=  $this->database->query('SELECT DISTINCT zak,u.jmeno AS `jmeno`, u.prijmeni AS `prijmeni` FROM znamky INNER JOIN users AS `u` ON zak=u.id_users WHERE ucitel= ?',$this->ucitel->id,' ORDER BY prijmeni');      
           $data= $this->database->query('SELECT DISTINCT datum, DATE_FORMAT(datum,"%d-%m-%Y") as `data` FROM znamky WHERE ucitel= ?',$this->ucitel->id,' ORDER BY datum');  
-              $this->predmet_pom=array();
+          $tridy=  $this->database->query('SELECT DISTINCT id_users, t.jmeno_tridy AS `trida` FROM users INNER JOIN trida AS `t` on trida=id_tridy WHERE trida !=42 and priorita !=4 GROUP BY id_users');    
+                $this->trida=array();
+                foreach ($tridy as $trida) {  
+                 $this->trida+= array (''.$trida->id_users.''  => ''.$trida->trida.'',); 
+                }
+                
+                $this->predmet_pom=array();
                 foreach ($predmety as $predmet) {  
                  $this->predmet_pom+= array (''.$predmet->predmet.''  => ''.$predmet->nazev.'',); 
                 } 
@@ -50,7 +57,7 @@ class SeznamZnamekUcitel extends Grid{
       
         //Vytvoříme si zdroj dat pro Grid
         //Při výběru dat vždy vybereme id
-        $source = new \NiftyGrid\DataSource\NDataSource($this->znamky->select('id_znamky, znamka, popis, datum, vaha, ucitel, zak, predmet'));
+        $source = new \NiftyGrid\DataSource\NDataSource($this->znamky->select('id_znamky, znamka, zak AS `trida`, popis, datum, vaha, ucitel, zak, predmet'));
      
 //Předáme zdroj
         
@@ -66,11 +73,11 @@ class SeznamZnamekUcitel extends Grid{
                    });    
                
                
-       $this->addColumn('znamka', 'Známka', '200px')
+       $this->addColumn('znamka', 'Známka', '180px')
             ->setTextFilter()
                
                ->setSortable(FALSE);
-       $this->addColumn('popis', 'Popis', '200px')
+       $this->addColumn('popis', 'Popis', '180px')
                ->setTextFilter()
                ->setSortable(FALSE); 
              
@@ -101,7 +108,18 @@ class SeznamZnamekUcitel extends Grid{
                    
                    return $self->predmet_pom[$jmeno_predmetu] ;})
                    ->setSelectFilter($this->predmet_pom);
+                $this->addColumn('trida', 'Třída')
+                ->setRenderer(function($row) use($self){
+                   
                  
+                   $zak_v_tride=$row['zak'];
+                   
+                   return $self->trida[$zak_v_tride] ;})
+                 
+            ->setSortable(FALSE);
+            
+                   
+                   
            $this->addColumn('datum', 'Datum', '100px')
                  ->setSelectFilter($this->datum)  
                  ->setRenderer(function($row){return date('j. n. Y', strtotime($row['datum']));});  

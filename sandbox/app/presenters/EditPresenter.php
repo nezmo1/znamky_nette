@@ -310,52 +310,27 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
-       protected function createComponentNovySkupina()
+       protected function createComponentEditSkupina()
 	{
 		$form = new Nette\Application\UI\Form;
+                
+                 $get=$this->request->getParameters();
+                 $nazev_skupiny= $this->database->query('SELECT * FROM skupina WHERE id_skupiny= ?',$get['id_skupiny'])->fetch();
+                 
 		$form->addText('nazev_skupiny', 'Název skupiny')
                         ->setAttribute('placeholder', 'Název skupiny')
 			->setRequired('Zadejte název skupiny')
                         ->addRule($form::MIN_LENGTH, 'Název skupiny musí mít minimálně %d znaků ', 6)
-                        ->addRule($form::MAX_LENGTH, 'Název skupiny musí mít maximálně %d znaků', 25);
+                        ->addRule($form::MAX_LENGTH, 'Název skupiny musí mít maximálně %d znaků', 25)
+                        ->setDefaultValue($nazev_skupiny->nazev_skupiny);
                 
 		
-                $ucitele=  $this->database->table('users')->where('trida','ucitel')->where('priorita !=','4');
-                
-                $ucitel_pom=array();
-                foreach ($ucitele as $ucitel) {  
-                 $ucitel_pom+= array (''.$ucitel->username.''  => ''.$ucitel->jmeno.' '.$ucitel->prijmeni.'',); 
-                } 
-      
-                
-                $form->addSelect('ucitel', 'Učitel:', $ucitel_pom);
-                
-                
-                $tridy=  $this->database->table('trida')->where('zkratka_tridy !=','ucitel')->order('zkratka_tridy');
-                
-                $trida_pom=array();
-                foreach ($tridy as $trida) {  
-                 $trida_pom+= array (''.$trida->zkratka_tridy.''  => ''.$trida->jmeno_tridy.'',); 
-                } 
-      
-                
-                $form->addSelect('trida', 'Třída:', $trida_pom);
-                
-                
-                $predmety=  $this->database->table('predmet')->order('nazev');
-                
-                $predmet_pom=array();
-                foreach ($predmety as $predmet) {  
-                 $predmet_pom+= array (''.$predmet->zkratka_predmetu.''  => ''.$predmet->nazev.'',); 
-                } 
-      
-                
-                $form->addSelect('predmet', 'Předmět:', $predmet_pom);
-                     
-		$form->addSubmit('send', 'Vytvořit skupinu');
+                 $form->addHidden('id_skupiny')
+                      ->setValue($get['id_skupiny']); 
+		$form->addSubmit('send', 'Editovat skupinu');
 
 		// call method signInFormSucceeded() on success
-		$form->onSuccess[] = $this->novySkupina;
+		$form->onSuccess[] = $this->editSkupina;
                 
                 
                 $renderer = $form->getRenderer();
@@ -374,16 +349,16 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 	} 
         
         
-    function novySkupina($form, $values){
+    function editSkupina($form, $values){
             
             
                 
                     
-                    if($this->database->query('INSERT INTO skupina SET nazev_skupiny= ?',$values->nazev_skupiny,', ucitel= ?',$values->ucitel,', trida= ?',$values->trida,', predmet= ?',$values->predmet,'')){
-                     $flashMessage = $this->flashMessage('Skupina byla úspěšně přidána do databáze.');    
+                    if($this->database->query('UPDATE skupina SET nazev_skupiny= ?',$values->nazev_skupiny,' WHERE id_skupiny= ?', $values->id_skupiny)){
+                     $flashMessage = $this->flashMessage('Skupina byla úspěšně editována.');    
                     }
                     else {
-                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, skupina nebyla přidána!');    
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, skupina nebyla editována!');    
                     }
                       
                   return $flashMessage;       
@@ -605,7 +580,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
  
 }
 
-		public function renderSkupina()
+		public function renderSkupina($id_skupiny)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
