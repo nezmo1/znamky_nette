@@ -94,6 +94,14 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
         return $control;
     }
+    
+    protected function createComponentViteze()
+    {
+        $control = new \Viteze($this->database);
+
+        return $control;
+    }
+    
    protected function createComponentInformace()
     {
         $control = new \Informace($this->database);

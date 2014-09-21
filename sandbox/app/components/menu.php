@@ -50,7 +50,8 @@ class Menu extends Nette\Application\UI\PresenterComponent
         
         
         if(($user->isInRole('4')) or ($user->isInRole('3')) or ($user->isInRole('2'))){
-           echo  '<li><a href="#" class="drop">Známky</a>
+           $url = $this->presenter->link('Znamka:novaznamka?tridac=n');
+            echo  '<li><a href="'.$url.'" class="drop">Známky</a>
     
 		<div class="dropdown_2columns" style="width:400px">
         

@@ -3,17 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/menu.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekzak.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/@layout.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/SkupinyPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/menu.php</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/www/css/example.css</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Seznam/zak.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekreditel.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/List/zaci.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Homepage/default.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Users/list.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Novy/ucitel.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/www/css/styl1.css</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/ListPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekucitel.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/BasePresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekreditel.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/EditPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Novy/zak.latte</file>
             <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Prehled/portal.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Znamka/vygenFormNovaZnamka.latte</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/PrehledPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Prehled/uciteleZnamky.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Skupiny/seznamskupindef.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/viteze.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Edit/skupina.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamskupin.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Novy/predmet.latte</file>
         </group>
     </open-files>
 </project-private>

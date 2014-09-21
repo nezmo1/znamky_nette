@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Uvazek/seznamucitelu.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2585007483', 'html')
+list($_b, $_g, $_l) = $template->initialize('3552178692', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb6dc5e1809d_content')) { function _lb6dc5e1809d_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb23ed3a8010_content')) { function _lb23ed3a8010_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;$iterations = 0; foreach ($ucitele as $ucitel) { ?>
 <div class="post">
 <h2><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Uvazek:uciteluvazek", array($ucitel->id_users)), ENT_COMPAT) ?>
@@ -16,7 +16,9 @@ if (!function_exists($_b->blocks['content'][] = '_lb6dc5e1809d_content')) { func
 
   
 </div>
-<?php $iterations++; } 
+<?php $iterations++; } ?>
+<br>
+<?php $_l->tmp = $_control->getComponent("viteze"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render(2) ;
 }}
 
 //

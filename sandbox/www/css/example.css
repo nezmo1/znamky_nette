@@ -40,3 +40,10 @@
 .clear{
     background: url('images/edit-clear.png') no-repeat 4px;
 }
+.qmark{
+    background: url('viteze/qmark.png') no-repeat 0px;
+}
+.popis{
+    background: url('viteze/pergamen.png') no-repeat 0px;
+}
+
