@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Prehled/portal.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2311878565', 'html')
+list($_b, $_g, $_l) = $template->initialize('4516645513', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbf023d8620f_content')) { function _lbf023d8620f_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb9816b9b39c_content')) { function _lb9816b9b39c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars()) ; if ($reditel!=FALSE or $user->isInRole('4')) { ?>
 <a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link('Prehled:UciteleZnamky'), ENT_COMPAT) ?>
 "><?php } ?>
@@ -16,14 +16,16 @@ if (!function_exists($_b->blocks['content'][] = '_lbf023d8620f_content')) { func
 <img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/notes_ucitele_prehled.png" alt="prehled_znamek">
 <?php if ($reditel!=FALSE or $user->isInRole('4')) { ?></a><?php } ?>
 
+ 
 
-<?php
+<br>
+<?php $_l->tmp = $_control->getComponent("viteze"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render(8) ;
 }}
 
 //
 // block title
 //
-if (!function_exists($_b->blocks['title'][] = '_lbd7d6007be5_title')) { function _lbd7d6007be5_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['title'][] = '_lbbd9465400c_title')) { function _lbbd9465400c_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Přehled školy</h1>
 <?php
 }}

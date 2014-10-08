@@ -30,7 +30,7 @@ WHERE ucitel= ?', $ucitel,' ORDER by trida');
     
    
     $predmety_pom=array();
-     $predmety_pom+= array ('n'  => 'Vyberte předmět',); 
+     $predmety_pom+= array ('n'  => 'Vyberte třídu',); 
                 foreach ($predmety as $predmet) {  
                  $predmety_pom+= array (''.$predmet->trida.''  => ''.$predmet->jmeno_tridy.'',); 
                 } 

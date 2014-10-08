@@ -51,10 +51,36 @@ class Viteze extends Nette\Application\UI\PresenterComponent
         
         
         #5 - Nový předmět
-        $popis[5][1]=".";
+        $popis[5][1]="Zkratka předmětu se nejspíše shoduje s oficiální zkratkou předmětu.";
+        $popis[5][2]="Název předmětu představuje úplné znění předmětu.";
         
+        #6 - Nová třída
+        $popis[6][1]="Zkratka předmětu se nejspíše shoduje s oficiální zkratkou předmětu.";
+        $popis[6][2]="Název předmětu představuje úplné znění předmětu.";
         
-      if(rand(1,25)==25){
+        #7 - Nová skupina
+        $popis[7][1]="Název skupiny se objevuje při přidání známek jako samostatný předmět.";
+        
+         #8 - Přehled portál
+        $popis[8][1]="Pokud nemůžete kliknout na příslušnou položku, nemáte dostatečné oprávnění.";
+        $popis[8][2]="Přehled známek zobrazuje známky všech učitelů a jejich aktivitu.";
+        
+         #9 - Přehled seznam známek
+        $popis[9][1]="Pokud je datum poslední přidáné známky červeně, je datum starší než sedm dní.";
+        $popis[9][2]="Přehled známek zobrazuje známky všech učitelů a jejich aktivitu.";
+      
+         #10 - Seznam známek učitelé, žáci
+        $popis[10][1]="Filtrování textu - <b><i>text</i></b> - obsahuje <b><i>text</i></b>";
+        $popis[10][2]="Filtrování textu - <b><i>text%</i></b> - začíná na <b><i>text</i></b>";
+        $popis[10][3]="Filtrování textu - <b><i>%text</i></b> - končí na <b><i>text</i></b>";
+        
+        #11 - Nová známka
+        $popis[11][1]="Pokud nevidíte žádnou třídu nebo žáka, nemáte definován žádný předmět v úvazku.";
+        $popis[11][2]="Společně vidíte předmět i skupiny.";
+        $popis[11][3]="Popis je povinný.";
+        $popis[11][4]="Při kliknutí na datum se otevře kalendář.";
+       
+        if(rand(1,25)==25){
        $popis2=array();
        
        $popis2[1][1]="Když se poprvé zasměje dítě, narodí se víla._vila";

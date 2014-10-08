@@ -32,7 +32,7 @@ class SeznamZnamekReditel extends Grid{
     protected function configure($presenter)
     {
            $ucitele=  $this->database->query('SELECT id_users,jmeno,prijmeni, CONCAT(jmeno," ",prijmeni) AS `cele_jmeno` FROM users WHERE trida=42 and priorita !=4 ORDER By prijmeni,jmeno');      
-          $data= $this->database->query('SELECT ucitel, datum, DATE_FORMAT(datum,"%d-%m-%Y") as `data` FROM znamky GROUP BY ucitel  ORDER BY MAX(datum)');  
+          $data= $this->database->query('SELECT ucitel, MAX(datum) as `datum`, DATE_FORMAT(MAX(datum),"%d-%m-%Y") as `data` FROM znamky GROUP BY ucitel');  
            $pocet2= $this->database->query('SELECT ucitel, COUNT(znamka) AS `pocet_znamek` FROM znamky GROUP BY ucitel ORDER BY pocet_znamek DESC');  
               
                 $this->ucitel_pom=array();
