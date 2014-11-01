@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Seznam/ucitel.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4126163162', 'html')
+list($_b, $_g, $_l) = $template->initialize('8340917866', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbe5a32f5b00_content')) { function _lbe5a32f5b00_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb8520b1dd99_content')) { function _lb8520b1dd99_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
 
 
@@ -21,7 +21,7 @@ if (!function_exists($_b->blocks['content'][] = '_lbe5a32f5b00_content')) { func
 //
 // block title
 //
-if (!function_exists($_b->blocks['title'][] = '_lb517ae3bb6c_title')) { function _lb517ae3bb6c_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['title'][] = '_lb257d1c36a2_title')) { function _lb257d1c36a2_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Seznam známek</h1>
 <?php
 }}

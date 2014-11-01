@@ -1,0 +1,29 @@
+
+{block content}
+ 
+{if $uspech=="ano"}<h3>Známky byly úspěšně vloženy do databáze</h3>{/if}
+<div class='datagrid' style='width:100%;'>
+<table>
+    <thead><tr ><th colspan='2' style='font-size:20px; text-align: center'>Hromadné přidání čtvrtletní klasifikace</th></tr></thead>
+    {form novaZnamka}
+       <tbody> 
+           <tr class='alt' style='height:40px;'><td style="width:250px;"><label>Třída:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="trida" class='udaje' onchange="location.href='novaznamka?tridac=' + this.options[this.selectedIndex].value "></select></td></tr>    
+           {if $trida_p!='n'}
+             <tr><td><label>Předmět nebo skupina:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="predmet" class='udaje' ></select></td></tr>    
+              
+         
+               <tr><td><label>Čtvrtletí:</label></td><td><select style='height:40px;font-size:14px;background:#97C7F4;color:black' n:name="ctvrtleti" class='udaje' ></select></td></tr> 
+               
+                <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
+           {/if}
+           
+          
+       </tbody>  
+    {/form}
+</table>   
+   </div> 
+
+ <br>
+{control viteze, 11}
+   
+{/block}

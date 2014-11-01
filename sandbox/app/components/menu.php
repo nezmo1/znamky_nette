@@ -73,9 +73,10 @@ class Menu extends Nette\Application\UI\PresenterComponent
                 </div>
                <div class="col_1" style="width:180px">
                <ul >
-               <h3>Čtvrtletní klasifikace</h3>
-               <li style="width:180px"><a href="#">Nová čtvrtletní klasifikace</a></li>
-                        <li style="width:180px"><a href="#">Hromadné přidání čtvrtletní klasifikace</a></li>
+               <h3>Čtvrtletní klasifikace</h3>';
+               $url = $this->presenter->link('CvZnamka:novaznamka?tridac=n');
+             echo ' <li style="width:180px"><a href="'.$url.'">Nová čtvrtletní klasifikace</a></li>
+                        <li style="width:180px"><a href="'.$url.'">Hromadné přidání čtvrtletní klasifikace</a></li>
                         <li style="width:180px"><a href="#">Seznam čtvrtletní klasifikace</a></li>
      </ul>
                </div>

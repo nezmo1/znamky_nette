@@ -1,0 +1,42 @@
+{block content}
+
+<div class='datagrid' style='width:80%; margin-left:10%'>
+<table class="yolo" onKeyPress="javascript:check">
+
+    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná čtvrtletní klasifikace</th></tr></thead>
+    {form formHromadnaZnamka}
+       <tr style='background:#F8FF8E'><th style='font-size:16px; text-align: center'>Žák</th><th style='font-size:16px; text-align: center'>Známka</th></tr>
+        {foreach $vyber_zaku as $vyber_zak}
+        <tr {if $iterator->odd}class='alt'{/if}><td tabindex='100{$pom_cislo}' style='padding-left:20px;'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;background:#97C7F4;font-weight: bold' n:name="zak_{$pom_cislo}" class='udaje' ></td>
+          
+            
+            {if $sirka==FALSE}
+            <td tabindex='{$pom_cislo}'>  <input style='height:25px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></td></tr>  
+        {/if}
+        
+       {if $sirka!=FALSE}
+            <td tabindex='{$pom_cislo}'><textarea style='height:150px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></textarea></td></tr>  
+        {/if} 
+        
+        <input n:name='hzak_{$pom_cislo}' value='{$vyber_zak['zak']}'>
+        
+        <?php $pom_cislo=$pom_cislo+1 ?>
+        {/foreach}   
+        <input n:name='pocet_zaznamu' value='{$pom_cislo}'>
+      <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
+             
+    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+        {foreach $flashes as $flash}
+    <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně přidán do databáze.'} color:green {/if}'>{$flash->message}</div>
+{/foreach}
+        
+        </td>
+    
+    </tr>
+    {/form}
+</table>   
+<script>
+    
+</script>
+   </div> 
+    
