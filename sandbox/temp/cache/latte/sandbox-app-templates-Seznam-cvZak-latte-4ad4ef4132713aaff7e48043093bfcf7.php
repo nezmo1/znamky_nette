@@ -1,18 +1,18 @@
 <?php
-// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Seznam/zak.latte
+// source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Seznam/cvZak.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3565990756', 'html')
+list($_b, $_g, $_l) = $template->initialize('5591098162', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb47c3a14d90_content')) { function _lb47c3a14d90_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb13cf5535d6_content')) { function _lb13cf5535d6_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
 
 
-<?php $_l->tmp = $_control->getComponent("seznamZnamekZakGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
+<?php $_l->tmp = $_control->getComponent("seznamCvZnamekZakGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
 
   <br>
 <?php $_l->tmp = $_control->getComponent("viteze"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render(10) ;
@@ -21,7 +21,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb47c3a14d90_content')) { func
 //
 // block title
 //
-if (!function_exists($_b->blocks['title'][] = '_lbda337c3db1_title')) { function _lbda337c3db1_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['title'][] = '_lbedbf512b27_title')) { function _lbedbf512b27_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Seznam známek</h1>
 <?php
 }}

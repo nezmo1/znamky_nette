@@ -531,6 +531,63 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
+ // čtvrteltní klasifikace
+        
+        
+  protected function createComponentEditCvZnamka()
+	{
+           $get=$this->request->getParameters();
+        $existence=  $this->database->query('SELECT * FROM prum_znamky WHERE id_prum_znamky= ?',$get['id_znamky'])->fetch();   
+		$form = new Nette\Application\UI\Form;
+		$form->addText('ctvrtleti_1', '1. čtvrtletí')
+                        ->setAttribute('placeholder', 'Známka')
+                        ->setValue($existence['ctvrtleti_1']);
+			
+                $form->addText('ctvrtleti_2', 'Pololetí')
+                        ->setAttribute('placeholder', 'Známka')
+                        ->setValue($existence['ctvrtleti_2']);
+		  $form->addText('ctvrtleti_3', '3. čtvrtletí')
+                        ->setAttribute('placeholder', 'Známka')
+                        ->setValue($existence['ctvrtleti_3']);
+		  $form->addText('ctvrtleti_4', 'Konec roku')
+                        ->setAttribute('placeholder', 'Známka')
+                        ->setValue($existence['ctvrtleti_4']);
+			
+          
+      
+                $form->addHidden('id_znamky')
+                      ->setValue($get['id_znamky']);  
+               
+                $form->addSubmit('send', 'Editovat klasifikaci');
+
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->editCvZnamkaS;
+                
+                
+                $renderer = $form->getRenderer();
+$renderer->wrappers['controls']['container'] = NULL;
+
+$renderer->wrappers['pair']['container'] = "tr";
+$renderer->wrappers['pair']['.odd'] = 'alt';
+$renderer->wrappers['label']['container'] = 'td';
+
+$renderer->wrappers['control']['.text'] = 'udaje';
+$renderer->wrappers['control']['.password'] = 'udaje';
+$renderer->wrappers['control']['.submit'] = 'login-prehled';
+
+
+		return $form;
+	}
+   
+        
+  public function editCvZnamkaS($form, $values)
+	{
+      $ucitel=$this->getUser();
+      $this->database->query('UPDATE prum_znamky SET ctvrtleti_1= ?',$values['ctvrtleti_1'],', ctvrtleti_2= ?',$values['ctvrtleti_2'],',ctvrtleti_3= ?',$values['ctvrtleti_3'],', ctvrtleti_4= ?',$values['ctvrtleti_4'],' WHERE id_prum_znamky=?',$values['id_znamky']);  
+               		
+	}        
+        
+        
 
 		public function renderUcitel($id_users)
 {
@@ -552,6 +609,15 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 
 	public function renderZnamka($id_znamky)
+{
+            $user =  $this->getUser();
+    if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {
+             $this->redirect('Pristup:pristup');
+       }
+ 
+}
+
+	public function renderCvZnamka($id_znamky)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {

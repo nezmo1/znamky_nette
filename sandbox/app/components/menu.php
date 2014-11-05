@@ -42,7 +42,8 @@ class Menu extends Nette\Application\UI\PresenterComponent
           $url = $this->presenter->link('Seznam:zak');    
         echo '<li><a href="'.$url.'">Seznam známek</a>';
         echo '      </li>';
-        echo '<li><a href="#">Seznam čtvrtletní klasifikace</a>
+        $url = $this->presenter->link('Seznam:cvZak');
+        echo '<li><a href="'.$url.'">Seznam čtvrtletní klasifikace</a>
               </li>';   
         }
            
@@ -76,8 +77,9 @@ class Menu extends Nette\Application\UI\PresenterComponent
                <h3>Čtvrtletní klasifikace</h3>';
                $url = $this->presenter->link('CvZnamka:novaznamka?tridac=n');
              echo ' <li style="width:180px"><a href="'.$url.'">Nová čtvrtletní klasifikace</a></li>
-                        <li style="width:180px"><a href="'.$url.'">Hromadné přidání čtvrtletní klasifikace</a></li>
-                        <li style="width:180px"><a href="#">Seznam čtvrtletní klasifikace</a></li>
+                        <li style="width:180px"><a href="'.$url.'">Hromadné přidání čtvrtletní klasifikace</a></li>';
+            $url = $this->presenter->link('Seznam:cvUcitel');
+             echo  '<li style="width:180px"><a href="'.$url.'">Seznam čtvrtletní klasifikace</a></li>
      </ul>
                </div>
 
