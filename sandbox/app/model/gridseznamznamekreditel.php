@@ -19,14 +19,15 @@ class SeznamZnamekReditel extends Grid{
     public $ucitel;
     public $datum;
     public $poradi;
+    public $odkaz;
     public $pocet;
-    public function __construct($znamky, \Nette\Database\Context $database)
+    public function __construct($znamky, \Nette\Database\Context $database, $odkaz)
     {
         parent::__construct();
         $this->znamky = $znamky;
       $this->database = $database;
      $this->poradi = 0;
-    
+    $this->odkaz = $odkaz; 
     }
 
     protected function configure($presenter)
@@ -71,8 +72,11 @@ class SeznamZnamekReditel extends Grid{
                    $self->poradi++;
                    return \Nette\Utils\Html::el('font')->setText($self->poradi.'.')->addAttributes(array('style' => 'font-weight:bold;'));
                  });  
-         $this->addColumn('cele_jmeno', 'Učitel', '300px');
-           
+         $this->addColumn('cele_jmeno', 'Učitel', '300px')
+            ->setRenderer(function($row) use($self){
+                  
+                 return \Nette\Utils\Html::el('a')->href($self->odkaz, array('UcitelId'=>$row['id_users'],))->setText($row['cele_jmeno'])->addAttributes(array('style' => 'font-weight:normal;color:black'));
+               });
             
          $this->addColumn('prijmeni', 'Počet známek', '50px')
              ->setRenderer(function($row) use($self){

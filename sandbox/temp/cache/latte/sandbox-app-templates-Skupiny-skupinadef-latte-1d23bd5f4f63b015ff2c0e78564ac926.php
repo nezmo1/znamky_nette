@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Skupiny/skupinadef.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('0873899637', 'html')
+list($_b, $_g, $_l) = $template->initialize('8950553896', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbb69bdca868_content')) { function _lbb69bdca868_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb577d79106a_content')) { function _lb577d79106a_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h3><?php echo Latte\Runtime\Filters::escapeHtml($skupina->nazev_skupiny, ENT_NOQUOTES) ?></h3>
 
 <div style="float:left"><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Skupiny:seznamskupindef"), ENT_COMPAT) ?>

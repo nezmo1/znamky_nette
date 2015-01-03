@@ -26,7 +26,16 @@ class PrehledPresenter extends BasePresenter
        protected function createComponentSeznamZnamekReditelGrid()
 { 
     $user =  $this->getUser();
-    return new Model\SeznamZnamekReditel($this->database->table('users')->where('trida','42')->where('priorita !=','4'), $this->database);
+    
+     $get=$this->request->getParameters();
+     if(isset($get['backlink'])){
+     $odkaz =  $this->presenter->link('Prehled:ucitelSeznam?backlink=');  
+     } 
+     else{
+         $odkaz =  $this->presenter->link('Prehled:ucitelSeznam');
+     }
+    
+    return new Model\SeznamZnamekReditel($this->database->table('users')->where('trida','42')->where('priorita !=','4'), $this->database, $odkaz);
 }
 
     public function renderPortal()
@@ -46,6 +55,35 @@ class PrehledPresenter extends BasePresenter
              $this->redirect('Pristup:pristup');
        }
        
+    }
+    
+    
+    
+    
+          protected function createComponentSeznamZnamekDetailReditelGrid($UcitelId)
+{ 
+         
+           $get=$this->request->getParameters();
+     if(isset($get['UcitelId'])){
+     $user =  $get['UcitelId'];  
+     } 
+     
+    
+    return new Model\SeznamZnamekDetailReditel($this->database->table('znamky')->where('ucitel',$user), $this->database, $user);
+}
+
+    
+     public function renderUcitelSeznam($UcitelId)
+    {
+                 $user =  $this->getUser();
+             $reditel=  $this->database->table('nastaveni_global')->where('parametr_1','reditel_skoly')->where('parametr_2',$user->id)->fetch();  
+    if ((!$user->isInRole('4')) and $reditel==FALSE ) {
+             $this->redirect('Pristup:pristup');
+       }
+       
+       $this->template->jmeno_ucitele =  $this->database->query('SELECT Concat(jmeno," ",prijmeni) as cele_jmeno FROM users WHERE id_users = ?', $UcitelId)->fetch(); 
+       
+        
     }
     
     

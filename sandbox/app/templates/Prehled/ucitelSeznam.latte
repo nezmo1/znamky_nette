@@ -1,0 +1,9 @@
+{block content}
+<h1 n:block="title">Seznam známek</h1>
+<h3>{$jmeno_ucitele->cele_jmeno}</h3>
+<div style="float:left"><a href="{link Prehled:uciteleZnamky}"><img src="{$basePath}/images/go_back.png" width="7%" alt="Zpět na seznam" title="Zpět na seznam"></a></div>
+
+{control seznamZnamekDetailReditelGrid}
+
+ <br>
+{control viteze, 10}

@@ -2,19 +2,27 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Prehled/portal.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4516645513', 'html')
+list($_b, $_g, $_l) = $template->initialize('0114674561', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb9816b9b39c_content')) { function _lb9816b9b39c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbb4b35e7077_content')) { function _lbb4b35e7077_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars()) ; if ($reditel!=FALSE or $user->isInRole('4')) { ?>
 <a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link('Prehled:UciteleZnamky'), ENT_COMPAT) ?>
 "><?php } ?>
 
-<img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/notes_ucitele_prehled.png" alt="prehled_znamek">
-<?php if ($reditel!=FALSE or $user->isInRole('4')) { ?></a><?php } ?>
+<img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
+/images/notes_ucitele_prehled.png" alt="prehled_znamek"><?php if ($reditel!=FALSE or $user->isInRole('4')) { ?>
+</a><?php } ?>
+
+<?php if ($reditel!=FALSE or $user->isInRole('4')) { ?><a href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link('Prehled:UciteleKlasifikace'), ENT_COMPAT) ?>
+"><?php } ?>
+
+<img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
+/images/notes_ucitele_klasifikace.png" alt="prehled_znamek"><?php if ($reditel!=FALSE or $user->isInRole('4')) { ?>
+</a><?php } ?>
 
  
 
@@ -25,7 +33,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb9816b9b39c_content')) { func
 //
 // block title
 //
-if (!function_exists($_b->blocks['title'][] = '_lbbd9465400c_title')) { function _lbbd9465400c_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['title'][] = '_lb244cbef0bd_title')) { function _lb244cbef0bd_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Přehled školy</h1>
 <?php
 }}
