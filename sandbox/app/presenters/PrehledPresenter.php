@@ -88,6 +88,66 @@ class PrehledPresenter extends BasePresenter
     
     
     
+           protected function createComponentSeznamCvZnamekReditelGrid()
+{ 
+    $user =  $this->getUser();
+    
+     $get=$this->request->getParameters();
+     if(isset($get['backlink'])){
+     $odkaz =  $this->presenter->link('Prehled:ucitelCvSeznam?backlink=');  
+     } 
+     else{
+         $odkaz =  $this->presenter->link('Prehled:ucitelCvSeznam');
+     }
+    
+    return new Model\SeznamCvZnamekReditel($this->database->table('users')->where('trida','42')->where('priorita !=','4'), $this->database, $odkaz);
+}
+    
+    
+      public function renderUciteleKlasifikace()
+    {
+                 $user =  $this->getUser();
+             $reditel=  $this->database->table('nastaveni_global')->where('parametr_1','reditel_skoly')->where('parametr_2',$user->id)->fetch();  
+    if ((!$user->isInRole('4')) and $reditel==FALSE ) {
+             $this->redirect('Pristup:pristup');
+       }
+       
+    }
+    
+    
+    
+    
+            protected function createComponentSeznamCvZnamekDetailReditelGrid($UcitelId)
+{ 
+         
+           $get=$this->request->getParameters();
+     if(isset($get['UcitelId'])){
+     $user =  $get['UcitelId'];  
+     } 
+     
+    
+    return new Model\SeznamCvZnamekDetailReditel($this->database->table('prum_znamky')->where('ucitel',$user), $this->database, $user);
+}
+    
+    
+      public function renderUcitelCvSeznam($UcitelId)
+    {
+                 $user =  $this->getUser();
+             $reditel=  $this->database->table('nastaveni_global')->where('parametr_1','reditel_skoly')->where('parametr_2',$user->id)->fetch();  
+    if ((!$user->isInRole('4')) and $reditel==FALSE ) {
+             $this->redirect('Pristup:pristup');
+       }
+       
+       $this->template->jmeno_ucitele =  $this->database->query('SELECT Concat(jmeno," ",prijmeni) as cele_jmeno FROM users WHERE id_users = ?', $UcitelId)->fetch(); 
+       
+        
+    }
+    
+    
+    
+    
+    
+    
       public function renderSkupinadef($skupinaId)
     {
           $this->backlink = $this->storeRequest();
