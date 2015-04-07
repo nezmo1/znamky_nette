@@ -69,15 +69,14 @@ class SeznamCvZnamekUcitel extends Grid{
                    });    
                
                
-       $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '120px')
-            ->setTextFilter()
-            ->setRenderer(function($row){
+       $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '120px') // vytvoření sloupce 1. čtvrtletí
+            ->setTextFilter() // nastavení filtru
+            ->setRenderer(function($row){ // funkce pro vykreslení údajů
           
-             return $row['ctvrtleti_1'] == NULL ? "-" : $row['ctvrtleti_1'];    
-        }) 
+             return $row['ctvrtleti_1'] == NULL ? "-" : $row['ctvrtleti_1']; }) // Kontrola hodnoty NULL a nahrazení pomlčkou 
             ->setCellRenderer(function($row){return $row['ctvrtleti_1'] == $row['ctvrtleti_1'] ? "text-align:center" : NULL;})
                
-               ->setSortable(FALSE);
+            ->setSortable(FALSE);
        $this->addColumn('ctvrtleti_2', 'Pololetí', '120px')
             ->setTextFilter()
             ->setRenderer(function($row){

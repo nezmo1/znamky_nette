@@ -5,9 +5,9 @@ namespace App\Presenters;
 use Nette,
 	App\Model;
 
-/* SELECT u.username, jmeno, prijmeni, u.trida FROM `users` AS `u` 
-INNER JOIN skupina as `s` on u.trida = s.trida 
-LEFT JOIN clenove_skupiny as `zs` on s.id_skupiny=zs.id_skupiny*/
+/**
+ * Presenter pro správu přehledu ředitele školy
+ */
 class PrehledPresenter extends BasePresenter
 {
     /** @var Nette\Database\Context */
@@ -16,13 +16,17 @@ class PrehledPresenter extends BasePresenter
      /** @persistent */
     public $backlink = '';
     
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
         $this->database = $database;
         
     }
-   
+/**
+ * Funkce vykreslení seznamu známek všech učitelů v NiftyGrid
+ */   
        protected function createComponentSeznamZnamekReditelGrid()
 { 
     $user =  $this->getUser();
@@ -37,7 +41,9 @@ class PrehledPresenter extends BasePresenter
     
     return new Model\SeznamZnamekReditel($this->database->table('users')->where('trida','42')->where('priorita !=','4'), $this->database, $odkaz);
 }
-
+/**
+ * Funkce pro vykreslení stránky Portal
+ */   
     public function renderPortal()
     {
                  $user =  $this->getUser();
@@ -46,7 +52,10 @@ class PrehledPresenter extends BasePresenter
        }
         $this->template->reditel = $this->database->table('nastaveni_global')->where('parametr_1','reditel_skoly')->where('parametr_2',$user->id)->fetch();
     }
-    
+ 
+ /**
+ * Funkce pro vykreslení stránky UciteleZnamky
+ */   
     public function renderUciteleZnamky()
     {
                  $user =  $this->getUser();
@@ -59,7 +68,9 @@ class PrehledPresenter extends BasePresenter
     
     
     
-    
+ /**
+ * Funkce vykreslení seznamu známek daného učitele v NiftyGrid
+ */      
           protected function createComponentSeznamZnamekDetailReditelGrid($UcitelId)
 { 
          
@@ -72,7 +83,9 @@ class PrehledPresenter extends BasePresenter
     return new Model\SeznamZnamekDetailReditel($this->database->table('znamky')->where('ucitel',$user), $this->database, $user);
 }
 
-    
+  /**
+ * Funkce pro vykreslení stránky UcitelSeznam
+ */     
      public function renderUcitelSeznam($UcitelId)
     {
                  $user =  $this->getUser();
@@ -87,7 +100,9 @@ class PrehledPresenter extends BasePresenter
     }
     
     
-    
+  /**
+ * Funkce vykreslení seznamu čtvrtletní klasifikace všech učitelů v NiftyGrid
+ */     
            protected function createComponentSeznamCvZnamekReditelGrid()
 { 
     $user =  $this->getUser();
@@ -103,7 +118,9 @@ class PrehledPresenter extends BasePresenter
     return new Model\SeznamCvZnamekReditel($this->database->table('users')->where('trida','42')->where('priorita !=','4'), $this->database, $odkaz);
 }
     
-    
+ /**
+ * Funkce pro vykreslení stránky UciteleKlasifikace
+ */      
       public function renderUciteleKlasifikace()
     {
                  $user =  $this->getUser();
@@ -116,7 +133,9 @@ class PrehledPresenter extends BasePresenter
     
     
     
-    
+  /**
+ * Funkce vykreslení seznamu čtvrtletní klasifikace daného učitele v NiftyGrid
+ */     
             protected function createComponentSeznamCvZnamekDetailReditelGrid($UcitelId)
 { 
          
@@ -129,7 +148,9 @@ class PrehledPresenter extends BasePresenter
     return new Model\SeznamCvZnamekDetailReditel($this->database->table('prum_znamky')->where('ucitel',$user), $this->database, $user);
 }
     
-    
+/**
+ * Funkce pro vykreslení stránky UciteleCvSeznam
+ */       
       public function renderUcitelCvSeznam($UcitelId)
     {
                  $user =  $this->getUser();

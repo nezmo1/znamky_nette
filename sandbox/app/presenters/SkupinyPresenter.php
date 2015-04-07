@@ -5,9 +5,9 @@ namespace App\Presenters;
 use Nette,
 	App\Model;
 
-/* SELECT u.username, jmeno, prijmeni, u.trida FROM `users` AS `u` 
-INNER JOIN skupina as `s` on u.trida = s.trida 
-LEFT JOIN clenove_skupiny as `zs` on s.id_skupiny=zs.id_skupiny*/
+/**
+ * Presenter spravující skupiny
+ */ 
 class SkupinyPresenter extends BasePresenter
 {
     /** @var Nette\Database\Context */
@@ -16,12 +16,17 @@ class SkupinyPresenter extends BasePresenter
      /** @persistent */
     public $backlink = '';
     
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
         $this->database = $database;
         
     }
+ /**
+ * Funkce pro zjištění počtu žáků ve třídě 
+ */    
    public function pocetBoxuSkupina($skupinaId)
     {
        $pom_pocet= $this->database->query('SELECT trida FROM skupina WHERE id_skupiny= ?',$skupinaId)->fetch();
@@ -34,7 +39,9 @@ class SkupinyPresenter extends BasePresenter
         return $pocet->pocet-$pocet_uz_v_sk->pocet; 
     }  
     
-    
+ /**
+ * Funkce pro zjištění počtu žáků ve skupině
+ */     
     public function pocetBoxuSkupina2($skupinaId)
     {
        $pocet_uz_v_sk=$this->database->query('SELECT count(zak) as `pocet`  FROM clenove_skupiny WHERE id_skupiny= ?', $skupinaId)->fetch();
@@ -43,7 +50,9 @@ class SkupinyPresenter extends BasePresenter
        
         return $pocet_uz_v_sk->pocet; 
     }  
-    
+ /**
+ * Funkce pro vytvoření komponenty seznamu NiftyGrid skupin
+ */    
   protected function createComponentSeznamZakuSkupina()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -75,7 +84,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 		return $form;
 	}  
-        
+ /**
+ * Funkce pracující s databází, aktualizuje tabulku skupin
+ */         
       public function vlozitDoSkupiny($form, $values){
         
         $get=$this->request->getParameters();
@@ -98,7 +109,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
            $this->restoreRequest($this->backlink);
        }     
         
- 
+ /**
+ * Funkce pro vytvoření komponenty seznamu NiftyGrid žáků ve skupině
+ */  
      protected function createComponentSeznamZakuVeSkupine()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -131,7 +144,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	}     
        
-        
+ /**
+ * Funkce pracující s databází, vymaže žáka ze skupiny
+ */        
     public function odebratZeSkupiny($form, $values){
         
         $get=$this->request->getParameters();
@@ -154,7 +169,10 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
           $flashMessage = $this->flashMessage('Operace proběhla úspěšně');  
            $this->restoreRequest($this->backlink);
            
-       }     
+       }  
+  /**
+ * Funkce pro vytvoření komponenty seznamu NiftyGrid skupiny
+ */       
         
           protected function createComponentSeznamSkupinGrid()
 { 
@@ -169,7 +187,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
     return new Model\SeznamSkupin($this->database->table('skupina'), $this->database, $odkaz);
 }
        
-
+ /**
+ * Funkce vykreslující stránku Seznamskupindef 
+ */ 
     public function renderSeznamskupindef()
     {
                  $user =  $this->getUser();
@@ -180,7 +200,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        
        
     }
-    
+ /**
+ * Funkce vykreslující stránku  Skupinadef
+ */    
       public function renderSkupinadef($skupinaId)
     {
           $this->backlink = $this->storeRequest();

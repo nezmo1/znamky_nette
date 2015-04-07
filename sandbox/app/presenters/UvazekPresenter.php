@@ -4,12 +4,16 @@ namespace App\Presenters;
 
 use Nette;
 
-
+/**
+ * Presenter spravující funkce úvazků učitelů 
+ */ 
 class UvazekPresenter extends BasePresenter
 {
     /** @var Nette\Database\Context */
     public $database;
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
         $this->database = $database;
@@ -19,7 +23,9 @@ class UvazekPresenter extends BasePresenter
         
         
     
-    
+ /**
+ * Funkce pro zjištění počtu checkboxů pro úvazky učitelů
+ */ 
     public function pocetBoxu()
     {
         $pocet_t=$this->database->query('SELECT *, count(zkratka_tridy) as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
@@ -30,7 +36,9 @@ class UvazekPresenter extends BasePresenter
         return $pom_p*$pocet_pr->pocet; 
     }
     
-    
+ /**
+ * Funkce pro vytvoření komponenty formuláře definice úvazku  
+ */ 
      protected function createComponentDefUvazek()
 	{
          
@@ -69,7 +77,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 	}
 
 
-        
+/**
+ * Funkce pracující s databází, vytvoří záznam o novém úvazku 
+ */         
        public function novyUvazek($form, $values){
         
          $pocetboxu=  $this->pocetBoxu();
@@ -93,7 +103,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        }  
             
         
-
+/**
+ * Funkce vykreslující stránku  Seznamucitelu
+ */ 
     public function renderSeznamucitelu()
     {
                  $user =  $this->getUser();
@@ -102,7 +114,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        }
         $this->template->ucitele = $this->database->table('users')->where('trida','42')->where('priorita !=','4');
     }
-    
+ /**
+ * Funkce vykreslující stránku  Uciteluvazek 
+ */    
       public function renderUciteluvazek($ucitelId)
     {
           

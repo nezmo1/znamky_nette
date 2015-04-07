@@ -12,7 +12,9 @@ class UsersPresenter extends BasePresenter
     public $backlink = '';   
     
  public $database;
- 
+ /**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
         $this->database = $database;

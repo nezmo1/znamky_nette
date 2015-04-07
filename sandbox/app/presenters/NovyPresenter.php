@@ -7,13 +7,15 @@ use Nette,
 
 
 /**
- * Sign in/out presenters.
+ * Presenter spravující vytváření nových záznamů v databázi
  */
 class NovyPresenter extends BasePresenter
 {
     /** @var Nette\Database\Context */
     public $database;
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
 
@@ -22,10 +24,9 @@ class NovyPresenter extends BasePresenter
 
 
 
-	/**
-	 * Sign-in form factory.
-	 * @return Nette\Application\UI\Form
-	 */
+/**
+ * Funkce vytvářející komponentu formuláře pro nového učitele 
+ */
 	protected function createComponentNovyUcitel()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -85,7 +86,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	}
 
-
+/**
+ * Funkce komunikující s databází, vkládá záznam nového učitele 
+ */
 	public function novyUcitel($form, $values)
 	{
 		$existuje =  $this->database->table('users')->where('username="'.$values->username.'"')->fetch();
@@ -114,7 +117,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
-        
+ /**
+ * Funkce vytvářející komponentu formuláře pro novou třídu 
+ */       
         protected function createComponentNovyTrida()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -148,7 +153,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	}
         
-       
+/**
+ * Funkce komunikující s databází, vkládá záznam nové třídy 
+ */       
         function novyTrida($form, $values){
             
                $existuje =  $this->database->table('trida')->where('zkratka_tridy="'.$values->zkratka_tridy.'"')->fetch();
@@ -178,7 +185,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
-        
+ /**
+ * Funkce vytvářející komponentu formuláře pro nový předmět
+ */       
          protected function createComponentNovyPredmet()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -212,7 +221,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	}
 
-
+/**
+ * Funkce komunikující s databází, vkládá záznam nového předmětu
+ */
         function novyPredmet($form, $values){
             
             $existuje =  $this->database->table('predmet')->where('zkratka_predmetu="'.$values->zkratka_predmetu.'"')->fetch();
@@ -243,7 +254,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
-        
+ /**
+ * Funkce vytvářející komponentu formuláře pro novou skupinu
+ */       
        protected function createComponentNovySkupina()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -307,7 +320,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	} 
         
-        
+/**
+ * Funkce komunikující s databází, vkládá záznam nové skupiny
+ */        
     function novySkupina($form, $values){
             
             
@@ -329,7 +344,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
-        
+ /**
+ * Funkce vytvářející komponentu formuláře pro nového žáka
+ */       
         protected function createComponentNovyZak()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -389,7 +406,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		return $form;
 	}
         
-
+/**
+ * Funkce komunikující s databází, vkládá záznam nového žáka
+ */
 public function novyZak($form, $values)
 	{
 		$existuje =  $this->database->table('users')->where('username="'.$values->username.'"')->fetch();
@@ -416,7 +435,9 @@ public function novyZak($form, $values)
 	}        
         
 
-
+/**
+ * Funkce pro vykreslení stránky Ucitel
+ */
 		public function renderUcitel()
 {
             $user =  $this->getUser();
@@ -427,7 +448,9 @@ public function novyZak($form, $values)
 }
 
 
-
+/**
+ * Funkce pro vykreslení stránky Predmet
+ */
 		public function renderPredmet()
 {
             $user =  $this->getUser();
@@ -436,7 +459,9 @@ public function novyZak($form, $values)
        }
  
 }
-
+/**
+ * Funkce pro vykreslení stránky Trida
+ */
 		public function renderTrida()
 {
             $user =  $this->getUser();
@@ -445,7 +470,9 @@ public function novyZak($form, $values)
        }
  
 }
-
+/**
+ * Funkce pro vykreslení stránky Skupina
+ */
 		public function renderSkupina()
 {
             $user =  $this->getUser();
@@ -454,7 +481,9 @@ public function novyZak($form, $values)
        }
  
 }
-
+/**
+ * Funkce pro vykreslení stránky Zak
+ */
 		public function renderZak()
 {
             $user =  $this->getUser();

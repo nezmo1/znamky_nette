@@ -6,7 +6,9 @@ use Nette,
 	App\Model;
  use Nette\Forms\FormContainer;
      
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
 class ZnamkaPresenter extends BasePresenter
 {
   
@@ -21,7 +23,11 @@ class ZnamkaPresenter extends BasePresenter
         $this->database = $database;
         
     }
-    
+ /**
+ * Funkce řešící výběr tříd z úvazků učitelů pomocí jeho id <br>
+ * $ucitel obsahuje id učitele <br>
+ * Vrací pole možných tříd <br>
+ */     
   public function VyberTrid($ucitel){
     $predmety=  $this->database->query('SELECT uv.ucitele_uvazek, uv.ucitel,uv.predmet as `predmet`,uv.trida as `trida`,t.jmeno_tridy as `jmeno_tridy`,p.nazev as `nazev` FROM `ucitele_uvazek` as `uv` 
 INNER JOIN trida as `t` on uv.trida=t.id_tridy
@@ -37,7 +43,11 @@ WHERE ucitel= ?', $ucitel,' ORDER by trida');
     return $predmety_pom;
   }  
   
-  
+ /**
+ * Funkce řešící výběr tříd z úvazků učitelů pomocí učitelova ID a pole tříd z funkce VyberTrid <br>
+ * $ucitel obsahuje id učitele <br>
+ * $trida obsahuje pole možných tříd <br>
+ */  
   public function VyberPredmetu($ucitel,$trida){
     $predmety=  $this->database->query('SELECT uv.ucitele_uvazek, uv.ucitel,uv.predmet as `predmet`,uv.trida as `trida`,t.jmeno_tridy as `jmeno_tridy`,p.nazev as `nazev` FROM `ucitele_uvazek` as `uv` 
 INNER JOIN trida as `t` on uv.trida=t.id_tridy
@@ -68,11 +78,15 @@ WHERE ucitel= ?', $ucitel,' and trida= ?',$trida ,' ORDER by nazev');
                 } 
     return $predmety_pom;
   }  
-   
+  /**
+ * Vytvoření komponenty pro formulář vložení nové známky 
+ */ 
  protected function createComponentNovaZnamka()
 	{
      
-     
+ /**
+ * pomocí parametru v URL vybere třídu
+ */     
     $get=$this->request->getParameters();
                if(isset($get['tridac'])){
                  $tridac= $get['tridac'];  
@@ -138,7 +152,11 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
    
-        
+   /**
+ * Funkce pro vygenerovaný formulář <br>
+ * $form obsahuje komponentu NovaZnamka <br>
+ * $values je povinný parametr 
+ */         
   public function vygenForm($form, $values){
   
       $this->hodnoty=$values;
@@ -148,11 +166,15 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
   
   }     
   
-  
+  /**
+ * Vytvoření komponenty formuláře hromadné známky.
+ */  
   protected function createComponentFormHromadnaZnamka()
 	{
      
-     
+ /**
+ * výběr hodnot z URL adresy
+ */       
     $get=$this->request->getParameters();
                
                
@@ -238,7 +260,10 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 		return $form;
 	}
-  
+  /**
+ * Funkce vkládá známky do databáze
+ * 
+ */
   public function vlozitZnamky($form, $values){
       // dump($values);
       $ucitel=$this->getUser();
@@ -269,7 +294,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
   
   
   
- 
+ /**
+ * Funkce pro vykreslení stránky Nové známky 
+ */ 
 	public function renderNovaznamka()
 {
             $user =  $this->getUser();
@@ -296,7 +323,9 @@ if($trida['tridac']!='n'){
  
  
 }	
-
+/**
+ * Funkce pro vykreslení stránky NovaZnamka
+ */ 
 public function rendervygenFormNovaZnamka()
 {
             $user =  $this->getUser();

@@ -8,14 +8,16 @@ use Nette\Utils\Html;
 
 
 /**
- * Homepage presenter.
+ * Presenter spravující nastavení
  */
 class NastaveniPresenter extends BasePresenter
 {
     
   public $database;
   
-  
+ /**
+ * Funkce pro vytvoření komponenty formuláře změny hesla v personálním nastavení
+ */ 
   protected function createComponentPerZmenaHesla()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -53,7 +55,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
 
         
         
-       
+ /**
+ * Funkce pracující s databází, aktualizuje údaje o hesle uživatele
+ */      
         function zmenaHesla($form, $values){
                                            
                     if($this->database->query('UPDATE users SET password= ?',md5($values->password),'WHERE id_users=?', $this->user->id)){
@@ -68,7 +72,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
         }
   
   
- 
+ /**
+ * Funkce pro vytvoření komponenty formuláře změny emailu v personálním nastavení
+ */  
     protected function createComponentPerEmail()
 	{
         $existence_mail=  $this->database->table('users')->where('id_users', $this->user->id)->fetch();
@@ -114,7 +120,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
 		return $form;
 	}     
         
-     
+ /**
+ * Funkce pracující s databází, aktualizuje údaje o emailu uživatele
+ */     
         function zmenaEmailu($form, $values){
                       $existence_mail=  $this->database->table('users')->where('id_users', $this->user->id)->fetch();
                             
@@ -150,7 +158,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
                 
         }
         
-        
+ /**
+ * Funkce pro vytvoření komponenty formuláře změny šířky známky v personálním nastavení
+ */         
         protected function createComponentPerSirkaZnamky()
 	{
         $existence_sirka=  $this->database->table('nastaveni_personal')->where('id_user', $this->user->id)->where('parametr','sirka_znamek_ano')->fetch();
@@ -194,7 +204,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
 		return $form;
 	}     
         
-     
+    /**
+ * Funkce pracující s databází, aktualizuje šířku formulářového prvku stránky
+ */  
         function sirkaZnamek($form, $values){
            
             
@@ -224,7 +236,9 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
         
         
         
-        
+ /**
+ * Funkce pro vytvoření komponenty formuláře pro globální nastavení
+ */     
   
   protected function createComponentGlNastaveni()
 	{
@@ -318,7 +332,10 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 		return $form;
 	} 
-    
+
+ /**
+ * Funkce pracující s databází, aktualizuje údaje globálního nastavení
+ */       
    public function setGlNastaveni($form,$values){
        $existence_reditele=  $this->database->table('nastaveni_global')->where('parametr_1','reditel_skoly')->fetch();
        $existence_zastupce=  $this->database->table('nastaveni_global')->where('parametr_1','zastupce')->fetch();
@@ -370,7 +387,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        $this->database->query('UPDATE nastaveni_global SET parametr_2= ?',$values->url_skoly,'WHERE parametr_1="url_skoly"');   
           }    
    }     
-   
+  /**
+ * Funkce vykresluje stránku Globalninastaveni
+ */  
 
   		public function renderGlobalninastaveni()
 {
@@ -380,7 +399,9 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        }
  
 } 
-
+ /**
+ * Funkce vykresluje stránku Personalninastaveni
+ */ 
   		public function renderPersonalninastaveni()
 {
            $user =  $this->getUser();

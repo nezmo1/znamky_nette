@@ -9,7 +9,7 @@ use Nette,
         
 
 /**
- * Base presenter for all application presenters.
+ * Base presenter je předek všech dalších presenterů v projektu
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
@@ -18,6 +18,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
   /** @var Nette\Database\Context */
     public $database;
 
+    
+ /**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
 
@@ -27,7 +31,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
    
     
     
-    
+ /**
+ * Vytvoření formuláře pro přihlášení
+ */  
    protected function createComponentSignInForm()
 	{
                
@@ -52,7 +58,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		return $form;
 	}
       
-      
+ /**
+ * Funkce pro zpracování hodnot přihlašovacího formuláře; řeší čas expirace sezení 
+ */     
         public function signInFormSucceeded($form, $values)
 	{
             
@@ -71,7 +79,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		}
 	}
         
-        
+ /**
+ * Funkce pro vytvoření odhlášovacího formuláře ze sezení 
+ */      
         protected function createComponentSignOutForm() {
          $form = new Nette\Application\UI\Form;
          $form->addSubmit('logout', 'Odhlásit');
@@ -80,35 +90,46 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	$form->onSuccess[] = $this->actionOut;
          return $form;
         }
-        
+ 
+ /**
+ * Funkce pro zpracování samotného odhlášení
+ */       
         public function actionOut()
 	{
 		$this->getUser()->logout();
 		$this->flashMessage('Odhlášení proběhlo úspěšně');
 		$this->redirect('Homepage:');
 	}
-        
+ /**
+ * Vytvoření komponenty vertikálního menu
+ */        
   protected function createComponentMenu()
     {
         $control = new \Menu($this->database);
 
         return $control;
     }
-    
+ /**
+ * Vytvoření komponenty "Víte že"
+ */    
     protected function createComponentViteze()
     {
         $control = new \Viteze($this->database);
 
         return $control;
     }
-    
+ /**
+ * Inicializace komponenty Informace po přihlášení
+ */    
    protected function createComponentInformace()
     {
         $control = new \Informace($this->database);
 
         return $control;
     }
-    
+ /**
+ * Funkce řeší zobrazení názvu školy
+ */    
     public function beforeRender(){
         
         $nazev_sk=$this->database->query('SELECT * FROM nastaveni_global WHERE parametr_1="nazev_skoly"')->fetch();

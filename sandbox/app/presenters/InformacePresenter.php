@@ -9,12 +9,14 @@ use Nette,
         
 
 /**
- * Base presenter for all application presenters.
+ * Presenter pro správu informací
  */
 class InformacePresenter extends BasePresenter
 {
     private $database;
-
+/**
+ * Konstruktor presenteru, obsahující parametr pro připojení k databázi
+ */
     public function __construct(Nette\Database\Context $database)
     {
         parent::__construct();

@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('5024661749', 'html')
+list($_b, $_g, $_l) = $template->initialize('9505788337', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb7dabe51ba0_content')) { function _lb7dabe51ba0_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb53ec1657e3_content')) { function _lb53ec1657e3_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><h1>Hlavní strana</h1>
  <img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/hobiti.png" title="Elektronická žákovská knížka">
 		
@@ -18,7 +18,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb7dabe51ba0_content')) { func
 //
 // block head
 //
-if (!function_exists($_b->blocks['head'][] = '_lbd462ef86ef_head')) { function _lbd462ef86ef_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['head'][] = '_lb3d801e906c_head')) { function _lb3d801e906c_head($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;
 }}
 
