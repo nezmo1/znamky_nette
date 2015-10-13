@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/UsersPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/BasePresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/CvZnamkaPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/SignPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/PrehledPresenter.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

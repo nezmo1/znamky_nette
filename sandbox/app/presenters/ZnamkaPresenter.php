@@ -180,7 +180,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                
                  
 		$form = new Nette\Application\UI\Form;
-              
+                   $form->getElementPrototype()->autocomplete = 'off';
 
                  $action_pom='Znamka:vygenFormNovaZnamka?predmet='.$get['predmet'].'&trida='.$get['trida'].'&popis='.$get['popis'].'&vaha='.$get['vaha'].'&datum='.$get['datum'].'';
  
@@ -208,7 +208,8 @@ WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' and u.trida= ?',$ge
                         ->setDefaultValue($vyber_zak['jmeno'].' '.$vyber_zak['prijmeni']);  
                     $znamka="znamka_".$pom_cislo;
                     if($sirka!=FALSE){
-                     $form->addTextArea($znamka, "Znamka");    
+                     $form->addTextArea($znamka, "Znamka");
+                     
                     }
                     
                     else{

@@ -2,14 +2,41 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Znamka/vygenFormNovaZnamka.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3456753879', 'html')
+list($_b, $_g, $_l) = $template->initialize('2008190312', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbce124987dd_content')) { function _lbce124987dd_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?><div class='datagrid' style='width:80%; margin-left:10%'>
+if (!function_exists($_b->blocks['content'][] = '_lb43394131b9_content')) { function _lb43394131b9_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+?><script>
+$(document).ready(function () {
+ 
+  $('input').keyup(function (e) {
+ 
+    if (e.which == 39) { // right arrow
+      $(this).closest('td').next().find('input').focus();
+ 
+    } else if (e.which == 37) { // left arrow
+      $(this).closest('td').prev().find('input').focus();
+ 
+    } else if (e.which == 40) { // down arrow
+      $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+ 
+    } else if (e.which == 38) { // up arrow
+      $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+    }
+ 
+  });
+ 
+  // un-comment to display key code
+  $("input").keydown(function (e) {
+    alert(e.which);
+ });
+ 
+});
+</script>
+<div class='datagrid' style='width:80%; margin-left:10%'>
 <table class="yolo" onKeyPress="javascript:check">
 
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná známka</th></tr></thead>
@@ -95,6 +122,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 // main template
 //
 ?>
+
 
 <?php if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
 call_user_func(reset($_b->blocks['content']), $_b, get_defined_vars()) ; 

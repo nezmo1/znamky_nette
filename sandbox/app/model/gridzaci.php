@@ -79,7 +79,7 @@ class SeznamZaku extends Grid{
 //        ->setAjax(FALSE);
      $this->addButton("edit", "Editovat")
     ->setClass("edit")
-    ->setLink(function($row) use ($presenter){return $presenter->link("edit:ucitel", $row['id_users']);})
+    ->setLink(function($row) use ($presenter){return $presenter->link("edit:zak", $row['id_users']);})
     ->setAjax(FALSE);
     
     $this->addButton("heslo", "Změnit heslo")

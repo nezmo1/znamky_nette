@@ -127,6 +127,36 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
              
 	}
         
+ public function editZak($form, $values)
+	{
+            $get=$this->request->getParameters();
+               
+                 $data=  $get['id_users'];
+		$existuje =  $this->database->table('users')->where('username="'.$values->username.'"')->where("id_users !=",$data)->fetch();
+               $uzivatel="";
+                if($existuje){
+                $uzivatel = $existuje->id_users;    
+                }
+                                
+                if ($data==$uzivatel){
+                    $flashMessage = $this->flashMessage('Uživatel s tímto uživatelským jménem již existuje!'); 
+                  return $flashMessage;
+                } 
+                else {
+                  
+                    if($this->database->query('UPDATE users SET username= ?',$values->username,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida=?',$values->trida,' WHERE id_users= ?',$data)){
+                     $flashMessage = $this->flashMessage('Uživatel byl úspěšně editován.');    
+                    }
+                    else {
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, uživatel nebyl editován!');    
+                    }
+                      
+                  return $flashMessage;  
+                  
+                }
+             
+	}       
+        
 /**
  * Formulář pro změnu hesla
  */      
@@ -400,31 +430,35 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
  */       
         protected function createComponentNovyZak()
 	{
+            
+            $get=$this->request->getParameters();
+               
+            $data=  $get['id_users'];
+            $editace= $this->database->table('users')->where('id_users',$data)->fetch();
+            
+            
+            
 		$form = new Nette\Application\UI\Form;
 		$form->addText('username', 'Uživatelské jméno:')
                         ->setAttribute('placeholder', 'Uživatelské jméno (6 znaků)')
 			->setRequired('Zadejte uživatelské jméno')
+                        ->setDefaultValue($editace->username)
                         ->addRule($form::MIN_LENGTH, 'Uživatelské jméno musí mít %d znaků (ideálně první tři písmena ze jména a příjmení)', 6)
                         ->addRule($form::MAX_LENGTH, 'Uživatelské jméno musí mít %d znaků (ideálně první tři písmena ze jména a příjmení)', 6);
                 $form->addText('jmeno', 'Jméno:')
                         ->setAttribute('placeholder', 'Jméno žáka')
+                        ->setDefaultValue($editace->jmeno)
 			->setRequired('Zadejte jméno');
                 $form->addText('prijmeni', 'Příjmeni:')
                         ->setAttribute('placeholder', 'Příjmení žáka')
+                        ->setDefaultValue($editace->prijmeni)
 			->setRequired('Zadejte příjmení');
                 $form->addText('mail', 'E-mail:')
                         ->setAttribute('placeholder', 'E-mail ve správném tvaru')
+                        ->setDefaultValue($editace->mail)
                         ->addCondition($form::FILLED)
 			->addRule($form::EMAIL, 'E-mail je ve špatném tvaru');
-		$form->addPassword('password', 'Heslo:')
-                        ->setAttribute('placeholder', 'Heslo (min. 6 znaků)')
-                     ->setRequired('Zvolte si heslo')
-                     ->addRule($form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaků', 6);
-                 
-                $form->addPassword('passwordVerify', 'Heslo pro kontrolu:')
-                        ->setAttribute('placeholder', 'Zadejte prosím heslo ještě jednou pro kontrolu')
-                     ->setRequired('Zadejte prosím heslo ještě jednou pro kontrolu')
-                     ->addRule($form::EQUAL, 'Hesla se neshodují', $form['password']);
+		
 		
                 $tridy=  $this->database->table('trida')->where('zkratka_tridy !=','ucitel')->order('zkratka_tridy');
                 
@@ -435,11 +469,11 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
       
                 
                 $form->addSelect('trida', 'Třída:', $trida_pom);
-                     
-		$form->addSubmit('send', 'Vytvořit žáka');
+                  $form['trida']->setDefaultValue($editace->trida);     
+		$form->addSubmit('send', 'Editovat žáka');
 
 		// call method signInFormSucceeded() on success
-		$form->onSuccess[] = $this->novyZak;
+		$form->onSuccess[] = $this->editZak;
                 
                 
                 $renderer = $form->getRenderer();
@@ -636,8 +670,12 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
+       
+       
  
 }
+
+
 /**
  * Funkce pro vykreslení stránky Heslo
  */
@@ -710,7 +748,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 /**
  * Funkce pro vykreslení stránky Zak
  */
-		public function renderZak()
+		public function renderZak($id_users)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
