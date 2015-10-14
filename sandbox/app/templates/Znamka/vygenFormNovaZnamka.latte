@@ -2,27 +2,50 @@
 {block content}
 
 
-<div class='datagrid' style='width:80%; margin-left:10%'>
-<table class="yolo" onKeyPress="javascript:check">
+
+    {form formHromadnaZnamka}
+        <div class='datagrid' style='width:80%; margin-left:10%'>
+<table class="yolo">
 
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná známka</th></tr></thead>
-    {form formHromadnaZnamka}
        <tr style='background:#F8FF8E'><th style='font-size:16px; text-align: center'>Žák</th><th style='font-size:16px; text-align: center'>Známka</th></tr>
         {foreach $vyber_zaku as $vyber_zak}
-        <tr {if $iterator->odd}class='alt'{/if}><td tabindex='100{$pom_cislo}' style='padding-left:20px;'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;background:#97C7F4;font-weight: bold' n:name="zak_{$pom_cislo}" class='udaje' ></td>
+        <tr {if $iterator->odd}class='alt'{/if}><td style='padding-left:20px;'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;background:#97C7F4;font-weight: bold' n:name="zak_{$pom_cislo}" class='udaje' ></td>
           
             
             {if $sirka==FALSE}
-            <td tabindex='{$pom_cislo}'>  <input style='height:25px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></td></tr>  
+            <td>  <input n:name="znamka_{$pom_cislo}" style='height:25px;font-size:14px;width:350px;padding-left:20px; font-weight: bold; color: red;font-size: 18px; text-align: center;'  class='udaje' id="znamka_{$pom_cislo}">
+          <br> 
+           <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','4');"><img src="{$basePath}/images/4.png" width="35px" height="35px" alt="4" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
+           
+           </td></tr>  
         {/if}
         
        {if $sirka!=FALSE}
-            <td tabindex='{$pom_cislo}'><textarea style='height:150px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></textarea></td></tr>  
+            <td><textarea n:name="znamka_{$pom_cislo}" style='height:150px;font-size:14px;width:350px;padding-left:20px;font-weight: bold; color: red;font-size: 18px;text-align: center;'  class='udaje' ></textarea></td></tr>  
+        <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','4');"><img src="{$basePath}/images/4.png" width="35px" height="35px" alt="4" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
+            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
         {/if} 
         
-        <input n:name='hzak_{$pom_cislo}' value='{$vyber_zak['zak']}'>
+        
         
         <?php $pom_cislo=$pom_cislo+1 ?>
+        {/foreach} 
+        <?php $pom_cislo=1 ?>
+        {foreach $vyber_zaku as $vyber_zak}
+           <input n:name='hzak_{$pom_cislo}' value='{$vyber_zak['zak']}'> 
+           <?php $pom_cislo=$pom_cislo+1 ?>
         {/foreach}   
         <input n:name='pocet_zaznamu' value='{$pom_cislo}'>
       <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
@@ -35,10 +58,22 @@
         </td>
     
     </tr>
-    {/form}
-</table>   
-<script>
     
-</script>
+    </table> 
+
+
    </div> 
+
+
+    {/form}
+
+
     
+<script>
+function myFunction(zak,znamka) {
+    document.getElementById(zak).value = document.getElementById(zak).value + znamka;
+}
+</script>
+
+
+

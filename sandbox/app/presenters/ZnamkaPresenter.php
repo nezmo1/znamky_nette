@@ -181,7 +181,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                  
 		$form = new Nette\Application\UI\Form;
                    $form->getElementPrototype()->autocomplete = 'off';
-
+                   $form->getElementPrototype()->name = 'VygenFormZnamka';
                  $action_pom='Znamka:vygenFormNovaZnamka?predmet='.$get['predmet'].'&trida='.$get['trida'].'&popis='.$get['popis'].'&vaha='.$get['vaha'].'&datum='.$get['datum'].'';
  
              $form->setAction($this->presenter->link($action_pom)); 
