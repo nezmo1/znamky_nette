@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/Znamka/vygenFormNovaZnamka.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3916599563', 'html')
+list($_b, $_g, $_l) = $template->initialize('6072682265', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbefdb89921c_content')) { function _lbefdb89921c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb466c6651a9_content')) { function _lb466c6651a9_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ;Nette\Bridges\FormsLatte\FormMacros::renderFormBegin($form = $_form = $_control["formHromadnaZnamka"], array()) ?>
         <div class='datagrid' style='width:80%; margin-left:10%'>
 <table class="yolo">
@@ -29,7 +29,8 @@ if (!function_exists($_b->blocks['content'][] = '_lbefdb89921c_content')) { func
   'class' => NULL,
   'id' => NULL,
 ))->attributes() ?>>
-          <br> 
+<?php if ($desktop==TRUE) { ?>
+           <br> 
            <a  style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
 ','1');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/1.png" width="35px" height="35px" alt="1"></a> 
             <a style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
@@ -44,16 +45,20 @@ if (!function_exists($_b->blocks['content'][] = '_lbefdb89921c_content')) { func
 ','-');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/minus.png" width="35px" height="35px" alt="-"></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
 ','*');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/hvezda.png" width="35px" height="35px" alt="*"></a>
-           
+<?php } ?>
            </td></tr>  
 <?php } ?>
         
 <?php if ($sirka!=FALSE) { ?>
+           
             <td><textarea style='height:150px;font-size:14px;width:350px;padding-left:20px;font-weight: bold; color: red;font-size: 18px;text-align: center;'  class='udaje' <?php $_input = $_form["znamka_{$pom_cislo}"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'style' => NULL,
   'class' => NULL,
-))->attributes() ?>><?php echo $_input->getControl()->getHtml() ?></textarea></td></tr>  
-        <a  style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
+))->attributes() ?>><?php echo $_input->getControl()->getHtml() ?></textarea> 
+        
+<?php if ($desktop==TRUE) { ?>
+           <br> 
+       <a  style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
 ','1');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/1.png" width="35px" height="35px" alt="1"></a> 
             <a style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
 ','2');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/2.png" width="35px" height="35px" alt="2"></a>
@@ -67,6 +72,9 @@ if (!function_exists($_b->blocks['content'][] = '_lbefdb89921c_content')) { func
 ','-');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/minus.png" width="35px" height="35px" alt="-"></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($pom_cislo), ENT_COMPAT) ?>
 ','*');"><img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/hvezda.png" width="35px" height="35px" alt="*"></a>
+<?php } ?>
+       
+       </td></tr> 
 <?php } ?>
         
         

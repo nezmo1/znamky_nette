@@ -15,7 +15,8 @@
             
             {if $sirka==FALSE}
             <td>  <input n:name="znamka_{$pom_cislo}" style='height:25px;font-size:14px;width:350px;padding-left:20px; font-weight: bold; color: red;font-size: 18px; text-align: center;'  class='udaje' id="znamka_{$pom_cislo}">
-          <br> 
+            {if $desktop==TRUE}
+           <br> 
            <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
@@ -23,20 +24,27 @@
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
-           
+           {/if}
            </td></tr>  
         {/if}
         
        {if $sirka!=FALSE}
-            <td><textarea n:name="znamka_{$pom_cislo}" style='height:150px;font-size:14px;width:350px;padding-left:20px;font-weight: bold; color: red;font-size: 18px;text-align: center;'  class='udaje' ></textarea></td></tr>  
-        <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
+           
+            <td><textarea n:name="znamka_{$pom_cislo}" style='height:150px;font-size:14px;width:350px;padding-left:20px;font-weight: bold; color: red;font-size: 18px;text-align: center;'  class='udaje' ></textarea> 
+        
+       {if $desktop==TRUE}
+           <br> 
+       <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','4');"><img src="{$basePath}/images/4.png" width="35px" height="35px" alt="4" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
             <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
-        {/if} 
+       {/if}
+       
+       </td></tr> 
+       {/if} 
         
         
         

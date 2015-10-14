@@ -350,9 +350,11 @@ WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' and u.trida= ?',$ge
         
             $this->template->pom_cislo=1;
             
-            
+  $detekuj=new \DesktopDetect();
+  
   $this->template->sirka=  $this->database->query('SELECT * FROM nastaveni_personal WHERE id_user= ?',$ucitel->id,'and parametr="sirka_znamek_ano"')->fetch();              
-               
+  $this->template->desktop= $detekuj->DetekujMobil();
+   
 }	
         
  
