@@ -157,7 +157,7 @@ $this->setWidth('100%');
       
       
     $this->database->query('DELETE FROM znamky WHERE id_znamky=?', $idznamky);
-    $this->flashMessage('Učitel byl smazán.');
+    $this->flashMessage('Známka byla smazána.');
 }  
     
 }
