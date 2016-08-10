@@ -144,7 +144,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 } 
                 else {
                   
-                    if($this->database->query('UPDATE users SET username= ?',$values->username,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', priorita="2", trida=?',$values->trida,' WHERE id_users= ?',$data)){
+                    if($this->database->query('UPDATE users SET username= ?',$values->username,', prijmeni= ?',$values->prijmeni,', jmeno= ?',$values->jmeno,', mail= ?',$values->mail,', trida=?',$values->trida,' WHERE id_users= ?',$data)){
                      $flashMessage = $this->flashMessage('Uživatel byl úspěšně editován.');    
                     }
                     else {

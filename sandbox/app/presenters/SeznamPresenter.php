@@ -21,6 +21,18 @@ class SeznamPresenter extends BasePresenter
     {
         $this->database = $database;
     }
+    
+    
+    
+    
+   protected function createComponentUcitelKnihaSeznam()
+    {
+        $control = new \UcitelKnihaSeznam($this->database);
+
+        return $control;
+    } 
+
+    
 /**
  * Funkce pro vytvoření komponenty seznamu NiftyGrid známky učitelů
  */      
@@ -90,7 +102,19 @@ class SeznamPresenter extends BasePresenter
        }
      
 }
-        
+   
+
+public function renderucitelKniha()
+{
+    
+            $user =  $this->getUser();
+    if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2'))) {
+             $this->redirect('Pristup:pristup');
+       }
+     
+}
+
+
 }
 
 

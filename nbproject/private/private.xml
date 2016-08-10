@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/UsersPresenter.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekreditel.php</file>
-            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/informace.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/menu.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/@layout.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/ZnamkaPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/model/gridseznamznamekucitel.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/presenters/SeznamPresenter.php</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/www/css/table.css</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/templates/Seznam/ucitelKniha.latte</file>
+            <file>file:/D:/xampp/htdocs/znamky_nette/znamky_nette/sandbox/app/components/ucitelknihaseznam.php</file>
         </group>
     </open-files>
 </project-private>

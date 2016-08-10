@@ -118,14 +118,15 @@ class Viteze extends Nette\Application\UI\PresenterComponent
            $popis=$cast[0];
          }
              
-         echo "<div class='datagrid' style='width:60%;margin-left:20%; background: #396383;'>";
+        
+         echo "<div class='datagrid' style='background: #396383;width:30%;margin-left:35%'>";
         echo "<table>";
      
       
          echo "<tbody>";
           echo "<tr><td class='popis' style='height:100px;vertical-align:top;padding-left:0px;padding-top:20px;color:black;'>";
           
-          echo "<div><img src='".$cesta."css/viteze/".$img.".png' style='height:60px;float:left;width:80px;height:80px;padding-left:25px'></div>";
+          echo "<div><img src='".$cesta."css/viteze/".$img.".png' style='height:60px;float:left;width:80px;height:80px;margin-left:30px;'></div>";
            
           echo "<div style='text-align:center;font-size:18px;font-style:italic;'>Víte že...<br></div>";
           echo "<div style='padding-left:50px;'>";

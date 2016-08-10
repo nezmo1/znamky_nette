@@ -42,6 +42,8 @@ class Menu extends Nette\Application\UI\PresenterComponent
           $url = $this->presenter->link('Seznam:zak');    
         echo '<li><a href="'.$url.'">Seznam známek</a>';
         echo '      </li>';
+        
+        
         $url = $this->presenter->link('Seznam:cvZak');
         echo '<li><a href="'.$url.'">Seznam čtvrtletní klasifikace</a>
               </li>';   
@@ -63,6 +65,9 @@ class Menu extends Nette\Application\UI\PresenterComponent
            $url = $this->presenter->link('Znamka:novaznamka?tridac=n');
            echo             '<li style="width:180px"><a href="'.$url.'">Nová známka</a></li>';
            echo             '<li style="width:180px"><a href="'.$url.'">Hromadné přidání známek</a></li>';
+           
+            $url = $this->presenter->link('Seznam:ucitelKniha');
+           echo             '<li style="width:180px"><a href="'.$url.'">Seznam známek - kniha</a></li>';
            
             $url = $this->presenter->link('Seznam:ucitel');
            echo             '<li style="width:180px"><a href="'.$url.'">Seznam známek</a></li>';

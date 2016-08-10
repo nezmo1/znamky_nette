@@ -2,13 +2,13 @@
 // source: D:\xampp\htdocs\znamky_nette\znamky_nette\sandbox\app/templates/@layout.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('1263172856', 'html')
+list($_b, $_g, $_l) = $template->initialize('5534578214', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block scripts
 //
-if (!function_exists($_b->blocks['scripts'][] = '_lbc38bf8321e_scripts')) { function _lbc38bf8321e_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['scripts'][] = '_lb8204c055b1_scripts')) { function _lb8204c055b1_scripts($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
         <script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/rounded-corners.js"></script>
@@ -44,7 +44,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 <title>Přehled známek</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/styl1.css" rel="stylesheet" type="text/css">
 <link href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/twigrid.datagrid.css" rel="stylesheet" type="text/css">
@@ -59,6 +59,11 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 <script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/jquery-ui.js"></script>
 <script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
 <script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/grid.js"></script> 
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+  
 
 
 <script>
@@ -70,6 +75,10 @@ $(document).ready(function(){
    $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
  });
 });
+
+
+
+
 </script>
 
 
@@ -79,7 +88,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-
+<div class="col-sm-12">
 <div id="hlavicka">
  <div id="logo">
  <img src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/design/logo2.png" title="Elektronická žákovská knížka"></div>
@@ -175,7 +184,7 @@ $(document).ready(function(){
   <p><h4>Vytvořil Adam Nezmar</h4></p>
 </footer>
 </div>
-
+</div>
 
 
  
