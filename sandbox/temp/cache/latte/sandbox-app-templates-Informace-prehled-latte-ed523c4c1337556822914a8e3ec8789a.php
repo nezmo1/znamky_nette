@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Informace/prehled.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3517475196', 'html')
+list($_b, $_g, $_l) = $template->initialize('8463650720', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { function _lbe6b870bafd_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb9f1068dec2_content')) { function _lb9f1068dec2_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?> <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
@@ -20,7 +20,7 @@ if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { func
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> Poslední přidaná známka </span>
-              <div class="count"><?php if ($prehled['posledni_znamka_den'] >= 7) { ?>
+              <div class="count"><?php if ($prehled['posledni_znamka_den'] >= 7 && $prehled['posledni_znamka_den_inv']==0) { ?>
 <div class="red"> <?php } else { ?><div class="green"><?php } ?>  <?php echo Latte\Runtime\Filters::escapeHtml($prehled['posledni_znamka']['den'], ENT_NOQUOTES) ?>
 . <?php echo Latte\Runtime\Filters::escapeHtml($prehled['posledni_znamka']['mesic'], ENT_NOQUOTES) ?>. </div> </div>
               <span class="count_bottom"> <?php echo Latte\Runtime\Filters::escapeHtml($prehled['posledni_znamka_den'], ENT_NOQUOTES) ?> dní od poslední známky</span>
@@ -36,14 +36,14 @@ if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { func
               <span class="count_bottom"><i class="green"><?php echo Latte\Runtime\Filters::escapeHtml($prehled['nej_znamka_pocet'], ENT_NOQUOTES) ?></i> známek</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-pencil"></i></span>
+              <div class="count" style="font-size: 180%"><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/znamka/novaznamka?tridac=n">Nová známka</a></div>
+            
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-pencil"></i> </span>
+              <div class="count" style="font-size: 180%"><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/seznam/ucitel">Seznam známek</a></div>
+             
             </div>
           </div>
           <!-- /top tiles -->
@@ -54,14 +54,11 @@ if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { func
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                    <h3>Měsíční aktivita </h3>
                   </div>
                   <div class="col-md-6">
                      
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                    </div>
+                   
                   </div>
                 </div>
 
@@ -72,47 +69,9 @@ if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { func
                   </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                  <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
-                    <div class="clearfix"></div>
-                  </div>
+                  
 
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Facebook Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Conventional Media</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Bill boards</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
 
                 </div>
 
@@ -718,26 +677,18 @@ if (!function_exists($_b->blocks['content'][] = '_lbe6b870bafd_content')) { func
     <script>
       $(document).ready(function() {
         var data1 = [
-          [gd(2012, 1, 1), 17],
-          [gd(2012, 1, 2), 74],
-          [gd(2012, 1, 3), 6],
-          [gd(2012, 1, 4), 39],
-          [gd(2012, 1, 5), 20],
-          [gd(2012, 1, 6), 85],
-          [gd(2012, 1, 7), 7]
+<?php for ($i = 1; $i <= $prehled['pocet_dnu_graf']; $i++) { ?>
+          [gd(<?php echo Latte\Runtime\Filters::escapeJs($prehled['rok_graf']) ?>
+, <?php echo Latte\Runtime\Filters::escapeJs($prehled['mesic_graf']) ?>, <?php echo Latte\Runtime\Filters::escapeJs($i) ?>
+), <?php echo Latte\Runtime\Filters::escapeJs($prehled['data_graf'][$i]) ?>],
+<?php } ?>
+          
+          
         ];
 
-        var data2 = [
-          [gd(2012, 1, 1), 82],
-          [gd(2012, 1, 2), 23],
-          [gd(2012, 1, 3), 66],
-          [gd(2012, 1, 4), 9],
-          [gd(2012, 1, 5), 119],
-          [gd(2012, 1, 6), 6],
-          [gd(2012, 1, 7), 9]
-        ];
+       
         $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
-          data1, data2
+          data1
         ], {
           series: {
             lines: {

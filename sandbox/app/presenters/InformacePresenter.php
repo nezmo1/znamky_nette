@@ -45,7 +45,7 @@ class InformacePresenter extends BasePresenter
    //dump($diff);
    $prehled+= array ('posledni_znamka'  => $datum,);
    $prehled+= array ('posledni_znamka_den'  => $diff->days,);
-   
+   $prehled+= array ('posledni_znamka_den_inv'  => $diff->invert,);
    
    
     $query=$this->database->query("SELECT popis, predmet from znamky where ucitel=".$user->getId()." ORDER BY id_znamky DESC")->fetch();
@@ -57,7 +57,56 @@ class InformacePresenter extends BasePresenter
     $query=$this->database->query("SELECT count(znamka) AS `znamka_pocet`, znamka FROM `znamky` where ucitel=".$user->getId()." GROUP BY znamka ORDER BY count(znamka) DESC ")->fetch();
     $prehled+= array ('nej_znamka'  => $query['znamka'],);
     $prehled+= array ('nej_znamka_pocet'  => $query['znamka_pocet'],);
+    
+    
+    
+    
+    
+    //datum na graf
+    $minuly_mesic=  date("Y-m-d", strtotime( date( "Y-m-d", strtotime( date("Y-m-d") ) ) . "-1 month" ) );
+     
+     $dnes1=date("Y-m-d");
+     $dnes=date("Y-m-d");
+     $dnes=strtotime($dnes);
+     $mesic=date("n",$dnes);
+     $rok=date("Y",$dnes);
+     
+     
+     $dni_v_mesici = cal_days_in_month(CAL_GREGORIAN, $mesic, $rok);
+    $dnes2=date("Y-m-".$dni_v_mesici);
+ 
    
+   
+    
+    
+    
+    $query=$this->database->query("SELECT count(id_znamky) as `pocet_znamek`,  DATE_FORMAT(datum,'%Y-%c-%e') AS `datum` FROM `znamky` WHERE datum BETWEEN '".$minuly_mesic."' AND '".$dnes2."' AND ucitel=".$user->getId()." group by datum");
+     
+                $data=array();
+                foreach ($query as $quer) {  
+                 $data+= array (''.$quer->datum.''  => ''.$quer->pocet_znamek.'',); 
+                }
+               
+                $data_f=array();
+                for($i=1;$i<=$dni_v_mesici;$i++){
+                  $data_f[$i]=$rok.'-'.$mesic.'-'.$i;
+                  
+                  if(isset($data[$rok.'-'.$mesic.'-'.$i])){
+                  
+                     $data_f[$i]=$data[$rok.'-'.$mesic.'-'.$i]; 
+                  
+                 
+                  
+                  }
+                  else $data_f[$i]=0;
+                 
+                  }
+    
+      
+      $prehled+= array ('pocet_dnu_graf'  => $dni_v_mesici,);
+      $prehled+= array ('mesic_graf'  => $mesic,);
+      $prehled+= array ('rok_graf'  => $rok,);
+      $prehled+= array ('data_graf'  => $data_f,);
      return $prehled;
 }
  
