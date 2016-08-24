@@ -1,31 +1,114 @@
+
 {block content}
+<script>
+$(document).ready(function(){
+ $('input').keyup(function(e){
+   if(e.which==40)
+   $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+  else if(e.which==38)
+   $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+ });
+});
+</script>
 
-<div class='datagrid' style='width:80%; margin-left:10%'>
-<table class="yolo" onKeyPress="javascript:check">
+<div class="right_col" role="main">
+         
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Hromadné přidání známek</h3>
+              </div>
 
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná čtvrtletní klasifikace</th></tr></thead>
-    {form formHromadnaZnamka}
-       <tr style='background:#F8FF8E'><th style='font-size:16px; text-align: center'>Žák</th><th style='font-size:16px; text-align: center'>Známka</th></tr>
+             
+            </div>
+           
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
+                  
+                  <div class="x_content" >
+                      
+                      
+                  
+                      
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>{$trida['jmeno_tridy']}. třída - {$predmet['nazev']} </h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Žák</th>
+                          <th>Známka</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                           {form formHromadnaZnamka}
+        
+
+    
+       
         {foreach $vyber_zaku as $vyber_zak}
-        <tr {if $iterator->odd}class='alt'{/if}><td tabindex='100{$pom_cislo}' style='padding-left:20px;'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;background:#97C7F4;font-weight: bold' n:name="zak_{$pom_cislo}" class='udaje' ></td>
+        <tr><td><input  n:name="zak_{$pom_cislo}" class='form-control' ></td>
           
             
             {if $sirka==FALSE}
-            <td tabindex='{$pom_cislo}'>  <input style='height:25px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></td></tr>  
+            <td>  <input n:name="znamka_{$pom_cislo}"  class='form-control' id="znamka_{$pom_cislo}">
+            {if $desktop==TRUE}
+           <br> 
+           <a  onclick="myFunction('znamka_{$pom_cislo}','1');"><button class="btn btn-primary" type="button">1</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','2');"><button class="btn btn-primary" type="button">2</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','3');"><button class="btn btn-primary" type="button">3</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','4');"><button class="btn btn-primary" type="button">4</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','5');"><button class="btn btn-primary" type="button">5</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','-');"><button class="btn btn-primary" type="button">-</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','*');"><button class="btn btn-primary" type="button">*</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','!');"><button class="btn btn-primary" type="button">!</button></a>
+            
+           {/if}
+           </td></tr>  
         {/if}
         
        {if $sirka!=FALSE}
-            <td tabindex='{$pom_cislo}'><textarea style='height:150px;font-size:14px;width:350px;padding-left:20px;' n:name="znamka_{$pom_cislo}" class='udaje' ></textarea></td></tr>  
-        {/if} 
+           
+            <td><textarea n:name="znamka_{$pom_cislo}"  class='form-control' ></textarea> 
         
-        <input n:name='hzak_{$pom_cislo}' value='{$vyber_zak['zak']}'>
+       {if $desktop==TRUE}
+           <br> 
+       <a  onclick="myFunction('znamka_{$pom_cislo}','1');"><button class="btn btn-primary" type="button">1</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','2');"><button class="btn btn-primary" type="button">2</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','3');"><button class="btn btn-primary" type="button">3</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','4');"><button class="btn btn-primary" type="button">4</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','5');"><button class="btn btn-primary" type="button">5</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','-');"><button class="btn btn-primary" type="button">-</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','*');"><button class="btn btn-primary" type="button">*</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','!');"><button class="btn btn-primary" type="button">!</button></a>
+       {/if}
+       
+       </td></tr> 
+       {/if} 
+        
+        
         
         <?php $pom_cislo=$pom_cislo+1 ?>
+        {/foreach} 
+        <?php $pom_cislo=1 ?>
+        {foreach $vyber_zaku as $vyber_zak}
+           <input n:name='hzak_{$pom_cislo}' value='{$vyber_zak['zak']}'> 
+           <?php $pom_cislo=$pom_cislo+1 ?>
         {/foreach}   
         <input n:name='pocet_zaznamu' value='{$pom_cislo}'>
-      <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
+      <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='form-control btn btn-success' ></td></tr>
              
-    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+    <tr><td colspan='2' style='color:red; text-align:center; font-weight: bold'>
         {foreach $flashes as $flash}
     <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně přidán do databáze.'} color:green {/if}'>{$flash->message}</div>
 {/foreach}
@@ -33,10 +116,52 @@
         </td>
     
     </tr>
-    {/form}
-</table>   
-<script>
     
-</script>
+    </table> 
+
+
    </div> 
+
+
+    {/form}
+
+                          
+                        
+                        
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+                      
+                      
+                      
+                      
+                      
+                    <br />
+                    
+
     
+<script>
+function myFunction(zak,znamka) {
+    document.getElementById(zak).value = document.getElementById(zak).value + znamka;
+}
+</script>
+
+
+</div>
+                    
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+   
+
+
+

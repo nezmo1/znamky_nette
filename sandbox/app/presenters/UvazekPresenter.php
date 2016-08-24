@@ -2,7 +2,8 @@
 
 namespace App\Presenters;
 
-use Nette;
+use Nette,
+ App\Model;
 
 /**
  * Presenter spravující funkce úvazků učitelů 
@@ -21,7 +22,15 @@ class UvazekPresenter extends BasePresenter
     }
     
         
-        
+    
+  protected function createComponentSeznamUciteluUvazekGrid()
+{ 
+      $odkaz =  $this->presenter->link('Uvazek:uciteluvazek'); 
+    $user =  $this->getUser();
+    return new Model\SeznamUciteluUvazek($this->database->table('users')->where("trida=42")->where("priorita!=4")->order("prijmeni"), $this->database, $odkaz);
+}
+
+    
     
  /**
  * Funkce pro zjištění počtu checkboxů pro úvazky učitelů
@@ -50,8 +59,11 @@ class UvazekPresenter extends BasePresenter
                
              for($i=1;$i<=$pocetboxu;$i++){
                  $form->addCheckbox('n_'.$i, NULL);
+                         
                  $form->addHidden('h_'.$i);
              }
+             $form->addButton('zpet', 'Zpět na seznam učitelů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
              
                 
                 $form->addSubmit('send', 'Uložit');
@@ -61,15 +73,7 @@ class UvazekPresenter extends BasePresenter
                $form->onSuccess[] = $this->novyUvazek; 
                 
                 $renderer = $form->getRenderer();
-$renderer->wrappers['controls']['container'] = NULL;
 
-$renderer->wrappers['pair']['container'] = "tr";
-$renderer->wrappers['pair']['.odd'] = 'alt';
-$renderer->wrappers['label']['container'] = 'td';
-
-$renderer->wrappers['control']['.text'] = 'udaje';
-$renderer->wrappers['control']['.password'] = 'udaje';
-$renderer->wrappers['control']['.submit'] = 'login-prehled';
 
 
 
@@ -128,7 +132,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         $this->template->ucitel = $this->database->table('users')->where('id_users',$ucitelId)->fetch();
         $this->template->predmety = $this->database->query('SELECT *  FROM predmet');
         $this->template->tridypocet = $this->database->query('SELECT *, count(zkratka_tridy)+1 as `pocet`  FROM trida WHERE zkratka_tridy !="ucitel"')->fetch();
-        $this->template->tridy = $this->database->query('SELECT *  FROM trida WHERE zkratka_tridy !="ucitel"');
+        $this->template->tridy = $this->database->query('SELECT *  FROM trida WHERE zkratka_tridy !="ucitel" ORDER BY jmeno_tridy');
         $this->template->pom_check=1;
         
         // Kontrola existence úvazku
@@ -157,7 +161,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
        $this->template->uvazekuci=  $predmet_uci=$this->database->query('SELECT u.jmeno AS  `jmeno` , u.prijmeni AS  `prijmeni` , ucitele_uvazek, ucitel, predmet, s.trida AS  `trida` FROM  `ucitele_uvazek` AS  `s` INNER JOIN users AS  `u` ON u.id_users = s.ucitel');
      
       // skupiny
-        $this->template->skupiny= $this->database->query('SELECT * FROM skupina WHERE ucitel= ?', $ucitelId);
+        $this->template->skupiny= $this->database->query('SELECT id_skupiny, nazev_skupiny, predmet, ucitel, trida, t.jmeno_tridy AS `jmeno_tridy`, p.nazev as `nazev_predmetu` FROM skupina INNER JOIN trida as `t` ON skupina.trida=t.id_tridy INNER JOIN predmet AS `p` ON skupina.predmet=p.id_predmetu WHERE ucitel= ?', $ucitelId);
       // má skupinu 
        $this->template->pocet_skupin= $this->database->query('SELECT count(id_skupiny) AS `pocet` FROM skupina WHERE ucitel= ?', $ucitelId)->fetch();
       // disable checkbox

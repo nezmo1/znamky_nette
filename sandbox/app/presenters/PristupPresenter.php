@@ -17,6 +17,9 @@ class PristupPresenter extends BasePresenter
       
   }
  
+ public function renderLogin(){
+     
+ } 
 }	
         
  

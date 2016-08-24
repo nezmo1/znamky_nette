@@ -60,7 +60,7 @@ class EditPresenter extends BasePresenter
                         ->setDefaultValue($editace->mail)
                         ->addCondition($form::FILLED)
 			->addRule($form::EMAIL, 'E-mail je ve špatném tvaru');
-		
+		$form->getErrors();
                     
 		
                 $tituly= array(
@@ -74,7 +74,9 @@ class EditPresenter extends BasePresenter
                 $form->addSelect('titul', 'Titul:', $tituly);
                 $form['titul']->setDefaultValue($editace->titul);     
 		$form->addSubmit('send', 'Editovat učitele');
-
+ $form->addButton('zpet', 'Zpět na seznam učitelů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
+         
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->editUcitel;
                 
@@ -178,7 +180,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                  $form->addSubmit('send', 'Změnit heslo');
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->zmenaHeslaA;
-                
+                $form->addButton('zpet', 'Zpět na seznam uživatelů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
@@ -219,11 +222,18 @@ $renderer->wrappers['control']['.submit'] = 'uvazek-send';
         }
         
         
+     
         
 /**
+ * 
+ * 
+ * 
  * Funkce kopírující formulář pro novou třídu <br>
  * Z databáze jsou vybrány data, které naplní formulář
- */       
+ */      
+        
+        
+        
         protected function createComponentNovyTrida()
 	{
 		$form = new Nette\Application\UI\Form;
@@ -358,6 +368,127 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
         
         
         
+        protected function createComponentEditTrida()
+	{
+		$form = new Nette\Application\UI\Form;
+                
+                 $get=$this->request->getParameters();
+                 $nazev_tridy= $this->database->query('SELECT * FROM trida WHERE id_tridy= ?',$get['id_tridy'])->fetch();
+                 
+		$form->addText('zkratka_tridy', 'Zkratka třídy')
+                        ->setAttribute('placeholder', 'Jméno třídy')
+			->setRequired('Zadejte název třídy')
+                       
+                        ->setDefaultValue($nazev_tridy->zkratka_tridy);
+                 
+                 $form->addText('jmeno_tridy', 'Jméno třídy')
+                        ->setAttribute('placeholder', 'Jméno třídy')
+			->setRequired('Zadejte název třídy')
+                       
+                        ->setDefaultValue($nazev_tridy->jmeno_tridy);
+                  
+		 $form->addHidden('id_tridy')
+                      ->setValue($get['id_tridy']); 
+               
+		$form->addSubmit('send', 'Editovat třídu');
+
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->editTrida;
+                $form->addButton('zpet', 'Zpět na seznam tříd')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
+                
+                $renderer = $form->getRenderer();
+
+ 
+
+		return $form;
+	} 
+        
+        
+        function editTrida($form, $values){
+            
+            
+                
+                    
+                    if($this->database->query('UPDATE trida SET jmeno_tridy= ?',$values->jmeno_tridy,', zkratka_tridy= ?',$values->zkratka_tridy,' WHERE id_tridy= ?', $values->id_tridy)){
+                     $flashMessage = $this->flashMessage('Třída byla úspěšně editována.');    
+                    }
+                    else {
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru, skupina nebyla editována!');    
+                    }
+                      
+                  return $flashMessage;       
+                
+            
+            
+        }    
+        
+   
+        
+        
+        
+        
+          protected function createComponentEditPredmet()
+	{
+		$form = new Nette\Application\UI\Form;
+                
+                 $get=$this->request->getParameters();
+                 $nazev_predmetu= $this->database->query('SELECT * FROM predmet WHERE id_predmetu= ?',$get['id_predmetu'])->fetch();
+                 
+		$form->addText('zkratka_predmetu', 'Zkratka předmětu')
+                        ->setAttribute('placeholder', 'Zkratka předmětu')
+			->setRequired('Zadejte název předmětu')
+                       
+                        ->setDefaultValue($nazev_predmetu->zkratka_predmetu);
+                 
+                 $form->addText('nazev', 'Název předmětu')
+                        ->setAttribute('placeholder', 'Název předmětu')
+			->setRequired('Zadejte název třídy')
+                       
+                        ->setDefaultValue($nazev_predmetu->nazev);
+                  
+		 $form->addHidden('id_predmetu')
+                      ->setValue($get['id_predmetu']); 
+               
+		$form->addSubmit('send', 'Editovat předmět');
+
+		// call method signInFormSucceeded() on success
+		$form->onSuccess[] = $this->editPredmet;
+                $form->addButton('zpet', 'Zpět na seznam předmětů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
+                
+                $renderer = $form->getRenderer();
+
+ 
+
+		return $form;
+	} 
+        
+        
+        function editPredmet($form, $values){
+            
+            
+                
+                    
+                    if($this->database->query('UPDATE predmet SET nazev= ?',$values->nazev,', zkratka_predmetu= ?',$values->zkratka_predmetu,' WHERE id_predmetu= ?', $values->id_predmetu)){
+                     $flashMessage = $this->flashMessage('Předmět byl úspěšně editován.');    
+                    }
+                    else {
+                     $flashMessage = $this->flashMessage('Chyba databáze na straně serveru!');    
+                    }
+                      
+                  return $flashMessage;       
+                
+            
+            
+        }    
+        
+        
+        
+        
+        
+        
+        
         
 /**
  * Funkce pro vytvoření komponenty formuláře pro editaci názvu skupiny
@@ -384,7 +515,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->editSkupina;
                 
-                
+                 $form->addButton('zpet', 'Zpět na seznam skupin')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
 
@@ -475,7 +607,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->editZak;
                 
-                
+                $form->addButton('zpet', 'Zpět na seznam žáků')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
 
@@ -529,6 +662,7 @@ public function novyZak($form, $values)
 		$form = new Nette\Application\UI\Form;
 		$form->addText('znamka', 'Známka')
                         ->setAttribute('placeholder', 'Známka')
+                        ->setAttribute('class', 'form-control')
                         ->setValue($existence['znamka'])
 			->setRequired('Zadejte známku');
                       
@@ -569,13 +703,15 @@ public function novyZak($form, $values)
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->editZnamkaS;
                 
+                $form->addButton('zpet', 'Zpět na seznam známek')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
 
 $renderer->wrappers['pair']['container'] = "tr";
 $renderer->wrappers['pair']['.odd'] = 'alt';
-$renderer->wrappers['label']['container'] = 'td';
+
 
 $renderer->wrappers['control']['.text'] = 'udaje';
 $renderer->wrappers['control']['.password'] = 'udaje';
@@ -623,7 +759,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		  $form->addText('ctvrtleti_4', 'Konec roku')
                         ->setAttribute('placeholder', 'Známka')
                         ->setValue($existence['ctvrtleti_4']);
-			
+		$form->addButton('zpet', 'Zpět na seznam známek')
+    ->setAttribute('onclick', 'zpetNaSeznam()');	
           
       
                 $form->addHidden('id_znamky')
@@ -682,21 +819,28 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		public function renderHeslo($id_users)
 {
             $user =  $this->getUser();
+            $get=$this->request->getParameters();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
  
-}
+      $uzivatel = $this->database->query("SELECT trida, jmeno, prijmeni FROM users WHERE id_users=".$get['id_users'])->fetch();
+       $zpet =   $uzivatel['trida'] == "42" ? "/users/list" : "/list/zaci";
+       $this->template->zpet = $zpet;
+        $this->template->uzivatel = $uzivatel;
+    }
 
 /**
  * Funkce pro vykreslení stránky Znamka
  */
 	public function renderZnamka($id_znamky)
 {
+             $get=$this->request->getParameters();
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {
              $this->redirect('Pristup:pristup');
-       }
+           }
+         $this->template->zak = $this->database->query("SELECT CONCAT (u.jmeno,' ',u.prijmeni) as `cele_jmeno` FROM znamky INNER JOIN users as `u` on znamky.zak=u.id_users where id_znamky=".$get['id_znamky'])->fetch();
  
 }
 /**
@@ -704,10 +848,13 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
  */
 	public function renderCvZnamka($id_znamky)
 {
-            $user =  $this->getUser();
+               $get=$this->request->getParameters();
+           $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {
              $this->redirect('Pristup:pristup');
        }
+   $this->template->zak = $this->database->query("SELECT CONCAT (u.jmeno,' ',u.prijmeni) as `cele_jmeno` FROM prum_znamky INNER JOIN users as `u` on prum_znamky.zak=u.id_users where id_prum_znamky=".$get['id_znamky'])->fetch();
+ $this->template->predmet = $this->database->query("SELECT p.nazev as `nazev` FROM prum_znamky INNER JOIN predmet as `p` on prum_znamky.predmet=p.id_predmetu where id_prum_znamky=".$get['id_znamky'])->fetch();
  
 }
 
@@ -715,7 +862,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 /**
  * Funkce pro vykreslení stránky Predmet
  */
-		public function renderPredmet()
+		public function renderPredmet($id_predmetu)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
@@ -726,7 +873,7 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 /**
  * Funkce pro vykreslení stránky Trida
  */
-		public function renderTrida()
+		public function renderTrida($id_tridy)
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {

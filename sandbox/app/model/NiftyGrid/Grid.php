@@ -137,7 +137,9 @@ abstract class Grid extends \Nette\Application\UI\Control
 		if($this->hasActiveFilter()){
 			$this->filterData();
 			$this['gridForm'][$this->name]['filter']->setDefaults($this->filter);
-		}
+                        
+                        
+                }
 		if($this->hasActiveOrder() && $this->hasEnabledSorting()){
 			$this->orderData($this->order);
 		}

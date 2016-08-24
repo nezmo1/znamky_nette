@@ -78,7 +78,7 @@ class SeznamSkupin extends Grid{
         
       $self=$this;
                
-       $this->addColumn('nazev_skupiny', 'Název skupiny', '200px')
+       $this->addColumn('nazev_skupiny', 'Název skupiny', '')
             ->setTextFilter()
                ->setRenderer(function($row) use($self){
                   
@@ -87,7 +87,7 @@ class SeznamSkupin extends Grid{
        
        
        
-      $this->addColumn('predmet', 'Předmět', '200px')
+      $this->addColumn('predmet', 'Předmět', '')
            ->setRenderer(function($row) use($self){
                    
                  
@@ -99,7 +99,7 @@ class SeznamSkupin extends Grid{
                    
                    
                    
-      $this->addColumn('trida', 'Třída','20px')
+      $this->addColumn('trida', 'Třída','')
               ->setSelectFilter($this->trida)
                 ->setRenderer(function($row) use($self){
                    
@@ -111,7 +111,7 @@ class SeznamSkupin extends Grid{
             ->setSortable(FALSE);
                    
                    
-       $this->addColumn('ucitel', 'Učitel', '200px')
+       $this->addColumn('ucitel', 'Učitel', '')
            ->setSelectFilter($this->zak_pom)
                 ->setRenderer(function($row) use($self){
                    

@@ -62,9 +62,11 @@ class SeznamZnamekUcitel extends Grid{
 //Předáme zdroj
         
         $this->setDataSource($source);
+                
         $self = $this;  
-       $this->addColumn('zak', 'Žák', '150px')
+       $this->addColumn('zak', 'Žák', '')
                ->setSelectFilter($this->zak_pom)
+               
                 ->setRenderer(function($row) use($self){
                    
                
@@ -73,15 +75,15 @@ class SeznamZnamekUcitel extends Grid{
                    });    
                
                
-       $this->addColumn('znamka', 'Známka', '180px')
+       $this->addColumn('znamka', 'Známka', '')
             ->setTextFilter()
                
                ->setSortable(FALSE);
-       $this->addColumn('popis', 'Popis', '180px')
+       $this->addColumn('popis', 'Popis', '')
                ->setTextFilter()
                ->setSortable(FALSE); 
              
-         $this->addColumn('vaha', 'Váha', '70px')
+         $this->addColumn('vaha', 'Váha', '')
                ->setSelectFilter($vaha)  
               ->setRenderer(function($row){
              switch ($row['vaha']) {
@@ -100,7 +102,7 @@ class SeznamZnamekUcitel extends Grid{
              return \Nette\Utils\Html::el('font')->setText($vaha)->addAttributes(array('style' => $barva));
              // return $vaha;    
         });
-         $this->addColumn('predmet', 'Předmět', '200px')
+         $this->addColumn('predmet', 'Předmět', '')
            ->setRenderer(function($row) use($self){
                    
                  
@@ -120,7 +122,7 @@ class SeznamZnamekUcitel extends Grid{
             
                    
                    
-           $this->addColumn('datum', 'Datum', '100px')
+           $this->addColumn('datum', 'Datum', '')
                  ->setSelectFilter($this->datum)  
                  ->setRenderer(function($row){return date('j. n. Y', strtotime($row['datum']));});  
        

@@ -11,40 +11,33 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<link href="{$basePath}/css/styl1.css" rel="stylesheet" type="text/css" />
-<link href="{$basePath}/css/twigrid.datagrid.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" media="screen" href="{$basePath}/css/grid.css" />
-<link rel="stylesheet" media="screen" href="{$basePath}/css/style.css" />
-<link rel="stylesheet" media="screen" href="{$basePath}/css/example.css" />
-<link rel="stylesheet" href="{$basePath}/css/menu.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$basePath}/css/table.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$basePath}/css/jqueryCalendar.css" type="text/css" media="screen" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="{$basePath}/js/jquery.min.js"></script>
-<script src="{$basePath}/js/jquery-ui.js"></script>
-<script src="{$basePath}/js/netteForms.js"></script>
-<script src="{$basePath}/js/grid.js"></script> 
- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Bootstrap -->
+    <link href="{$basePath}/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{$basePath}/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{$basePath}/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{$basePath}/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{$basePath}/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{$basePath}/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
  
-  
+  <!-- Custom Theme Style -->
+    <link href="{$basePath}/build/css/custom.min.css" rel="stylesheet">
+        
+ 
+<link rel="stylesheet" media="screen" href="{$basePath}/css/grid.css" />
 
 
-<script>
-$(document).ready(function(){
- $('input').keyup(function(e){
-   if(e.which==40)
-   $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
-  else if(e.which==38)
-   $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
- });
-});
+        
+<link rel="stylesheet" media="screen" href="{$basePath}/css/example.css" />
 
 
 
 
-</script>
+
 
 
 
@@ -52,106 +45,134 @@ $(document).ready(function(){
 
 
 </head>
-<body>
-<div class="col-sm-12">
-<div id="hlavicka">
- <div id="logo">
- <img src="{$basePath}/images/design/logo2.png" title="Elektronická žákovská knížka" /></div>
- <div id="login">
-     {if !$user->isLoggedIn()}
-     {form signInForm}
-      <h1>Přihlášení</h1> 
-      <table>
-      <tr>
-        <td>
-        {if $form->hasErrors()}<img src='{$basePath}/images/owl_incorrect.png' width="140px" height="140px" alt='Tudy cesta nevede'/>{/if}
-         {if !$form->hasErrors()}<img src='{$basePath}/images/owl_notebook.png' width="140px" height="140px" alt='Jen dva údaje tě dělí od přihlášení'/>{/if}   
+<body class="nav-md">
+<div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="" class="site_title"><i class="fa fa-book"></i> <span>Žako</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            {control informace $user,1}
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            {control menu $user}
+
+           
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    {control informace $user,2}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                   
+                    <li>
+                        <a href="{$basePath}/nastaveni/personalninastaveni">
+                     
+                        <span>Personální nastavení</span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                        
+                        
+                        {form signOutForm}
+                         <input n:name="logout" class='btn btn-warning col-md-12 col-sm-12 col-xs-12'></input>    
+                        {/form}
+                    
+                   </li>
+                  </ul>
+                </li>
+
+             
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+         
         
-        </td>  
-       
-          
-         <td><input n:name="username" class='login-input'></input>
-       <input n:name="password" class='login-input'></input>
-       <input n:name="remember"><label>Zůstat přihlášen</label></input>
-        <input n:name="send" class='login-submit'></input>   
+        
+        
+    <!-- jQuery -->
+    <script src="{$basePath}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{$basePath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="{$basePath}/vendors/fastclick/lib/fastclick.js"></script>
+     <!-- Custom Theme Scripts -->
+    <script src="{$basePath}/build/js/custom.min.js"></script>
+    
+        <!-- NProgress -->
+    <script src="{$basePath}/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="{$basePath}/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="{$basePath}/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{$basePath}/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="{$basePath}/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="{$basePath}/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="{$basePath}/vendors/Flot/jquery.flot.js"></script>
+    <script src="{$basePath}/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="{$basePath}/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="{$basePath}/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="{$basePath}/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="{$basePath}/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="{$basePath}/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="{$basePath}/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="{$basePath}/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="{$basePath}/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="{$basePath}/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="{$basePath}/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{$basePath}/js/moment/moment.min.js"></script>
+    <script src="{$basePath}/js/datepicker/daterangepicker.js"></script>
+    
+    
+    
+    
+{include content}
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+     
       
-      </td>
-      </tr>
-       </table>
-   {/form}
-    {/if} 
-  {if $user->isLoggedIn()}
-     {form signOutForm}
-         
-      <table>
-          
-      <tr>
-          
-        <td rowspan="2">
-         {if $user->isInRole('4')}   
-        <img src='{$basePath}/images/lux.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
-         {/if}
-         
-         {if $user->isInRole('1')}   
-        <img src='{$basePath}/images/girl2.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
-         {/if}
-         
-         {if $user->isInRole('2')}   
-        <img src='{$basePath}/images/owl_rose.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
-         {/if}
-         {if $user->isInRole('3')}   
-        <img src='{$basePath}/images/owl_ebook.png' width="140px" height="140px" alt='Jsi nejlepší z nejlepších'/>
-         {/if}
-        
-        </td>  
-       
-         {control informace $user}
-           
-        
-      </tr>
-        <tr> <td valign="bottom">
-        <a  class="no_deco" href="{link Nastaveni:personalninastaveni}"><input type="button" value='Přehled' class='uvazek-send'/></a><a class="no_deco" href="{link Nastaveni:personalninastaveni}"><input type="button" value='Nastavení' class='uvazek-send'/>        
-        </a><input n:name="logout" class='login-submit'></input>
-        </td></tr>  
-        
-           
-       </table>
-   {/form}
-   {/if} 
- </div>
+      
 
-
- 
- </div>
-
-  
-  
-   <ul id="menu">
-  
-   {control menu $user}
-   </ul>
- <div id="telo">
-	{include content}
-</div>
-        
-</body>
-<div id="footer">
-<footer>
-
-<p><h4>{$nazev_skoly->parametr_2} </h4></p>
-  <p><h4>Vytvořil Adam Nezmar</h4></p>
-</footer>
-</div>
-</div>
-
-
- 
-        
-	{block scripts}
-	<script src="{$basePath}/js/netteForms.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-        <script src="{$basePath}/js/rounded-corners.js"></script>
-
-	{/block}
+    
+  </body>
 
 </html>

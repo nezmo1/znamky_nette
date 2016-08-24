@@ -1,9 +1,56 @@
 {block content}
-<h3>{$skupina->nazev_skupiny}</h3>
 
-<div style="float:left"><a href="{link Skupiny:seznamskupindef}"><img src="{$basePath}/images/go_back.png" width="7%" alt="Zpět na seznam" title="Zpět na seznam"></a></div>
-<div class='datagrid' style='width:40%; float:left'>
-<table>
+<script>
+$(document).ready(function(){
+ $('input').keyup(function(e){
+   if(e.which==40)
+   $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+  else if(e.which==38)
+   $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+ });
+});
+</script>
+
+ <script language="javascript">
+function checkMe() {
+    if (confirm("Opravdu chcete smazat tuto skupinu?")) {
+       
+        return true;
+    } else {
+       
+        return false;
+    }
+}
+</script>
+
+<div class="right_col" role="main">
+         
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Seznam Skupin</h3>
+              </div>
+
+             
+            </div>
+           
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
+                  
+                  <div class="x_content" >
+                      
+                   
+                      
+                      
+                      
+                      
+                      <h3>{$skupina->nazev_skupiny}</h3>
+
+
+<div class="col-md-4 col-sm-12 col-xs-12">
+<table class="table striped-table">
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Žáci ve třídě</th></tr></thead>
     {form seznamZakuSkupina}
     {foreach $zaci_v_ts as $zaci_v_t}
@@ -14,7 +61,7 @@
      </tr>   
      <?php $pom_check++; ?>
      {/foreach} 
-     <tr><td colspan="2" style="text-align:center;"><input n:name="send" class="uvazek-send"></td></tr>
+     <tr><td colspan="2" style="text-align:center;"><input n:name="send" class="btn btn-success"></td></tr>
      {/form}
     <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
         {foreach $flashes as $flash}
@@ -26,12 +73,12 @@
     </tr>
     
 </table>   
-   </div> 
+  </div>
 
-<div class="sipka" style="float:left; padding-top:20%;padding-left:5%;"><img src="{$basePath}/images/arrows.png" width="100px" height="100px"></div>
+<div class="sipka" style="float:left; padding-top:20%;padding-left:10%;"><img src="{$basePath}/images/arrows.png" width="100px" height="100px"></div>
 
-<div class='datagrid' style='width:40%; float:right'>
-<table>
+<div class="col-md-4 col-sm-12 col-xs-12 col-md-offset-2">
+<table class="table striped-table">
     <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Žáci ve skupině</th></tr></thead>
     {form seznamZakuVeSkupine}
     {foreach $zaci_v_sks as $zaci_v_sk}
@@ -42,7 +89,7 @@
      </tr>   
      <?php $pom_check2++; ?>
      {/foreach} 
-     <tr><td colspan="2" style="text-align:center;"><input n:name="send" class="uvazek-send"></td></tr>
+     <tr><td colspan="2" style="text-align:center;"><input n:name="send" class="btn btn-success"></td></tr>
      {/form}
     <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
         {foreach $flashes as $flash}
@@ -55,6 +102,70 @@
     
 </table>   
    </div> 
+                      
+                  
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+
+                     <input type="button" class="btn btn-info col-md-offset-5" value='Zpět na seznam skupin' onClick='zpetNaSeznam();'>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+                      
+                      
+                      
+                     <!-- {control viteze, 10}-->
+                      
+                    <br />
+                    
+
+    
+<script>
+function myFunction(zak,znamka) {
+    document.getElementById(zak).value = document.getElementById(zak).value + znamka;
+}
+</script>
+
+
+</div>
+                    
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+   
+
+
+
+<script>
+        function zpetNaSeznam(){
+            window.location = {$basePath} + "/skupiny/seznamskupindef";
+        }
+        
+        </script>
+
+
+
+
+
+
 
 
 

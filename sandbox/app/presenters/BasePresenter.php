@@ -131,13 +131,16 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
  * Funkce řeší zobrazení názvu školy
  */    
     public function beforeRender(){
-        
+        if(!$this->user->loggedIn  && $this->presenter->presenter->name != "Pristup"){
+           $this->redirect('Pristup:login');   
+        }
+        else {
         $nazev_sk=$this->database->query('SELECT * FROM nastaveni_global WHERE parametr_1="nazev_skoly"')->fetch();
         $this->template->nazev_skoly = "";
         if($nazev_sk!=FALSE){
         $this->template->nazev_skoly = $nazev_sk;     
+           }
         }
-        
     }
  
 }

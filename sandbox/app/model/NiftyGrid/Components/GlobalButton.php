@@ -86,7 +86,7 @@ class GlobalButton extends \Nette\Application\UI\PresenterComponent
 		$el = Html::el("a")
 			->href($this->getLink())
 			->setClass($this->class)
-			->addClass("grid-button")
+			->addClass("form-control")
 			->addClass("grid-global-button")
 			->setTitle($this->label);
 

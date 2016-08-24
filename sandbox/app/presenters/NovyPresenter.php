@@ -66,7 +66,8 @@ class NovyPresenter extends BasePresenter
                 $form->addSelect('titul', 'Titul:', $tituly);
                      
 		$form->addSubmit('send', 'Vytvořit učitele');
-
+$form->addButton('zpet', 'Seznam učitelů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->novyUcitel;
                 
@@ -136,7 +137,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                  $form->addSubmit('send', 'Vytvořit třídu');
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->novyTrida;
-                
+                $form->addButton('zpet', 'Seznam tříd')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
@@ -205,7 +207,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->novyPredmet;
                 
-                
+                $form->addButton('zpet', 'Zpět na seznam předmětů')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
                 $renderer = $form->getRenderer();
 $renderer->wrappers['controls']['container'] = NULL;
 
@@ -300,7 +303,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 $form->addSelect('predmet', 'Předmět:', $predmet_pom);
                      
 		$form->addSubmit('send', 'Vytvořit skupinu');
-
+$form->addButton('zpet', 'Zpět na seznam skupin')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->novySkupina;
                 
@@ -386,7 +390,8 @@ $renderer->wrappers['control']['.submit'] = 'login-prehled';
                 $form->addSelect('trida', 'Třída:', $trida_pom);
                      
 		$form->addSubmit('send', 'Vytvořit žáka');
-
+                $form->addButton('zpet', 'Seznam žáků')
+    ->setAttribute('onclick', 'zpetNaSeznam()');
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = $this->novyZak;
                 

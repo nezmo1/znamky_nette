@@ -339,6 +339,7 @@ if($trida['tridac']!='n'){
  */
 public function rendervygenFormNovaZnamka()
 {
+    
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) and (!$user->isInRole('2')) ) {
              $this->redirect('Pristup:pristup');
@@ -348,21 +349,28 @@ public function rendervygenFormNovaZnamka()
         $casti = explode("_", $get['predmet']);
                if($casti[0]=="s"){
                    $this->template->vyber_zaku=  $this->database->query('SELECT zak,u.jmeno as `jmeno`,u.prijmeni `prijmeni` FROM clenove_skupiny INNER JOIN users as `u` on zak=u.id_users WHERE id_skupiny= ?',$casti[1], 'ORDER BY prijmeni,jmeno')->fetchAll();
-                 
+                  $this->template->trida=  $this->database->query('SELECT jmeno_tridy FROM trida WHERE id_tridy='.$get['trida'])->fetch(); 
+                   $this->template->predmet= $this->database->query('SELECT skupina.nazev_skupiny as `nazev` FROM predmet INNER JOIN skupina on predmet.id_predmetu=skupina.predmet WHERE skupina.id_skupiny='.$casti['1'])->fetch();
+                  
                }
                
                else{
               $this->template->vyber_zaku=  $this->database->query('SELECT u.id_users as `zak`, u.jmeno as `jmeno`,u.prijmeni as `prijmeni`  FROM `ucitele_uvazek` 
 INNER JOIN users as `u` on ucitele_uvazek.trida=u.trida
 WHERE ucitel= ?',$ucitel->id,' and predmet= ?',$casti['1'],' and u.trida= ?',$get['trida'],' ORDER BY prijmeni,jmeno')->fetchAll();
-                   
+                
+              
+               $this->template->trida=  $this->database->query('SELECT jmeno_tridy FROM trida WHERE id_tridy='.$get['trida'])->fetch(); 
+              $this->template->predmet= $this->database->query('SELECT nazev FROM predmet WHERE id_predmetu='.$casti['1'])->fetch();
+           
                }
         
             $this->template->pom_cislo=1;
             
             
   $this->template->sirka=  $this->database->query('SELECT * FROM nastaveni_personal WHERE id_user= ?',$ucitel->id,'and parametr="sirka_znamek_ano"')->fetch();              
-               
+    $detekuj=new \DesktopDetect();
+     $this->template->desktop= $detekuj->DetekujMobil();
 }	
         
  

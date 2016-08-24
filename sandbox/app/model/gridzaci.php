@@ -40,8 +40,8 @@ class SeznamZaku extends Grid{
 //Předáme zdroj
         $this->setDataSource($source);
         
-       $this->addColumn('username', 'Přihlašovací jméno', '100px');
-       $this->addColumn('jmeno', 'Jméno', '100px')
+       $this->addColumn('username', 'Přihlašovací jméno', '');
+       $this->addColumn('jmeno', 'Jméno', '')
              
             ->setTextEditable('jmeno')
             ->setSortable(FALSE)
@@ -49,7 +49,7 @@ class SeznamZaku extends Grid{
                
        
       
-       $this->addColumn('prijmeni', 'Příjmení', '100px')
+       $this->addColumn('prijmeni', 'Příjmení', '')
                      
              ->setTextEditable('prijmeni')
             ->setSortable(FALSE)
@@ -66,7 +66,7 @@ class SeznamZaku extends Grid{
 
         $numOfResults=$this->database->query('SELECT COUNT(username) AS `pocet` FROM users WHERE trida="42" and priorita !=4')->fetch();  
         $numOfResults = $numOfResults->pocet;
-        $this->addColumn('mail', 'E-mail', '300px')
+        $this->addColumn('mail', 'E-mail', '')
                
              ->setSortable(FALSE) 
              ->setTextEditable('mail')

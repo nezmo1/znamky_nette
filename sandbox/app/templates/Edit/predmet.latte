@@ -1,0 +1,137 @@
+{block content}
+
+<div class="right_col" role="main">
+         
+            <div class="page-title">
+              <div class="title_left">
+                  <h3>Editace předmětu <small></small></h3>
+              </div>
+
+             
+            </div>
+           
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
+                  
+                  <div class="x_content" >
+                    <br />
+                    
+                       
+                       
+                      
+                       
+                     
+
+  
+   
+ <div class="form-horizontal form-label-left" style="min-height: 680px">
+                           
+                          
+     {form editPredmet $form}
+<ul class=error n:if="$form->ownErrors">
+	<li n:foreach="$form->ownErrors as $error">{$error}</li>
+</ul>
+
+
+<div class="form-group" n:foreach="$form->controls as $input" n:class="$input->required ? required">
+	{if ($input->name != "send")  &&  ($input->name != "zpet")}
+        {label $input  class => 'required control-label col-md-3 col-sm-3 col-xs-12' /}
+	<div class="col-md-6 col-sm-6 col-xs-12">
+        {input $input class => form-control} <span class=error n:ifcontent>{$input->error}</span>
+        {/if}
+        
+        
+       
+            
+        
+</div>
+                                       
+            {if $input->name == "send" }
+                                       <div class="col-md-offset-3">
+                                       <input n:name="send"  class='btn btn-success'><input n:name="zpet"  class='btn btn-info'>
+                                       </div>
+                                        {/if}
+</div>
+        
+        
+      
+                                       
+        
+{/form}  
+                               
+                                  
+                                    {foreach $flashes as $flash}
+                                <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně editován.'} color:green {/if}'>{$flash->message}</div>
+                            {/foreach}
+
+                                 
+
+                             
+                              
+                         
+                                  
+    
+                          
+                                    
+                                
+
+
+                             
+                          
+                       
+                         </div>
+                                 
+
+                             
+                              
+                                     
+                                  
+                                    
+                          
+                         
+                                    
+                                
+
+
+                             
+                          
+                       
+                         </div>
+
+                        <br>
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  
+              </div>
+                       
+                      
+            </div>
+                       
+          </div>
+                       
+        </div>
+                       
+                       
+                       
+                       </div>
+
+                       
+<script>
+        function zpetNaSeznam(){
+            window.location = {$basePath}+"/list/predmety";
+        }
+        
+        </script>
+
+    
+  
+

@@ -1,0 +1,93 @@
+{block content}
+
+<script>
+$(document).ready(function(){
+ $('input').keyup(function(e){
+   if(e.which==40)
+   $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+  else if(e.which==38)
+   $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+ });
+});
+</script>
+
+ <script language="javascript">
+function checkMe() {
+    if (confirm("Opravdu chcete smazat tuto třídu?")) {
+       
+        return true;
+    } else {
+       
+        return false;
+    }
+}
+</script>
+
+<div class="right_col" role="main">
+         
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Seznam tříd</h3>
+              </div>
+
+             
+            </div>
+           
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
+                  
+                  <div class="x_content" >
+                      
+                      
+                  
+                      
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                      {control seznamTridGrid}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+                      
+                      
+                      
+                     <!-- {control viteze, 10}-->
+                      
+                    <br />
+                    
+
+    
+<script>
+function myFunction(zak,znamka) {
+    document.getElementById(zak).value = document.getElementById(zak).value + znamka;
+}
+</script>
+
+
+</div>
+                    
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+   
+
+
+
+
+

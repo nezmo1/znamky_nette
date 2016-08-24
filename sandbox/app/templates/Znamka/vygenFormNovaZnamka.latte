@@ -1,46 +1,96 @@
 
 {block content}
+<script>
+$(document).ready(function(){
+ $('input').keyup(function(e){
+   if(e.which==40)
+   $(this).closest('tr').next().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+  else if(e.which==38)
+   $(this).closest('tr').prev().find('td:eq('+$(this).closest('td').index()+')').find('input').focus();
+ });
+});
+</script>
 
+<div class="right_col" role="main">
+         
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Hromadné přidání známek</h3>
+              </div>
 
+             
+            </div>
+           
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
+                  
+                  <div class="x_content" >
+                      
+                      
+                  
+                      
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>{$trida['jmeno_tridy']}. třída - {$predmet['nazev']} <small>{$popis} </small></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
 
-    {form formHromadnaZnamka}
-        <div class='datagrid' style='width:80%; margin-left:10%'>
-<table class="yolo">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Žák</th>
+                          <th>Známka</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                           {form formHromadnaZnamka}
+        
 
-    <thead><tr ><th colspan='2' style='font-size:18px; text-align: center'>Hromadná známka</th></tr></thead>
-       <tr style='background:#F8FF8E'><th style='font-size:16px; text-align: center'>Žák</th><th style='font-size:16px; text-align: center'>Známka</th></tr>
+    
+       
         {foreach $vyber_zaku as $vyber_zak}
-        <tr {if $iterator->odd}class='alt'{/if}><td style='padding-left:20px;'><input style='height:25px;font-size:14px;width:350px;padding-left:20px;background:#97C7F4;font-weight: bold' n:name="zak_{$pom_cislo}" class='udaje' ></td>
+        <tr><td><input  n:name="zak_{$pom_cislo}" class='form-control' ></td>
           
             
             {if $sirka==FALSE}
-            <td>  <input n:name="znamka_{$pom_cislo}" style='height:25px;font-size:14px;width:350px;padding-left:20px; font-weight: bold; color: red;font-size: 18px; text-align: center;'  class='udaje' id="znamka_{$pom_cislo}">
+            <td>  <input n:name="znamka_{$pom_cislo}"  class='form-control' id="znamka_{$pom_cislo}">
             {if $desktop==TRUE}
            <br> 
-           <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','4');"><img src="{$basePath}/images/4.png" width="35px" height="35px" alt="4" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
+           <a  onclick="myFunction('znamka_{$pom_cislo}','1');"><button class="btn btn-primary" type="button">1</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','2');"><button class="btn btn-primary" type="button">2</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','3');"><button class="btn btn-primary" type="button">3</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','4');"><button class="btn btn-primary" type="button">4</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','5');"><button class="btn btn-primary" type="button">5</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','-');"><button class="btn btn-primary" type="button">-</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','*');"><button class="btn btn-primary" type="button">*</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','!');"><button class="btn btn-primary" type="button">!</button></a>
+            
            {/if}
            </td></tr>  
         {/if}
         
        {if $sirka!=FALSE}
            
-            <td><textarea n:name="znamka_{$pom_cislo}" style='height:150px;font-size:14px;width:350px;padding-left:20px;font-weight: bold; color: red;font-size: 18px;text-align: center;'  class='udaje' ></textarea> 
+            <td><textarea n:name="znamka_{$pom_cislo}"  class='form-control' ></textarea> 
         
        {if $desktop==TRUE}
            <br> 
-       <a  style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','1');"><img src="{$basePath}/images/1.png" width="35px" height="35px" alt="1"></a> 
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','2');"><img src="{$basePath}/images/2.png" width="35px" height="35px" alt="2"></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','3');"><img src="{$basePath}/images/3.png" width="35px" height="35px" alt="3" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','4');"><img src="{$basePath}/images/4.png" width="35px" height="35px" alt="4" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','5');"><img src="{$basePath}/images/5.png" width="35px" height="35px" alt="5" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','-');"><img src="{$basePath}/images/minus.png" width="35px" height="35px" alt="-" ></a>
-            <a style="cursor: pointer;" onclick="myFunction('znamka_{$pom_cislo}','*');"><img src="{$basePath}/images/hvezda.png" width="35px" height="35px" alt="*" ></a>
+       <a  onclick="myFunction('znamka_{$pom_cislo}','1');"><button class="btn btn-primary" type="button">1</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','2');"><button class="btn btn-primary" type="button">2</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','3');"><button class="btn btn-primary" type="button">3</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','4');"><button class="btn btn-primary" type="button">4</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','5');"><button class="btn btn-primary" type="button">5</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','-');"><button class="btn btn-primary" type="button">-</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','*');"><button class="btn btn-primary" type="button">*</button></a> 
+            <a onclick="myFunction('znamka_{$pom_cislo}','!');"><button class="btn btn-primary" type="button">!</button></a>
        {/if}
        
        </td></tr> 
@@ -56,9 +106,9 @@
            <?php $pom_cislo=$pom_cislo+1 ?>
         {/foreach}   
         <input n:name='pocet_zaznamu' value='{$pom_cislo}'>
-      <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='uvazek-send' style='width:300px;height:40px' ></td></tr>
+      <tr><td colspan='2' style='text-align:center;'><input n:name="send"  class='form-control btn btn-success' ></td></tr>
              
-    <tr><td colspan='2' style='color:red; text-align:center; background:yellow; font-weight: bold'>
+    <tr><td colspan='2' style='color:red; text-align:center; font-weight: bold'>
         {foreach $flashes as $flash}
     <div class="flash {$flash->type}" style='{if $flash->message=='Uživatel byl úspěšně přidán do databáze.'} color:green {/if}'>{$flash->message}</div>
 {/foreach}
@@ -75,6 +125,24 @@
 
     {/form}
 
+                          
+                        
+                        
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+                      
+                      
+                      
+                      
+                      
+                    <br />
+                    
 
     
 <script>
@@ -82,6 +150,18 @@ function myFunction(zak,znamka) {
     document.getElementById(zak).value = document.getElementById(zak).value + znamka;
 }
 </script>
+
+
+</div>
+                    
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+   
 
 
 

@@ -8,11 +8,13 @@
 * @link		http://addons.nette.org/cs/niftygrid
 */
 *}
+
+
 {snippet}
 {if !$control->isSubGrid}
 {$control['gridForm']->render('begin')}
 {/if}
-<table n:attr="style => $control->width ? 'width: '.$control->width.';'" class="grid">
+<table n:attr="style => $control->width ? 'width: '.$control->width.';'" class="table table-striped grid">
 	<thead>
 		<tr n:if="$control->gridName">
 			<th colspan="{$colsCount}" class="grid-name">{$control->gridName}</th>
@@ -59,7 +61,7 @@
 		</tr>
 		<tr n:if="$control->hasFilterForm()">
 			<th n:if="$control->hasActionForm()" class="grid-filter-form"></th>
-			<th n:foreach="$subGrids as $subGrid" class="grid-filter-form"></th>
+			<th n:foreach="$subGrids as $subGrid" class="grid-filter-form "></th>
 			<th n:foreach="$columns as $column" n:attr="class => array(grid-filter-form, $control->isSpecificFilterActive($column->name) ? grid-filter-form-active)">
 				{if $column->hasFilter()}
 					{$control['gridForm'][$control->name]['filter'][$column->name]->getControl()}
@@ -142,6 +144,12 @@
 		</tr>
 	</tfoot>
 </table>
+                        
+                        
+                        
+                        
+      
+                 
 {if !$control->isSubGrid}
 {$control['gridForm']->render('end')}
 {/if}

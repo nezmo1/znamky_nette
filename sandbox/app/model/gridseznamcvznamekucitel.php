@@ -59,7 +59,7 @@ class SeznamCvZnamekUcitel extends Grid{
         
         $this->setDataSource($source);
         $self = $this;  
-       $this->addColumn('zak', 'Žák', '150px')
+       $this->addColumn('zak', 'Žák', '')
                ->setSelectFilter($this->zak_pom)
                 ->setRenderer(function($row) use($self){
                    
@@ -69,7 +69,7 @@ class SeznamCvZnamekUcitel extends Grid{
                    });    
                
                
-       $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '120px') // vytvoření sloupce 1. čtvrtletí
+       $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '') // vytvoření sloupce 1. čtvrtletí
             ->setTextFilter() // nastavení filtru
             ->setRenderer(function($row){ // funkce pro vykreslení údajů
           
@@ -77,7 +77,7 @@ class SeznamCvZnamekUcitel extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_1'] == $row['ctvrtleti_1'] ? "text-align:center" : NULL;})
                
             ->setSortable(FALSE);
-       $this->addColumn('ctvrtleti_2', 'Pololetí', '120px')
+       $this->addColumn('ctvrtleti_2', 'Pololetí', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -86,7 +86,7 @@ class SeznamCvZnamekUcitel extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_2'] == $row['ctvrtleti_2'] ? "text-align:center" : NULL;})   
                ->setSortable(FALSE);
        
-       $this->addColumn('ctvrtleti_3', '3. čtvrtletí', '120px')
+       $this->addColumn('ctvrtleti_3', '3. čtvrtletí', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -95,7 +95,7 @@ class SeznamCvZnamekUcitel extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_3'] == $row['ctvrtleti_3'] ? "text-align:center" : NULL;})   
                ->setSortable(FALSE);
        
-       $this->addColumn('ctvrtleti_4', 'Konec roku', '120px')
+       $this->addColumn('ctvrtleti_4', 'Konec roku', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -104,7 +104,7 @@ class SeznamCvZnamekUcitel extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_4'] == $row['ctvrtleti_4'] ? "text-align:center" : NULL;})   
                ->setSortable(FALSE);
        
-         $this->addColumn('predmet', 'Předmět', '200px')
+         $this->addColumn('predmet', 'Předmět', '')
            ->setRenderer(function($row) use($self){
                    
                  

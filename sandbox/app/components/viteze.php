@@ -119,12 +119,12 @@ class Viteze extends Nette\Application\UI\PresenterComponent
          }
              
         
-         echo "<div class='datagrid' style='background: #396383;width:30%;margin-left:35%'>";
+         echo "<div class='col-md-12 col-sm-12 col-xs-12' style='background: white;margin-left:30%'>";
         echo "<table>";
      
       
          echo "<tbody>";
-          echo "<tr><td class='popis' style='height:100px;vertical-align:top;padding-left:0px;padding-top:20px;color:black;'>";
+          echo "<tr><td class='' style='height:100px;vertical-align:top;padding-left:0px;padding-top:20px;color:black;'>";
           
           echo "<div><img src='".$cesta."css/viteze/".$img.".png' style='height:60px;float:left;width:80px;height:80px;margin-left:30px;'></div>";
            

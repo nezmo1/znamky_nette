@@ -52,7 +52,7 @@ class SeznamCvZnamekZak extends Grid{
           $self = $this; 
       
                
-        $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '120px')
+        $this->addColumn('ctvrtleti_1', '1. čtvrtletí', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -61,7 +61,7 @@ class SeznamCvZnamekZak extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_1'] == $row['ctvrtleti_1'] ? "text-align:center" : NULL;})
                
                ->setSortable(FALSE);
-       $this->addColumn('ctvrtleti_2', 'Pololetí', '120px')
+       $this->addColumn('ctvrtleti_2', 'Pololetí', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -70,7 +70,7 @@ class SeznamCvZnamekZak extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_2'] == $row['ctvrtleti_2'] ? "text-align:center" : NULL;})   
                ->setSortable(FALSE);
        
-       $this->addColumn('ctvrtleti_3', '3. čtvrtletí', '120px')
+       $this->addColumn('ctvrtleti_3', '3. čtvrtletí', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -79,7 +79,7 @@ class SeznamCvZnamekZak extends Grid{
             ->setCellRenderer(function($row){return $row['ctvrtleti_3'] == $row['ctvrtleti_3'] ? "text-align:center" : NULL;})   
                ->setSortable(FALSE);
        
-       $this->addColumn('ctvrtleti_4', 'Konec roku', '120px')
+       $this->addColumn('ctvrtleti_4', 'Konec roku', '')
             ->setTextFilter()
             ->setRenderer(function($row){
           
@@ -90,7 +90,7 @@ class SeznamCvZnamekZak extends Grid{
                
            
            
-       $this->addColumn('predmet', 'Předmět', '200px')
+       $this->addColumn('predmet', 'Předmět', '')
                
            ->setRenderer(function($row) use($self){
                
@@ -104,7 +104,7 @@ class SeznamCvZnamekZak extends Grid{
         
         
         
-         $this->addColumn('ucitel', 'Učitel', '150px')
+         $this->addColumn('ucitel', 'Učitel', '')
                ->setSelectFilter($this->zak_pom)
                 ->setRenderer(function($row) use($self){
                    

@@ -15,9 +15,12 @@ class HomepagePresenter extends BasePresenter
     
   public $database;
     
-   
 
-    
+  public function renderDefault() {
+       if($this->user->loggedIn){
+           $this->redirect('Informace:prehled');  
+  }
 
 }
 
+}

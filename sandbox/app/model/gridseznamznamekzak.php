@@ -57,15 +57,15 @@ class SeznamZnamekZak extends Grid{
         
       
                
-       $this->addColumn('znamka', 'Známka', '200px')
+       $this->addColumn('znamka', 'Známka', '')
             ->setTextFilter()
                
                ->setSortable(FALSE);
-       $this->addColumn('popis', 'Popis', '200px')
+       $this->addColumn('popis', 'Popis', '')
                ->setTextFilter()
                ->setSortable(FALSE); 
            $self = $this;   
-       $this->addColumn('predmet', 'Předmět', '200px')
+       $this->addColumn('predmet', 'Předmět', '')
                
            ->setRenderer(function($row) use($self){
                
@@ -76,7 +76,7 @@ class SeznamZnamekZak extends Grid{
                    ->setSelectFilter($this->predmet_pom);
        
        
-         $this->addColumn('vaha', 'Váha', '70px')
+         $this->addColumn('vaha', 'Váha', '')
                ->setSelectFilter($vaha)  
               ->setRenderer(function($row){
              switch ($row['vaha']) {
@@ -97,7 +97,7 @@ class SeznamZnamekZak extends Grid{
         });
         
         
-         $this->addColumn('ucitel', 'Učitel', '150px')
+         $this->addColumn('ucitel', 'Učitel', '')
                ->setSelectFilter($this->zak_pom)
                 ->setRenderer(function($row) use($self){
                    
@@ -109,7 +109,7 @@ class SeznamZnamekZak extends Grid{
                
          
                  
-           $this->addColumn('datum', 'Datum', '100px')
+           $this->addColumn('datum', 'Datum', '')
                  ->setSelectFilter($this->datum)  
                  ->setRenderer(function($row){return date('j. n. Y', strtotime($row['datum']));});  
        

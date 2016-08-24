@@ -234,14 +234,16 @@ class Button extends \Nette\Application\UI\PresenterComponent
 			->addClass($this->getClass($row))
 			->setTitle($this->getLabel($row))
 			->setTarget($this->getTarget($row));
-
+                        
 		if($this->getName() == Grid::ROW_FORM) {
 			$el->addClass("grid-editable");
 		}
 
 		if($this->hasConfirmationDialog()){
 			$el->addClass("grid-confirm")
-				->addData("grid-confirm", $this->getConfirmationDialog($row));
+				->addData("grid-confirm", $this->getConfirmationDialog($row))
+                                ->addonClick("return checkMe()");
+                        
 		}
 
 		if($this->ajax){

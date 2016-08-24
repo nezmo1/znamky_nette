@@ -25,6 +25,17 @@ class ListPresenter extends BasePresenter
     return new Model\SeznamZaku($this->database->table('users')->where('trida!=','42')->where('priorita!=','4'), $this->database);
 }
 
+
+   protected function createComponentSeznamTridGrid()
+{
+    return new Model\SeznamTrid($this->database->table('trida')->where('id_tridy!=','42')->order("jmeno_tridy"), $this->database);
+}
+
+ protected function createComponentSeznamPredmetuGrid()
+{
+    return new Model\SeznamPredmetu($this->database->table('predmet')->order("nazev"), $this->database);
+}
+
  public function GenHes(){
      $abeceda="ABCDEFGHJKMNPRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
      $cisla="23456789";
@@ -67,19 +78,29 @@ WHERE users.trida !=42
  
 }	
    
-	public function renderSkupiny()
+	public function renderTridy()
 {
             $user =  $this->getUser();
     if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
              $this->redirect('Pristup:pristup');
        }
-       $this->backlink = $this->storeRequest();
+       
       
         
  
 }	
 
-
+	public function renderPredmety()
+{
+            $user =  $this->getUser();
+    if ((!$user->isInRole('4')) and (!$user->isInRole('3')) ) {
+             $this->redirect('Pristup:pristup');
+       }
+       
+      
+        
+ 
+}
  
         
 }
