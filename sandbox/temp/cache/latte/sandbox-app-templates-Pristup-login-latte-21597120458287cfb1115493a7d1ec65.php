@@ -2,7 +2,7 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Pristup/login.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2992628535', 'html')
+list($_b, $_g, $_l) = $template->initialize('4041071891', 'html')
 ;
 // prolog Nette\Bridges\ApplicationLatte\UIMacros
 
@@ -24,7 +24,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Elektronická žákovská knížka</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

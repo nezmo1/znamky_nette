@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Users/list.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('2167560619', 'html')
+list($_b, $_g, $_l) = $template->initialize('8499051023', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb86813f75b2_content')) { function _lb86813f75b2_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbad145b1a5b_content')) { function _lbad145b1a5b_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><script>
 $(document).ready(function(){
  $('input').keyup(function(e){
@@ -32,7 +32,7 @@ function checkMe() {
 }
 </script>
 
-<div class="right_col" role="main">
+<div class="right_col" role="main" style="min-width: 1000px">
          
             <div class="page-title">
               <div class="title_left">
@@ -44,23 +44,23 @@ function checkMe() {
            
            
             <div class="clearfix"></div>
-            <div class="row">
+            <div class="row" >
               <div class="col-md-12 col-sm-12 col-xs-12" >
                 <div class="x_panel" >
                   
-                  <div class="x_content" >
+                  <div class="x_content"  >
                       
                       
                   
                       
-                      <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-md-12 col-sm-12 col-xs-12" >
                 <div class="x_panel">
                   <div class="x_title">
                     <h2></h2>
                     
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div class="x_content" >
 
 <?php $_l->tmp = $_control->getComponent("seznamUcitelu"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
 

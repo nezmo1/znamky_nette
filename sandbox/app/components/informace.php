@@ -27,7 +27,7 @@ public $database;
         if($typ==1){ 
          echo ' <div class="profile">
               <div class="profile_pic">
-                <img src="'.$cesta.'/images/owl_rose.png" alt="..." class="img-circle profile_img">
+                <img src="'.$cesta.'images/owl_rose.png" alt="..." class="img-circle profile_img">
               </div>
                 
               <div class="profile_info">
@@ -37,7 +37,7 @@ public $database;
             </div> ';
         }
         if ($typ==2){
-            echo '<img src="'.$cesta.'/images/owl_rose.png" alt=""> ';
+            echo '<img src="'.$cesta.'images/owl_rose.png" alt=""> ';
          echo $jmeno['jmeno']." ".$jmeno['prijmeni'];   
         }
          

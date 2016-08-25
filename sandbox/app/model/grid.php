@@ -50,7 +50,7 @@ class SeznamUcitelu extends Grid{
              ->setTextEditable('prijmeni')
             ->setSortable(FALSE)
             ->setTextFilter('prijmeni');
-       $this->addColumn('trida', 'Třída', '80px')
+       $this->addColumn('trida', 'Třída', '')
             ->setRenderer(function($row){return 'Učitel';});
 
         $numOfResults=$this->database->query('SELECT COUNT(username) AS `pocet` FROM users WHERE trida="42" and priorita !=4')->fetch();  
@@ -88,7 +88,7 @@ $self = $this;
     
     
     $this->paginate = FALSE;
-$this->setWidth('100%');
+
     
     }
     

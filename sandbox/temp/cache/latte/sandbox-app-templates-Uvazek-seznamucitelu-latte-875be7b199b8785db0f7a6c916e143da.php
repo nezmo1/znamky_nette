@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Uvazek/seznamucitelu.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('7226557826', 'html')
+list($_b, $_g, $_l) = $template->initialize('6914380050', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbe912d66007_content')) { function _lbe912d66007_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb6690d310be_content')) { function _lb6690d310be_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><script>
 $(document).ready(function(){
  $('input').keyup(function(e){
@@ -20,7 +20,7 @@ $(document).ready(function(){
 });
 </script>
 
-<div class="right_col" role="main">
+<div class="right_col" role="main" style="min-width: 1000px">
          
             <div class="page-title">
               <div class="title_left">
