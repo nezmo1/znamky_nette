@@ -26,12 +26,12 @@
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-pencil"></i></span>
-              <div class="count" style="font-size: 180%">{if $uzivatel->isInRole("2")}<a href="{$basePath}/znamka/novaznamka?tridac=n">Nová známka</a>{else}<a href="{$basePath}/seznam/zak">Seznam známek</a>{/if}</div>
+              <div class="count" style="font-size: 180%">{if $uzivatel->isInRole("1")}<a href="{$basePath}/seznam/zak">Seznam známek</a>{else}<a href="{$basePath}/znamka/novaznamka?tridac=n">Nová známka</a>{/if}</div>
             
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-pencil"></i> </span>
-              <div class="count" style="font-size: 180%">{if $uzivatel->isInRole("2")}<a href="{$basePath}/seznam/ucitel">Seznam známek</a>{else}<a href="{$basePath}/seznam/cv-zak">Čtvrtletní klasifikace</a>{/if}</div>
+              <div class="count" style="font-size: 180%">{if $uzivatel->isInRole("1")}<a href="{$basePath}/seznam/cv-zak">Čtvrtletní klasifikace</a>{else}<a href="{$basePath}/seznam/ucitel">Seznam známek</a>{/if}</div>
              
             </div>
           </div>

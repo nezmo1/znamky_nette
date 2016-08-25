@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Informace/prehled.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('0955968590', 'html')
+list($_b, $_g, $_l) = $template->initialize('5382298484', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb077a363406_content')) { function _lb077a363406_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbc6f9fa876e_content')) { function _lbc6f9fa876e_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?> <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
@@ -37,18 +37,18 @@ if (!function_exists($_b->blocks['content'][] = '_lb077a363406_content')) { func
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-pencil"></i></span>
-              <div class="count" style="font-size: 180%"><?php if ($uzivatel->isInRole("2")) { ?>
+              <div class="count" style="font-size: 180%"><?php if ($uzivatel->isInRole("1")) { ?>
 <a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
-/znamka/novaznamka?tridac=n">Nová známka</a><?php } else { ?><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
-/seznam/zak">Seznam známek</a><?php } ?></div>
+/seznam/zak">Seznam známek</a><?php } else { ?><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
+/znamka/novaznamka?tridac=n">Nová známka</a><?php } ?></div>
             
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-pencil"></i> </span>
-              <div class="count" style="font-size: 180%"><?php if ($uzivatel->isInRole("2")) { ?>
+              <div class="count" style="font-size: 180%"><?php if ($uzivatel->isInRole("1")) { ?>
 <a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
-/seznam/ucitel">Seznam známek</a><?php } else { ?><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
-/seznam/cv-zak">Čtvrtletní klasifikace</a><?php } ?></div>
+/seznam/cv-zak">Čtvrtletní klasifikace</a><?php } else { ?><a href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>
+/seznam/ucitel">Seznam známek</a><?php } ?></div>
              
             </div>
           </div>
