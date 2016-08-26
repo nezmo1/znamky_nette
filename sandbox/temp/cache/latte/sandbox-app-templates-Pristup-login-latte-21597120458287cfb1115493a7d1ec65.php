@@ -2,7 +2,7 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Pristup/login.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4041071891', 'html')
+list($_b, $_g, $_l) = $template->initialize('1506182368', 'html')
 ;
 // prolog Nette\Bridges\ApplicationLatte\UIMacros
 
@@ -56,7 +56,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 /images/owl_notebook.png' width="140px" height="140px" alt='Jen dva údaje tě dělí od přihlášení'><?php } ?>
 
          
-              <h1>Přihlašení</h1>
+              <h1>Přihlášení</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Přihlašovací jméno" required=""<?php $_input = $_form["username"]; echo $_input->{method_exists($_input, 'getControlPart')?'getControlPart':'getControl'}()->addAttributes(array (
   'type' => NULL,
@@ -90,7 +90,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 
                 <div>
                   <h1><i class="fa fa-book"></i> Elektronická žákovská knížka</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <p>Vytvořil <b>Adam Nezmar</b></p>
                 </div>
               </div>
 <?php Nette\Bridges\FormsLatte\FormMacros::renderFormEnd($_form) ?>
