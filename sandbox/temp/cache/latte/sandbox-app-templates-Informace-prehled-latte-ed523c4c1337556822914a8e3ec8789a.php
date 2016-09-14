@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Informace/prehled.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3500926697', 'html')
+list($_b, $_g, $_l) = $template->initialize('3907418767', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb40dabe22c2_content')) { function _lb40dabe22c2_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbb171fe5b55_content')) { function _lbb171fe5b55_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?> <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
@@ -128,7 +128,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb40dabe22c2_content')) { func
             </div>
 
                   
-<?php if (!$uzivatel->isInRole("4")) { ?>
+<?php if (!$uzivatel->isInRole("1")) { ?>
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile  overflow_hidden" style="min-height: 320">
                 <div class="x_title">
