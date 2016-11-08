@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Prehled/portal.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('4418250028', 'html')
+list($_b, $_g, $_l) = $template->initialize('0159223219', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbecae9d301e_content')) { function _lbecae9d301e_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbacfd06ed99_content')) { function _lbacfd06ed99_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><div class="right_col" role="main">
          
             <div class="page-title">
@@ -94,7 +94,7 @@ if (!function_exists($_b->blocks['content'][] = '_lbecae9d301e_content')) { func
 //
 // block title
 //
-if (!function_exists($_b->blocks['title'][] = '_lbf675b16f40_title')) { function _lbf675b16f40_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['title'][] = '_lb3298d5a659_title')) { function _lb3298d5a659_title($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?>                      <h1>Přehled školy</h1>
 <?php
 }}

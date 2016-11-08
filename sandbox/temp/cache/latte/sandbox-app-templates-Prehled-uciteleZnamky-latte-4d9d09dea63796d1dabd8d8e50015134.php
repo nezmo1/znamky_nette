@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Prehled/uciteleZnamky.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('0287973422', 'html')
+list($_b, $_g, $_l) = $template->initialize('6160998298', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lb8e7224adb7_content')) { function _lb8e7224adb7_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lbb30257be8f_content')) { function _lbb30257be8f_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><script>
 $(document).ready(function(){
  $('input').keyup(function(e){
@@ -32,7 +32,7 @@ function checkMe() {
 }
 </script>
 
-<div class="right_col" role="main">
+<div class="right_col" role="main" style="min-width: 1000px">
          
             <div class="page-title">
               <div class="title_left">

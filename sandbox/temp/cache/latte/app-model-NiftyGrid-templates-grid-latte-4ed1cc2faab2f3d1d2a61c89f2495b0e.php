@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app\model\NiftyGrid/../../templates/grid.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('1086775932', 'html')
+list($_b, $_g, $_l) = $template->initialize('4229631492', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block _
 //
-if (!function_exists($_b->blocks['_'][] = '_lb4d437a1b4b__')) { function _lb4d437a1b4b__($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v; $_control->redrawControl(false, FALSE)
+if (!function_exists($_b->blocks['_'][] = '_lb3729298264__')) { function _lb3729298264__($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v; $_control->redrawControl(false, FALSE)
 ;if (!$control->isSubGrid) { echo Latte\Runtime\Filters::escapeHtml($control['gridForm']->render('begin'), ENT_NOQUOTES) ?>
 
 <?php } ?>

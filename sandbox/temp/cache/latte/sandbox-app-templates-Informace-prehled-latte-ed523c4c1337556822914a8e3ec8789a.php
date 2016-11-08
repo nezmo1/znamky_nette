@@ -2,13 +2,13 @@
 // source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Informace/prehled.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3907418767', 'html')
+list($_b, $_g, $_l) = $template->initialize('9423347404', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbb171fe5b55_content')) { function _lbb171fe5b55_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb28c19236ad_content')) { function _lb28c19236ad_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?> <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->

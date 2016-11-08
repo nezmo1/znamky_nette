@@ -94,6 +94,18 @@ class Menu extends Nette\Application\UI\PresenterComponent
                     </ul>
                   </li>';
               
+              
+              
+              
+               $url = $this->presenter->link('Sestavy:ucitel');         
+              
+              
+              echo'  <li><a><i class="fa fa-book"></i>Sestavy<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="'.$url.'">Seznam známek</a></li>';
+          
+              
+              
             }
              
             

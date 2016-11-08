@@ -1,14 +1,14 @@
 <?php
-// source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Seznam/zak.latte
+// source: E:\xampp2\htdocs\znamky_nette\sandbox\app/templates/Sestavy/ucitel.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('3356422780', 'html')
+list($_b, $_g, $_l) = $template->initialize('0774192598', 'html')
 ;
 // prolog Latte\Macros\BlockMacros
 //
 // block content
 //
-if (!function_exists($_b->blocks['content'][] = '_lbaaef2d4e33_content')) { function _lbaaef2d4e33_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
+if (!function_exists($_b->blocks['content'][] = '_lb5b4e189934_content')) { function _lb5b4e189934_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><script>
 $(document).ready(function(){
  $('input').keyup(function(e){
@@ -50,7 +50,7 @@ $(document).ready(function(){
                   </div>
                   <div class="x_content">
 
-<?php $_l->tmp = $_control->getComponent("seznamZnamekZakGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
+<?php $_l->tmp = $_control->getComponent("seznamZnamekUcitelGrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
 
                   </div>
                 </div>
